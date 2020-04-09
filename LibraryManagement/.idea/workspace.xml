@@ -77,9 +77,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.26474822" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -173,7 +180,10 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1586363966601" duration="320000" />
+      <workItem from="1586363966601" duration="927000" />
+      <workItem from="1586397531199" duration="324000" />
+      <workItem from="1586399061730" duration="1342000" />
+      <workItem from="1586410312143" duration="279000" />
     </task>
     <servers />
   </component>
@@ -193,25 +203,25 @@
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
     <state x="594" y="327" key="#com.intellij.ide.util.TreeClassChooserDialog/33.23.1647.1027@33.23.1647.1027" timestamp="1586364306350" />
-    <state width="1605" height="261" key="GridCell.Tab.0.bottom" timestamp="1586364311550">
+    <state width="1605" height="261" key="GridCell.Tab.0.bottom" timestamp="1586404841135">
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
-    <state width="1605" height="261" key="GridCell.Tab.0.bottom/33.23.1647.1027@33.23.1647.1027" timestamp="1586364311550" />
-    <state width="1605" height="261" key="GridCell.Tab.0.center" timestamp="1586364311549">
+    <state width="1605" height="261" key="GridCell.Tab.0.bottom/33.23.1647.1027@33.23.1647.1027" timestamp="1586404841135" />
+    <state width="1605" height="261" key="GridCell.Tab.0.center" timestamp="1586404841134">
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
-    <state width="1605" height="261" key="GridCell.Tab.0.center/33.23.1647.1027@33.23.1647.1027" timestamp="1586364311549" />
-    <state width="1605" height="261" key="GridCell.Tab.0.left" timestamp="1586364311549">
+    <state width="1605" height="261" key="GridCell.Tab.0.center/33.23.1647.1027@33.23.1647.1027" timestamp="1586404841134" />
+    <state width="1605" height="261" key="GridCell.Tab.0.left" timestamp="1586404841134">
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
-    <state width="1605" height="261" key="GridCell.Tab.0.left/33.23.1647.1027@33.23.1647.1027" timestamp="1586364311549" />
-    <state width="1605" height="261" key="GridCell.Tab.0.right" timestamp="1586364311549">
+    <state width="1605" height="261" key="GridCell.Tab.0.left/33.23.1647.1027@33.23.1647.1027" timestamp="1586404841134" />
+    <state width="1605" height="261" key="GridCell.Tab.0.right" timestamp="1586404841134">
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
-    <state width="1605" height="261" key="GridCell.Tab.0.right/33.23.1647.1027@33.23.1647.1027" timestamp="1586364311549" />
-    <state x="344" y="118" key="SettingsEditor" timestamp="1586364214446">
+    <state width="1605" height="261" key="GridCell.Tab.0.right/33.23.1647.1027@33.23.1647.1027" timestamp="1586404841134" />
+    <state x="344" y="118" key="SettingsEditor" timestamp="1586397774312">
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
-    <state x="344" y="118" key="SettingsEditor/33.23.1647.1027@33.23.1647.1027" timestamp="1586364214446" />
+    <state x="344" y="118" key="SettingsEditor/33.23.1647.1027@33.23.1647.1027" timestamp="1586397774312" />
   </component>
 </project>
