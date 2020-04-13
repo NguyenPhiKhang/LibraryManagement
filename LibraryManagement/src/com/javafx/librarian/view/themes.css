@@ -22,7 +22,7 @@
 }
 
 .tab-header-background{
-    -fx-background-color: #e2e1e1;
+    -fx-background-color: white;
 }
 
 .tab:selected{

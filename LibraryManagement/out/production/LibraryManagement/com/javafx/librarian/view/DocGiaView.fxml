@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="layoutDocGia" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #e2e1e1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.DocGiaController">
+<AnchorPane fx:id="layoutDocGia" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #7b6fe1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.DocGiaController">
    <children>
       <Label layoutX="71.0" layoutY="15.0" prefHeight="37.0" prefWidth="274.0" text="QUAN LY DOC GIA" textFill="#300d30">
          <font>

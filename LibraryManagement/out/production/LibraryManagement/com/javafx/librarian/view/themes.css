@@ -22,14 +22,13 @@
 }
 
 .tab-header-background{
-    -fx-background-color: #e2e1e1;
+    -fx-background-color: white;
 }
 
 .tab:selected{
     -fx-border-color: #cbcb6e;
     -fx-border-width: 3 3 3 3;
     -fx-border-radius: 20;
-    -fx-text-fill: white;
 }
 
 .tab .tab-label{
