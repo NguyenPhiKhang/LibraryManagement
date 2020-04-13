@@ -1,23 +1,31 @@
-package com.javafx.librarian.view;
+package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.User;
 import com.javafx.librarian.service.UserService;
 import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,6 +34,7 @@ public class LoginViewController implements Initializable {
     private double mousepX = 0;
     private double mousepY = 0;
     private Stage stage;
+    private AnchorPane root;
 
     //region khai báo biến controls
     @FXML
@@ -75,6 +84,8 @@ public class LoginViewController implements Initializable {
     public Label lbLogin2;
     @FXML
     public Label lbLogin3;
+    @FXML
+    public FontAwesomeIcon iconClose;
     //endregion
 
     @Override
@@ -99,6 +110,8 @@ public class LoginViewController implements Initializable {
             stage.setX(mouseEvent.getScreenX() - mousepX);
             stage.setY(mouseEvent.getScreenY()- mousepY);
         });
+
+        //stage = (Stage) layoutParent.getScene().getWindow();
     }
 
     @FXML
@@ -115,6 +128,25 @@ public class LoginViewController implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(NotificationType.SUCCESS);
             tray.showAndDismiss(Duration.millis(2000));
+
+            try {
+                Stage stageMain = new Stage();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../view/MainView.fxml"));
+                root = loader.load();
+
+                MainViewController controller = loader.getController();
+                controller.setMainStage(stageMain);
+                Scene scene = new Scene(root);
+                scene.setFill(Color.TRANSPARENT);
+                stageMain.setScene(scene);
+                stageMain.initStyle(StageStyle.TRANSPARENT);
+                stageMain.show();
+                stage.hide();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         else{
             String tilte = "Sign In";
@@ -128,54 +160,6 @@ public class LoginViewController implements Initializable {
             tray.setNotificationType(NotificationType.ERROR);
             tray.showAndDismiss(Duration.millis(2000));
         }
-//        if ("admin".equals(textUserLogin.getText()) && "123456".equals(passUserLogin.getText())) {
-//            String tilte = "Sign In";
-//            String message = textUserLogin.getText();
-//            TrayNotification tray = new TrayNotification();
-//            AnimationType type = AnimationType.POPUP;
-//
-//            tray.setAnimationType(type);
-//            tray.setTitle(tilte);
-//            tray.setMessage(message);
-//            tray.setNotificationType(NotificationType.SUCCESS);
-//            tray.showAndDismiss(Duration.millis(3000));
-//        }
-//        if (!"admin".equals(textUserLogin.getText())) {
-//            String tilte = "Sign In";
-//            String message = "Error Username " + "'" + textUserLogin.getText() + "'" + " Wrong";
-//            TrayNotification tray = new TrayNotification();
-//            AnimationType type = AnimationType.POPUP;
-//
-//            tray.setAnimationType(type);
-//            tray.setTitle(tilte);
-//            tray.setMessage(message);
-//            tray.setNotificationType(NotificationType.ERROR);
-//            tray.showAndDismiss(Duration.millis(3000));
-//        }
-//        if (!"123456".equals(passUserLogin.getText())) {
-//            String tilte = "Sign In";
-//            String message = "Error Password " + "'" + passUserLogin.getText() + "'" + " Wrong";
-//            TrayNotification tray = new TrayNotification();
-//            AnimationType type = AnimationType.POPUP;
-//
-//            tray.setAnimationType(type);
-//            tray.setTitle(tilte);
-//            tray.setMessage(message);
-//            tray.setNotificationType(NotificationType.ERROR);
-//            tray.showAndDismiss(Duration.millis(3000));
-//        }
-//        if (!"admin".equals(textUserLogin.getText()) && !"123456".equals(passUserLogin.getText())) {
-//            String tilte = "Sign In";
-//            String message = "Error Username " + "'" + textUserLogin.getText() + "'" + ", and Password " + "'" + passUserLogin.getText() + "'" + " Wrong";
-//            TrayNotification tray = new TrayNotification();
-//            AnimationType type = AnimationType.POPUP;
-//
-//            tray.setAnimationType(type);
-//            tray.setTitle(tilte);
-//            tray.setMessage(message);
-//            tray.setNotificationType(NotificationType.ERROR);
-//            tray.showAndDismiss(Duration.millis(3000));
-//        }
     }
 
     @FXML
@@ -252,6 +236,7 @@ public class LoginViewController implements Initializable {
     }
 
     public void closeClick(ActionEvent event) {
+        btnClose.setStyle("-fx-background-color: red");
         System.exit(0);
     }
 
@@ -288,40 +273,19 @@ public class LoginViewController implements Initializable {
             tray.setNotificationType(NotificationType.ERROR);
             tray.showAndDismiss(Duration.millis(2000));
         }
-//        TranslateTransition slide = new TranslateTransition();
-//        slide.setDuration(Duration.millis(700));
-//        slide.setNode(layer2);
-//
-//        slide.setToX(0);
-//        slide.play();
-//
-//        layer1.setTranslateX(0);
-//        btnSignup.setVisible(false);
-//        btnSignin.setVisible(true);
-//
-//        lbCreateAccount.setVisible(false);
-//        textUserCreate.setVisible(false);
-//        textEmail.setVisible(false);
-//        passCreate.setVisible(false);
-//        lbCreate1.setVisible(false);
-//        lbCreate2.setVisible(false);
-//        lbCreate3.setVisible(false);
-//        btnSignInMove.setVisible(false);
-//
-//        lbSignIn.setVisible(true);
-//        textUserLogin.setVisible(true);
-//        textUserLogin.requestFocus();
-//        passUserLogin.setVisible(true);
-//        lbLogin1.setVisible(true);
-//        lbLogin2.setVisible(true);
-//        lbLogin3.setVisible(true);
-//        btnSignupMove.setVisible(true);
-//        lbForget.setVisible(true);
-//
-//        slide.setOnFinished(e -> System.out.println("Finish Left!"));
     }
 
     public void setMainStage(Stage stage){
         this.stage = stage;
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #d6d6d6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
     }
 }

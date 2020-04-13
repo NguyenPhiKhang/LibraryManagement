@@ -1,10 +1,12 @@
 package com.javafx.librarian;
 
-import com.javafx.librarian.view.LoginViewController;
+import com.javafx.librarian.controller.LoginViewController;
+import com.javafx.librarian.controller.MainViewController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -16,8 +18,8 @@ public class Main extends Application {
     private AnchorPane rootLayout;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-       this.primaryStage = primaryStage;
+    public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage;
 
         initRootLayout();
     }
@@ -26,12 +28,17 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("view/LoginView.fxml"));
+//            loader.setLocation(getClass().getResource("view/MainView.fxml"));
             rootLayout = loader.load();
 
             LoginViewController controller = loader.getController();
             controller.setMainStage(primaryStage);
 
+//            MainViewController controller = loader.getController();
+//            controller.setMainStage(primaryStage);
+
             Scene scene = new Scene(rootLayout);
+            scene.setFill(Color.TRANSPARENT);
             primaryStage.setScene(scene);
             primaryStage.initStyle(StageStyle.TRANSPARENT);
             primaryStage.show();
