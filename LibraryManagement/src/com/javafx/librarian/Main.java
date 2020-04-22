@@ -27,15 +27,15 @@ public class Main extends Application {
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("view/LoginView.fxml"));
-//            loader.setLocation(getClass().getResource("view/MainView.fxml"));
+//            loader.setLocation(getClass().getResource("view/LoginView.fxml"));
+            loader.setLocation(getClass().getResource("view/MainView.fxml"));
             rootLayout = loader.load();
 
-            LoginViewController controller = loader.getController();
-            controller.setMainStage(primaryStage);
-
-//            MainViewController controller = loader.getController();
+//            LoginViewController controller = loader.getController();
 //            controller.setMainStage(primaryStage);
+
+            MainViewController controller = loader.getController();
+            controller.setMainStage(primaryStage);
 
             Scene scene = new Scene(rootLayout);
             scene.setFill(Color.TRANSPARENT);

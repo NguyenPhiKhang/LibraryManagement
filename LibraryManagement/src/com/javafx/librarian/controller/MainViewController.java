@@ -98,4 +98,8 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void btnQLSAction(ActionEvent actionEvent) {
+        
+    }
 }

@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javafx/librarian/view/DocGiaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/javafx/librarian/view/DocGiaView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javafx/librarian/view/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/javafx/librarian/view/MainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/javafx/librarian/view/themes.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/javafx/librarian/view/themes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagement/META-INF/LibraryManagement.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagement/com/javafx/librarian/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagement/com/javafx/librarian/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagement/com/javafx/librarian/dao/JDBCConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagement/com/javafx/librarian/dao/JDBCConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraryManagement/com/javafx/librarian/utils/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LibraryManagement/com/javafx/librarian/utils/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/javafx/librarian/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/javafx/librarian/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/javafx/librarian/controller/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/javafx/librarian/controller/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/javafx/librarian/utils/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/javafx/librarian/utils/Util.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +94,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
@@ -100,7 +105,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.26474822" />
     <property name="recentsLimit" value="5" />
@@ -262,34 +267,47 @@
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
     <state x="594" y="290" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/33.23.1647.1027@33.23.1647.1027" timestamp="1586491857661" />
-    <state width="1605" height="406" key="GridCell.Tab.0.bottom" timestamp="1586743187368">
-      <screen x="33" y="23" width="1647" height="1027" />
+    <state x="463" y="158" key="FileChooserDialogImpl" timestamp="1587543531904">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
+    <state x="463" y="158" key="FileChooserDialogImpl/0.40.1366.728@0.40.1366.728" timestamp="1587543531904" />
+    <state width="1323" height="147" key="GridCell.Tab.0.bottom" timestamp="1587544430000">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state width="1323" height="147" key="GridCell.Tab.0.bottom/0.40.1366.728@0.40.1366.728" timestamp="1587544430000" />
     <state width="1605" height="406" key="GridCell.Tab.0.bottom/30.23.1650.1027@30.23.1650.1027" timestamp="1586741982359" />
     <state width="1605" height="406" key="GridCell.Tab.0.bottom/31.23.1649.1027@31.23.1649.1027" timestamp="1586742565320" />
     <state width="1605" height="406" key="GridCell.Tab.0.bottom/33.23.1647.1027@33.23.1647.1027" timestamp="1586743187368" />
-    <state width="1605" height="406" key="GridCell.Tab.0.center" timestamp="1586743187367">
-      <screen x="33" y="23" width="1647" height="1027" />
+    <state width="1323" height="147" key="GridCell.Tab.0.center" timestamp="1587544430000">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
+    <state width="1323" height="147" key="GridCell.Tab.0.center/0.40.1366.728@0.40.1366.728" timestamp="1587544430000" />
     <state width="1605" height="406" key="GridCell.Tab.0.center/30.23.1650.1027@30.23.1650.1027" timestamp="1586741982358" />
     <state width="1605" height="406" key="GridCell.Tab.0.center/31.23.1649.1027@31.23.1649.1027" timestamp="1586742565319" />
     <state width="1605" height="406" key="GridCell.Tab.0.center/33.23.1647.1027@33.23.1647.1027" timestamp="1586743187367" />
-    <state width="1605" height="406" key="GridCell.Tab.0.left" timestamp="1586743187367">
-      <screen x="33" y="23" width="1647" height="1027" />
+    <state width="1323" height="147" key="GridCell.Tab.0.left" timestamp="1587544430000">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
+    <state width="1323" height="147" key="GridCell.Tab.0.left/0.40.1366.728@0.40.1366.728" timestamp="1587544430000" />
     <state width="1605" height="406" key="GridCell.Tab.0.left/30.23.1650.1027@30.23.1650.1027" timestamp="1586741982358" />
     <state width="1605" height="406" key="GridCell.Tab.0.left/31.23.1649.1027@31.23.1649.1027" timestamp="1586742565318" />
     <state width="1605" height="406" key="GridCell.Tab.0.left/33.23.1647.1027@33.23.1647.1027" timestamp="1586743187367" />
-    <state width="1605" height="406" key="GridCell.Tab.0.right" timestamp="1586743187368">
-      <screen x="33" y="23" width="1647" height="1027" />
+    <state width="1323" height="147" key="GridCell.Tab.0.right" timestamp="1587544430000">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
+    <state width="1323" height="147" key="GridCell.Tab.0.right/0.40.1366.728@0.40.1366.728" timestamp="1587544430000" />
     <state width="1605" height="406" key="GridCell.Tab.0.right/30.23.1650.1027@30.23.1650.1027" timestamp="1586741982359" />
     <state width="1605" height="406" key="GridCell.Tab.0.right/31.23.1649.1027@31.23.1649.1027" timestamp="1586742565319" />
     <state width="1605" height="406" key="GridCell.Tab.0.right/33.23.1647.1027@33.23.1647.1027" timestamp="1586743187368" />
-    <state x="344" y="118" key="SettingsEditor" timestamp="1586595849769">
-      <screen x="33" y="23" width="1647" height="1027" />
+    <state x="258" y="40" key="SettingsEditor" timestamp="1587543220885">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
+    <state x="258" y="40" key="SettingsEditor/0.40.1366.728@0.40.1366.728" timestamp="1587543220885" />
     <state x="344" y="118" key="SettingsEditor/33.23.1647.1027@33.23.1647.1027" timestamp="1586595849769" />
+    <state x="473" y="231" key="com.intellij.ide.util.TipDialog" timestamp="1587543930026">
+      <screen x="0" y="40" width="1366" height="728" />
+    </state>
+    <state x="473" y="231" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1587543930026" />
     <state x="594" y="226" key="extract.method.dialog" timestamp="1586699168628">
       <screen x="33" y="23" width="1647" height="1027" />
     </state>
