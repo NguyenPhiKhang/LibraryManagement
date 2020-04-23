@@ -48,7 +48,7 @@ public class MainViewController implements Initializable {
 
         tileBar.setOnMouseDragged(mouseEvent -> {
             stage.setX(mouseEvent.getScreenX() - mousepX);
-            stage.setY(mouseEvent.getScreenY()- mousepY);
+            stage.setY(mouseEvent.getScreenY() - mousepY);
         });
     }
 
@@ -83,7 +83,7 @@ public class MainViewController implements Initializable {
         stage.setFullScreen(!stage.isFullScreen());
     }
 
-    public void setMainStage(Stage stage){
+    public void setMainStage(Stage stage) {
         this.stage = stage;
     }
 
@@ -100,6 +100,14 @@ public class MainViewController implements Initializable {
     }
 
     public void btnQLSAction(ActionEvent actionEvent) {
-        
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/SachView.fxml"));
+            AnchorPane sachView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(sachView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

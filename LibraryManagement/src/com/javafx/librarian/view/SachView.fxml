@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="layoutSach" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #7b6fe1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.SachController">
+   <children>
+      <Label layoutX="71.0" layoutY="15.0" prefHeight="37.0" prefWidth="274.0" text="QUAN LY SACH" textFill="#300d30">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="25.0" />
+         </font>
+      </Label>
+
+      <TabPane layoutX="-3.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <tabs>
+            <Tab text="Sach">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label layoutX="350.0" layoutY="204.0" text="DOC GIA" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="The loai">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label layoutX="342.0" layoutY="204.0" text="Loai doc gia" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Tac gia">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                     <children>
+                        <VBox layoutY="4.0" prefHeight="237.0" prefWidth="750.0">
+                           <children>
+                              <TableView fx:id="tbhienthi" onMouseClicked="#bindingData" prefHeight="238.0" prefWidth="750.0">
+                                <columns>
+                                  <TableColumn fx:id="tbcMaTacGia" prefWidth="191.0" text="Mã tác giả" />
+                                  <TableColumn fx:id="tbcTenTacGia" prefWidth="558.0" text="Tên tác giả" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <Label layoutX="52.0" layoutY="274.0" text="Mã tác giả" />
+                        <Label layoutX="52.0" layoutY="341.0" text="Tên tác giả" />
+                        <TextField fx:id="txtMaTacGia" layoutX="141.0" layoutY="270.0" />
+                        <TextField fx:id="txtTenTacGia" layoutX="141.0" layoutY="337.0" />
+                        <Button fx:id="btnThem" layoutX="469.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnThem_Click" prefHeight="25.0" prefWidth="72.0" text="THÊM" />
+                        <Button fx:id="btnXoa" layoutX="563.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnXoa_Click" prefHeight="25.0" prefWidth="71.0" text="XÓA" />
+                        <Button fx:id="btnSua" layoutX="469.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnSua_Click" prefHeight="25.0" prefWidth="70.0" text="SỬA" />
+                        <Button fx:id="btnLuu" layoutX="562.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnLuu_Click" prefHeight="25.0" prefWidth="73.0" text="LƯU" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
