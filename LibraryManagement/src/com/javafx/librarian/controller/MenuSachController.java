@@ -22,7 +22,7 @@ public class MenuSachController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/SachView.fxml"));
+            loader.setLocation(getClass().getResource("../view/TacGiaView.fxml"));
             AnchorPane docgiaView = (AnchorPane) loader.load();
             tpTacGia.setContent(docgiaView);
         } catch (IOException e) {

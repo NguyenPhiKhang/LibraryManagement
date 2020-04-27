@@ -22,11 +22,10 @@
       </VBox>
       <Label layoutX="52.0" layoutY="274.0" text="Mã tác giả" />
       <Label layoutX="52.0" layoutY="341.0" text="Tên tác giả" />
-      <TextField fx:id="txtMaTacGia" layoutX="141.0" layoutY="270.0" />
-      <TextField fx:id="txtTenTacGia" layoutX="141.0" layoutY="337.0" />
-      <Button fx:id="btnThem" layoutX="469.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnThem_Click" prefHeight="25.0" prefWidth="72.0" text="THÊM" />
-      <Button fx:id="btnXoa" layoutX="563.0" layoutY="283.0" mnemonicParsing="false" onAction="#btnXoa_Click" prefHeight="25.0" prefWidth="71.0" text="XÓA" />
-      <Button fx:id="btnSua" layoutX="469.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnSua_Click" prefHeight="25.0" prefWidth="70.0" text="SỬA" />
-      <Button fx:id="btnLuu" layoutX="562.0" layoutY="325.0" mnemonicParsing="false" onAction="#btnLuu_Click" prefHeight="25.0" prefWidth="73.0" text="LƯU" />
+      <TextField fx:id="txtMaTacGia" editable="false" layoutX="141.0" layoutY="270.0" />
+      <TextField fx:id="txtTenTacGia" editable="false" layoutX="141.0" layoutY="337.0" />
+      <Button fx:id="btnThem" layoutX="426.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnThem_Click" prefHeight="25.0" prefWidth="72.0" text="THÊM" />
+      <Button fx:id="btnXoa" layoutX="623.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnXoa_Click" prefHeight="25.0" prefWidth="71.0" text="XÓA" />
+      <Button fx:id="btnSua" layoutX="526.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnSua_Click" prefHeight="25.0" prefWidth="70.0" text="SỬA" />
    </children>
 </AnchorPane>

@@ -26,7 +26,6 @@ public class EditTacGiaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void setTacGia(TacGiaController tacGia) {
@@ -35,19 +34,24 @@ public class EditTacGiaController implements Initializable {
 
     public void setEditTacGia(TacGia tacGia) {
         this.tacGia = tacGia;
+        bindingData();
     }
 
-    public void btnAddDong_Click(ActionEvent event) {
+    public void btnEditDong_Click(ActionEvent event) {
         Stage stage = (Stage) btnEditDong.getScene().getWindow();
         stage.close();
     }
 
-    public void btnAddThem_Click(ActionEvent event) {
+    public void btnEditThem_Click(ActionEvent event) {
         //
-        int maTacGia = Integer.parseInt(txtEditMaTacGia.getText());
-        String tenTacGia = txtEditTenTacGia.getText();
+        String tenTacGiaMoi = txtEditTenTacGia.getText();
         //
-        TacGiaService.getInstance().addTacGia(maTacGia, tenTacGia);
+        TacGiaService.getInstance().editTacGia(tacGia.getMaTacGia(), tenTacGiaMoi);
         tacGiaController.refreshTable();
+    }
+
+    private void bindingData() {
+        txtEditMaTacGia.setText(String.valueOf(tacGia.getMaTacGia()));
+        txtEditTenTacGia.setText(tacGia.getTenTacGia());
     }
 }

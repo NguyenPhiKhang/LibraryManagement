@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.javafx.librarian.controller.EditTacGiaController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="184.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.EditTacGiaController">
     <children>
         <GridPane layoutX="33.0" layoutY="21.0" prefHeight="98.0" prefWidth="351.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="165.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="220.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="165.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="220.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="108.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Mã tác giả"/>
-                <TextField fx:id="txtEditMaTacGia" prefWidth="231.0" GridPane.columnIndex="1"/>
-                <Label text="Tên tác giả" GridPane.rowIndex="1"/>
-                <TextField fx:id="txtEditTenTacGia" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Mã tác giả" />
+                <TextField fx:id="txtEditMaTacGia" editable="false" prefWidth="231.0" GridPane.columnIndex="1" />
+                <Label text="Tên tác giả" GridPane.rowIndex="1" />
+                <TextField fx:id="txtEditTenTacGia" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             </children>
         </GridPane>
-        <Button fx:id="btnEditThem" layoutX="255.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnEditThem_Click"
-                text="THÊM"/>
-        <Button fx:id="btnEditDong" layoutX="332.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnEditDong_Click"
-                text="ĐÓNG"/>
+        <Button fx:id="btnEditThem" layoutX="255.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnEditThem_Click" text="SỬA" />
+        <Button fx:id="btnEditDong" layoutX="332.0" layoutY="131.0" mnemonicParsing="false" onAction="#btnEditDong_Click" text="ĐÓNG" />
     </children>
 </AnchorPane>

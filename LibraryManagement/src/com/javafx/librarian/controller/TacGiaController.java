@@ -19,6 +19,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TacGiaController implements Initializable {
@@ -53,8 +54,6 @@ public class TacGiaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
-        txtMaTacGia.setDisable(true);
-        txtTenTacGia.setDisable(true);
     }
 
     private void setCell() {
@@ -88,17 +87,28 @@ public class TacGiaController implements Initializable {
 
         if (tbhienthi.getSelectionModel().getSelectedIndex() >= 0) {
             TacGia temp = tbhienthi.getSelectionModel().getSelectedItem();
-            TacGiaService.getInstance().deleteTacGia(temp.getMaTacGia());
-            refreshTable();
-            clearInput();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xóa tác giả");
+            alert.setHeaderText("Bạn muốn xóa tác giả này ra khỏi danh sách?");
+            alert.setContentText("[" + temp.getMaTacGia() + "] " + temp.getTenTacGia());
+
+            // option != null.
+            Optional<ButtonType> option = alert.showAndWait();
+
+            if (option.get() == null) {
+            } else if (option.get() == ButtonType.OK) {
+                TacGiaService.getInstance().deleteTacGia(temp.getMaTacGia());
+                refreshTable();
+                clearInput();
+            } else if (option.get() == ButtonType.CANCEL) {
+            } else {
+            }
         }
 
     }
 
     public void btnThem_Click(ActionEvent event) {
-//        clearInput();
-//        txtMaTacGia.setDisable(false);
-//       txtTenTacGia.setDisable(false);
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/AddTacGiaDialog.fxml"));
@@ -121,18 +131,30 @@ public class TacGiaController implements Initializable {
 
     public void btnSua_Click(ActionEvent event) {
         if (tbhienthi.getSelectionModel().getSelectedIndex() >= 0) {
-            String tenTacGiaMoi = txtTenTacGia.getText();
             TacGia temp = tbhienthi.getSelectionModel().getSelectedItem();
-            TacGiaService.getInstance().editTacGia(temp.getMaTacGia(), tenTacGiaMoi);
-            refreshTable();
+            //
+            //refreshTable();
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../view/EditTacGiaDialog.fxml"));
+                AnchorPane page = (AnchorPane) loader.load();
+
+                // Create the dialog Stage.
+                Stage dialogStage = new Stage();
+                dialogStage.setTitle("Thêm sách");
+                dialogStage.initStyle(StageStyle.UNDECORATED);
+                Scene scene = new Scene(page);
+                dialogStage.setScene(scene);
+                //
+                EditTacGiaController editTacGia = loader.getController();
+                editTacGia.setTacGia(this);
+                editTacGia.setEditTacGia(temp);
+                dialogStage.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void btnLuu_Click(ActionEvent event) {
-        int maTacGia = Integer.parseInt(txtMaTacGia.getText());
-        String tenTacGia = txtTenTacGia.getText();
-        TacGiaService.getInstance().addTacGia(maTacGia, tenTacGia);
-        refreshTable();
-    }
 
 }
