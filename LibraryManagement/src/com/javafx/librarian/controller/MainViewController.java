@@ -88,24 +88,17 @@ public class MainViewController implements Initializable {
     }
 
     public void btnQLDGAction(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/DocGiaView.fxml"));
-            AnchorPane docgiaView = (AnchorPane) loader.load();
-            borderPaneMain.setCenter(docgiaView);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void btnQLSAction(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/SachView.fxml"));
-            AnchorPane sachView = (AnchorPane) loader.load();
-            borderPaneMain.setCenter(sachView);
+            loader.setLocation(getClass().getResource("../view/MenuSachView.fxml"));
+            AnchorPane menuSachView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(menuSachView);
 
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
         } catch (IOException e) {
             e.printStackTrace();
         }
