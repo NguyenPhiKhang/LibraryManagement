@@ -21,6 +21,8 @@ public class MainViewController implements Initializable {
     private Double mousepY;
 
     @FXML
+    public JFXButton btnTrangChu;
+    @FXML
     public BorderPane borderPaneMain;
     @FXML
     public JFXButton btnQLDocGIa;
@@ -50,6 +52,8 @@ public class MainViewController implements Initializable {
             stage.setX(mouseEvent.getScreenX() - mousepX);
             stage.setY(mouseEvent.getScreenY()- mousepY);
         });
+
+//        btnTrangChu.requestFocus();
     }
 
     public void tiledBarButtonMouseEnter(MouseEvent mouseEvent) {
@@ -90,9 +94,9 @@ public class MainViewController implements Initializable {
     public void btnQLDGAction(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/DocGiaView.fxml"));
-            AnchorPane docgiaView = (AnchorPane) loader.load();
-            borderPaneMain.setCenter(docgiaView);
+            loader.setLocation(getClass().getResource("../view/docgia/frmDocGiaView.fxml"));
+            AnchorPane frmDocgiaView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(frmDocgiaView);
 
         } catch (IOException e) {
             e.printStackTrace();

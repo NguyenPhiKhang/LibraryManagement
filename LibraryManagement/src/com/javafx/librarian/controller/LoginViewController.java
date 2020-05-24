@@ -1,22 +1,24 @@
 package com.javafx.librarian.controller;
 
-import com.javafx.librarian.model.User;
-import com.javafx.librarian.service.UserService;
+import com.javafx.librarian.model.Account;
+import com.javafx.librarian.model.DocGia;
+import com.javafx.librarian.model.LoaiDocGia;
+import com.javafx.librarian.service.AccountService;
+import com.javafx.librarian.service.DocGiaService;
+import com.javafx.librarian.service.LoaiDocGiaService;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -27,7 +29,11 @@ import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class LoginViewController implements Initializable {
 
@@ -36,6 +42,12 @@ public class LoginViewController implements Initializable {
     private Stage stage;
     private AnchorPane root;
 
+    @FXML
+    public TextField textFullName;
+    @FXML
+    public DatePicker dateBirthday;
+    @FXML
+    public ComboBox<String> cbbType;
     //region khai báo biến controls
     @FXML
     public AnchorPane layoutParent;
@@ -88,6 +100,8 @@ public class LoginViewController implements Initializable {
     public FontAwesomeIcon iconClose;
     //endregion
 
+    ObservableList<LoaiDocGia> listLDG = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         lbCreateAccount.setVisible(false);
@@ -98,6 +112,9 @@ public class LoginViewController implements Initializable {
         lbCreate1.setVisible(false);
         lbCreate2.setVisible(false);
         lbCreate3.setVisible(false);
+        textFullName.setVisible(false);
+        cbbType.setVisible(false);
+        dateBirthday.setVisible(false);
         btnSignInMove.setVisible(false);
         textUserLogin.requestFocus();
 
@@ -111,12 +128,12 @@ public class LoginViewController implements Initializable {
             stage.setY(mouseEvent.getScreenY()- mousepY);
         });
 
-        //stage = (Stage) layoutParent.getScene().getWindow();
+        listLDG.addAll(LoaiDocGiaService.getInstance().getListLoaiDocGia());
     }
 
     @FXML
     public void btnSignIn_Click(ActionEvent event) {
-        User user = UserService.getInstance().getUser(textUserLogin.getText(), passUserLogin.getText());
+        Account user = AccountService.getInstance().getUser(textUserLogin.getText(), passUserLogin.getText());
         if(user!=null){
             String tilte = "Sign In";
             String message = textUserLogin.getText();
@@ -183,6 +200,9 @@ public class LoginViewController implements Initializable {
         lbCreate1.setVisible(true);
         lbCreate2.setVisible(true);
         lbCreate3.setVisible(true);
+        textFullName.setVisible(true);
+        cbbType.setVisible(true);
+        dateBirthday.setVisible(true);
         btnSignInMove.setVisible(true);
 
         lbSignIn.setVisible(false);
@@ -198,6 +218,12 @@ public class LoginViewController implements Initializable {
         slide.setOnFinished((e -> {
             System.out.println("Finish Right!");
         }));
+
+        if(cbbType.getItems().size()==0){
+            listLDG.forEach(ldg ->{
+                cbbType.getItems().add(ldg.getTenLoaiDocGia());
+            });
+        }
     }
 
     @FXML
@@ -220,6 +246,9 @@ public class LoginViewController implements Initializable {
         lbCreate1.setVisible(false);
         lbCreate2.setVisible(false);
         lbCreate3.setVisible(false);
+        textFullName.setVisible(false);
+        cbbType.setVisible(false);
+        dateBirthday.setVisible(false);
         btnSignInMove.setVisible(false);
 
         lbSignIn.setVisible(true);
@@ -242,7 +271,7 @@ public class LoginViewController implements Initializable {
 
     @FXML
     public void btnSignUp_Click(ActionEvent event) {
-        boolean check = UserService.getInstance().checkCreateUser(textUserCreate.getText(), textEmail.getText());
+        boolean check = AccountService.getInstance().checkCreateUser(textUserCreate.getText(), textEmail.getText());
 
         if(check){
             String tilte = "Sign Up";
@@ -256,10 +285,24 @@ public class LoginViewController implements Initializable {
             tray.setNotificationType(NotificationType.SUCCESS);
             tray.showAndDismiss(Duration.millis(2000));
 
-            UserService.getInstance().addUser(new User(textUserCreate.getText(), passCreate.getText(), textEmail.getText()));
+            AccountService.getInstance().addUser(new Account(textUserCreate.getText(), passCreate.getText() ));
+
+            DocGia dg = new DocGia();
+            dg.setTenDocGia(textFullName.getText());
+            dg.setMaLoaiDocGia(listLDG.stream().filter(ldg-> Objects.equals(ldg.getTenLoaiDocGia(), cbbType.getValue())).collect(Collectors.toList()).get(0).getMaLoaiDocGia());
+            dg.setEmail(textEmail.getText());
+            dg.setNgaySinh(Date.valueOf(dateBirthday.getValue()));
+            dg.setNgayLapThe(Date.valueOf(LocalDate.now()));
+            dg.setNgayHetHan(Date.valueOf((LocalDate.now()).plusMonths(6)));
+            dg.setIdAccount(textUserCreate.getText());
+
+            DocGiaService.getInstance().addDocGia(dg);
             textUserCreate.setText("");
             passCreate.setText("");
             textEmail.setText("");
+            cbbType.setValue("");
+            dateBirthday.setValue(null);
+            textFullName.setText("");
             textUserCreate.requestFocus();
         }else{
             String tilte = "Sign Up";
