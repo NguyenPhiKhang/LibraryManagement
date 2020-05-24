@@ -13,7 +13,7 @@
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
       </Label>
-      <TabPane layoutX="7.0" layoutY="80.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@themes.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="1.0" layoutY="80.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@themes.css" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab fx:id="tpSach" text="Sach">
                <content>

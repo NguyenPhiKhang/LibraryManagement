@@ -103,4 +103,17 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void btnQLNVAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/NhanVienView.fxml"));
+            AnchorPane NVView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(NVView);
+
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -79,7 +79,7 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="319.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@themes.css" text="BÁO CÁO THỐNG KÊ" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="319.0" onAction="#btnQLNVAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@themes.css" text="QUẢN LÝ NHÂN VIÊN" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                </graphic>
@@ -87,7 +87,15 @@
                   <Font size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="369.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@themes.css" text="HỆ THỐNG" textFill="WHITE">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="415.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@themes.css" text="HỆ THỐNG" textFill="WHITE">
+               <graphic>
+                  <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="367.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@themes.css" text="BÁO CÁO THỐNG KÊ" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                </graphic>

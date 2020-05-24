@@ -41,8 +41,6 @@ public class TacGiaController implements Initializable {
     @FXML
     public Button btnSua;
     @FXML
-    public Button btnLuu;
-    @FXML
     public Tab tpTheLoai;
     //endregion
 
