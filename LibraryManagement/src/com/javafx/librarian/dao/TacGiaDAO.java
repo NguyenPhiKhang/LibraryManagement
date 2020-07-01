@@ -1,6 +1,7 @@
 package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.TacGia;
+import com.javafx.librarian.model.TheLoai;
 import com.javafx.librarian.model.User;
 import javafx.collections.ObservableList;
 
@@ -25,7 +26,7 @@ public class TacGiaDAO {
         List<TacGia> ListTacGia = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbtacgia");
+            PreparedStatement ps = conn.prepareStatement("select * from tbtacgia where record_status is null");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 int kq1 = res.getInt(1);
@@ -37,6 +38,20 @@ public class TacGiaDAO {
         }
 
         return ListTacGia;
+    }
+
+    public TacGia getTacGiaByID(int ID) {
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbtacgia where matacgia=?");
+            ps.setInt(1, ID);
+            ResultSet res = ps.executeQuery();
+            if (res.next()) {
+                return new TacGia(res.getInt(1), res.getString(2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public int addTacGia(int maTacGia, String tenTacGia) {

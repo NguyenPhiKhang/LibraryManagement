@@ -33,8 +33,16 @@ public class TheLoai {
         this.TenTheLoai.set(tenTheLoai);
     }
 
+    public TheLoai(){}
+
     public TheLoai(int maTheLoai, String tenTheLoai) {
         MaTheLoai = new SimpleIntegerProperty(maTheLoai);
         TenTheLoai = new SimpleStringProperty(tenTheLoai);
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.getMaTheLoai() + " - " + this.getTenTheLoai();
     }
 }

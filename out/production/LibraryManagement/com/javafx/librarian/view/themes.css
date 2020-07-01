@@ -7,17 +7,17 @@
 /*}*/
 
 .menuButton:hover{
-    -fx-background-color:  rgba(255,255,255, 0.1);
+    -fx-background-color:  rgba(255,255,255, 0.1);;
     -fx-background-radius:  25 0 0 25;
     -fx-border-width:  0 3 0 0;
     -fx-border-color: #d03a0b;
 }
 
 .tab{
-    -fx-background-color: #179bd9;
+    -fx-background-color: white;
     -fx-pref-width: 120;
     -fx-pref-height: 40;
-    -fx-background-radius: 20;
+    -fx-background-radius: 5 5 0 0;
     -fx-alignment: center;
 }
 
@@ -25,10 +25,15 @@
     -fx-background-color: white;
 }
 
+.label{
+    -fx-label-padding: 0 0 0 10;
+}
+
 .tab:selected{
-    -fx-border-color: #cbcb6e;
-    -fx-border-width: 3 3 3 3;
-    -fx-border-radius: 20;
+    -fx-background-color: #d2d2d2;
+    -fx-border-color: #d2d2d2;
+    -fx-border-width: 2 2 2 2;
+    -fx-border-radius: 5 5 0 0;
 }
 
 .tab .tab-label{

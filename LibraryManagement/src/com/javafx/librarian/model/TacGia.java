@@ -34,8 +34,16 @@ public class TacGia {
         this.TenTacGia.set(tenTacGia);
     }
 
+    public TacGia(){}
+
     public TacGia(int maTacGia, String tenTacGia) {
         MaTacGia = new SimpleIntegerProperty(maTacGia);
         TenTacGia = new SimpleStringProperty(tenTacGia);
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.getMaTacGia() + " - " + this.getTenTacGia();
     }
 }

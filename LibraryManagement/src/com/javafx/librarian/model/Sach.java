@@ -12,9 +12,9 @@ public class Sach {
     private IntegerProperty MaTacGia;
     private IntegerProperty NamXB;
     private StringProperty NXB;
-    private ObjectProperty<LocalDate> NgayNhap;
+    private ObjectProperty<Date> NgayNhap;
     private IntegerProperty TriGia;
-    private IntegerProperty TinhTrang;
+    private StringProperty TinhTrang;
     private StringProperty AnhBia;
 
     public int getMaSach() {
@@ -85,11 +85,11 @@ public class Sach {
         this.NXB.set(nxb);
     }
 
-    public LocalDate getNgayNhap() { return NgayNhap.get();}
+    public Date getNgayNhap() { return NgayNhap.get();}
 
-    public ObjectProperty<LocalDate> ngayNhapProperty() { return NgayNhap;}
+    public ObjectProperty<Date> ngayNhapProperty() { return NgayNhap;}
 
-    public void setNgayNhap(LocalDate ngayNhap) { this.NgayNhap.set(ngayNhap);}
+    public void setNgayNhap(Date ngayNhap) { this.NgayNhap.set(ngayNhap);}
 
     public int getTriGia() {
         return TriGia.get();
@@ -103,15 +103,15 @@ public class Sach {
         this.TriGia.set(triGia);
     }
 
-    public int getTinhTrang() {
+    public String getTinhTrang() {
         return TinhTrang.get();
     }
 
-    public IntegerProperty tinhTrangProperty() {
+    public StringProperty tinhTrangProperty() {
         return TinhTrang;
     }
 
-    public void setTinhTrang(int tinhTrang) {
+    public void setTinhTrang(String tinhTrang) {
         this.TinhTrang.set(tinhTrang);
     }
 
@@ -125,16 +125,16 @@ public class Sach {
         this.AnhBia.set(anhBia);
     }
 
-    public Sach(int maSach, String tenSach, int maTheLoai, int maTacGia, int namXB, String nxb, LocalDate ngayNhap, int triGia, int tinhTrang, String anhBia) {
+    public Sach(int maSach, String tenSach, int maTheLoai, int maTacGia, int namXB, String nxb, Date ngayNhap, int triGia, int tinhTrang, String anhBia) {
         MaSach = new SimpleIntegerProperty(maSach);
         TenSach = new SimpleStringProperty(tenSach);
         MaTheLoai = new SimpleIntegerProperty(maTheLoai);
         MaTacGia = new SimpleIntegerProperty(maTacGia);
         NamXB = new SimpleIntegerProperty(namXB);
         NXB = new SimpleStringProperty(nxb);
-        NgayNhap = new SimpleObjectProperty<LocalDate>(ngayNhap);
+        NgayNhap = new SimpleObjectProperty<Date>(ngayNhap);
         TriGia = new SimpleIntegerProperty(triGia);
-        TinhTrang = new SimpleIntegerProperty(tinhTrang);
+        TinhTrang = new SimpleStringProperty(tinhTrang == 0? "Trống" : "Đang mượn");
         AnhBia = new SimpleStringProperty(anhBia);
     }
 }

@@ -1,7 +1,6 @@
 package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.TheLoai;
-import com.javafx.librarian.model.User;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
@@ -25,12 +24,12 @@ public class TheLoaiDAO {
         List<TheLoai> ListTheLoai = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai");
+            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where record_status is null");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                int kq1 = res.getInt(1);
-                String kq2 = res.getString(2);
-                ListTheLoai.add(new TheLoai(res.getInt(1), res.getString(2)));
+                int maTheLoai = res.getInt(1);
+                String tenTheLoai = res.getString(2);
+                ListTheLoai.add(new TheLoai(maTheLoai, tenTheLoai));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,12 +38,27 @@ public class TheLoaiDAO {
         return ListTheLoai;
     }
 
-    public int addTacGia(int maTacGia, String tenTacGia) {
+    public TheLoai getTheLoaiByID(int ID) {
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where matheloai=?");
+            ps.setInt(1, ID);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                return new TheLoai(res.getInt(1), res.getString(2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public int addTheloai(TheLoai theloai) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into tbtacgia values(?,?)");
-            ps.setInt(1, maTacGia);
-            ps.setString(2, tenTacGia);
+            PreparedStatement ps = conn.prepareStatement("insert into tbtheloai values(?,?)");
+            ps.setInt(1, theloai.getMaTheLoai());
+            ps.setString(2, theloai.getTenTheLoai());
 
             res = ps.executeUpdate();
             System.out.println(res + "row is effected");
@@ -55,12 +69,12 @@ public class TheLoaiDAO {
         return res;
     }
 
-    public int editTacGia(int maTacGia, String tenTacGia) {
+    public int editTheloai(TheLoai theloai) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
-            PreparedStatement ps = conn.prepareStatement("update tbtacgia set tentacgia=? where matacgia=?");
-            ps.setString(1, tenTacGia);
-            ps.setInt(2, maTacGia);
+            PreparedStatement ps = conn.prepareStatement("update tbtheloai set tentheloai=? where matheloai=?");
+            ps.setString(1, theloai.getTenTheLoai());
+            ps.setInt(2, theloai.getMaTheLoai());
             res = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -69,10 +83,10 @@ public class TheLoaiDAO {
         return res;
     }
 
-    public int deleteTacGia(int id) {
+    public int deleteTheLoai(int id) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
-            PreparedStatement ps = conn.prepareStatement("delete from tbtacgia where matacgia=?");
+            PreparedStatement ps = conn.prepareStatement("update tbtheloai set record_status = 0 where matheloai=?");
             ps.setInt(1, id);
             res = ps.executeUpdate();
 
