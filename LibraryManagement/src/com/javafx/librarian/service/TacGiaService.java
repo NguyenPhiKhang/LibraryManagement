@@ -21,6 +21,10 @@ public class TacGiaService {
         return TacGiaDAO.getInstance().getAllTacGia();
     }
 
+    public TacGia getTacGiaByID(int ID) {
+        return TacGiaDAO.getInstance().getTacGiaByID(ID);
+    }
+
     public int addTacGia(int maTacGia, String tenTacGia) {
         return TacGiaDAO.getInstance().addTacGia(maTacGia, tenTacGia);
     }
