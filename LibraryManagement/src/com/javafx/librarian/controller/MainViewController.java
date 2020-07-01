@@ -50,7 +50,7 @@ public class MainViewController implements Initializable {
 
         tileBar.setOnMouseDragged(mouseEvent -> {
             stage.setX(mouseEvent.getScreenX() - mousepX);
-            stage.setY(mouseEvent.getScreenY()- mousepY);
+            stage.setY(mouseEvent.getScreenY() - mousepY);
         });
 
 //        btnTrangChu.requestFocus();
@@ -87,7 +87,7 @@ public class MainViewController implements Initializable {
         stage.setFullScreen(!stage.isFullScreen());
     }
 
-    public void setMainStage(Stage stage){
+    public void setMainStage(Stage stage) {
         this.stage = stage;
     }
 
@@ -98,6 +98,31 @@ public class MainViewController implements Initializable {
             AnchorPane frmDocgiaView = (AnchorPane) loader.load();
             borderPaneMain.setCenter(frmDocgiaView);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnQLSAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/MenuSachView.fxml"));
+            AnchorPane menuSachView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(menuSachView);
+
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnQLNVAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/NhanVienView.fxml"));
+            AnchorPane NVView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(NVView);
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
         } catch (IOException e) {
             e.printStackTrace();
         }

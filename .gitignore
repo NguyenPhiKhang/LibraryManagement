@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### Java template
 *.class
 
@@ -59,3 +60,8 @@ crashlytics.properties
 crashlytics-build.properties
 
 # Created by .ignore support plugin (hsz.mobi)
+=======
+/LibraryManagement/.idea
+/LibraryManagement/out
+
+>>>>>>> origin/phatdev

@@ -85,6 +85,26 @@ public class AccountDao {
         return null;
     }
 
+    public Account getUserById(String username) {
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "SELECT * FROM tbaccount WHERE idaccount=?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                return new Account(rs.getString("idaccount"), rs.getString("Password"), rs.getInt("idper"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public boolean checkCreateUser(String username, String email) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
@@ -104,4 +124,18 @@ public class AccountDao {
         }
         return true;
     }
+    public int editUser(Account user) {
+        int res = 0;
+        try (Connection conn = JDBCConnection.getJDBCConnection();) {
+            PreparedStatement ps = conn.prepareStatement("update tbaccount set password=? where idaccount=?");
+            ps.setString(1, user.getPassword());
+            ps.setString(2, user.getUsername());
+            res = ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }
+

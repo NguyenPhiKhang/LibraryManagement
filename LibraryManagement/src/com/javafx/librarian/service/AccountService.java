@@ -26,8 +26,15 @@ public class AccountService {
     public Account getUser(String username, String password){
         return AccountDao.getInstance().getUser(username, password);
     }
+    public Account getUserById(String username) {
+        return AccountDao.getInstance().getUserById(username);
+    }
 
     public boolean checkCreateUser(String username, String email){
         return AccountDao.getInstance().checkCreateUser(username, email);
+    }
+
+    public int editUser(Account user) {
+        return AccountDao.getInstance().editUser(user);
     }
 }

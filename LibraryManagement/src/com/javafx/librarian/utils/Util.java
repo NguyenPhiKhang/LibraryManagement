@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Util {
-    public static final String URL_JDBC = "jdbc:mysql://localhost:3306/qltv";
+    public static final String URL_JDBC = "jdbc:mysql://localhost:3306/qltv?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC";
     public static final String USERNAME_JDBC = "root";
     public static final String PASSWORD_JDBC = "";
 
@@ -21,6 +21,4 @@ public class Util {
         cal.setTime(date);
         return LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
     }
-
-//    public static
 }
