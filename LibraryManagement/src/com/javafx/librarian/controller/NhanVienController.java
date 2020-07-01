@@ -1,20 +1,27 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.NhanVien;
 import com.javafx.librarian.model.TacGia;
+import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.service.NhanVienService;
 import com.javafx.librarian.service.TacGiaService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class NhanVienController implements Initializable {
@@ -48,9 +55,9 @@ public class NhanVienController implements Initializable {
     @FXML
     public Button btnThem;
     @FXML
-    public Button btnXoa;
+    public TextField txtUsername;
     @FXML
-    public Button btnSua;
+    public TextField txtPassword;
 
     //region controller
     private ObservableList<NhanVien> listNV;
@@ -74,5 +81,101 @@ public class NhanVienController implements Initializable {
     private void loadData() {
         listNV = FXCollections.observableArrayList(NhanVienService.getInstance().getAllNV());
         tbhienthi.setItems(listNV);
+    }
+
+    public void bindingData() {
+        NhanVien temp = tbhienthi.getSelectionModel().getSelectedItem();
+        Account acc = AccountService.getInstance().getUserById(temp.getIdAccount());
+        txtMaNV.setText((String.valueOf(temp.getMaNV())));
+        txtTenNV.setText(temp.getTenNV());
+        txtDiaChi.setText((String.valueOf(temp.getDiaChi())));
+        txtNgaySinh.setText(temp.getNgaySinh().toString());
+        txtEmail.setText(temp.getEmail());
+        txtSDT.setText(temp.getSDT());
+        txtUsername.setText(acc.getUsername());
+        txtPassword.setText(acc.getPassword());
+    }
+
+    public void refreshTable() {
+        listNV.clear();
+        loadData();
+    }
+
+    private void clearInput() {
+        txtMaNV.setText("");
+        txtTenNV.setText("");
+        txtDiaChi.setText("");
+        txtNgaySinh.setText("");
+        txtEmail.setText("");
+        txtSDT.setText("");
+    }
+
+    public void btnThem_Click(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/AddNhanVienDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.initStyle(StageStyle.UNDECORATED);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            //
+            AddNhanVienController addNhanVienController = loader.getController();
+            addNhanVienController.setNhanVienController(this);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnSua_Click(ActionEvent event) {
+        System.out.println("KAKA");
+        if (tbhienthi.getSelectionModel().getSelectedIndex() >= 0) {
+            NhanVien temp = tbhienthi.getSelectionModel().getSelectedItem();
+            //
+            //refreshTable();
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../view/EditNhanVienDialog.fxml"));
+                AnchorPane page = (AnchorPane) loader.load();
+
+                // Create the dialog Stage.
+                Stage dialogStage = new Stage();
+                dialogStage.initStyle(StageStyle.UNDECORATED);
+                Scene scene = new Scene(page);
+                dialogStage.setScene(scene);
+                //
+                EditNhanVienController editNhanVienController = loader.getController();
+                editNhanVienController.setNhanVienController(this);
+                editNhanVienController.setEditNV(temp);
+                dialogStage.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void btnXoa_Click(ActionEvent event) {
+
+        if (tbhienthi.getSelectionModel().getSelectedIndex() >= 0) {
+            NhanVien temp = tbhienthi.getSelectionModel().getSelectedItem();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Xóa nhân viên");
+            alert.setHeaderText("Bạn muốn xóa nhân viên này ra khỏi danh sách?");
+            alert.setContentText("[" + temp.getMaNV() + "] " + temp.getTenNV());
+
+            // option != null.
+            Optional<ButtonType> option = alert.showAndWait();
+
+             if (option.get() == ButtonType.OK) {
+                NhanVienService.getInstance().deleteNV(temp.getMaNV());
+                refreshTable();
+                clearInput();
+            }
+        }
+
     }
 }

@@ -25,7 +25,7 @@ public class TacGiaDAO {
         List<TacGia> ListTacGia = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbtacgia");
+            PreparedStatement ps = conn.prepareStatement("select * from tbtacgia ");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 int kq1 = res.getInt(1);
@@ -72,7 +72,7 @@ public class TacGiaDAO {
     public int deleteTacGia(int id) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
-            PreparedStatement ps = conn.prepareStatement("delete from tbtacgia where matacgia=?");
+            PreparedStatement ps = conn.prepareStatement("update tbtacgia set record_status = 0 where matacgia=?");
             ps.setInt(1, id);
             res = ps.executeUpdate();
 

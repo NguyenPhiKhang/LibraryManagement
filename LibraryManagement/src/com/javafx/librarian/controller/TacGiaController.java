@@ -17,6 +17,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.sound.midi.SysexMessage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -79,6 +80,7 @@ public class TacGiaController implements Initializable {
         TacGia temp = tbhienthi.getSelectionModel().getSelectedItem();
         txtMaTacGia.setText((String.valueOf(temp.getMaTacGia())));
         txtTenTacGia.setText(temp.getTenTacGia());
+        System.out.println("KOKO");
     }
 
     public void btnXoa_Click(ActionEvent event) {

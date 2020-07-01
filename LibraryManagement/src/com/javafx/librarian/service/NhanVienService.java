@@ -22,4 +22,16 @@ public class NhanVienService {
     public List<NhanVien> getAllNV() {
         return NhanVienDAO.getInstance().getAllNV();
     }
+
+    public int addNV(NhanVien nv) {
+        return NhanVienDAO.getInstance().addNV(nv);
+    }
+
+    public int editNV(NhanVien nv) {
+        return NhanVienDAO.getInstance().editNV(nv);
+    }
+
+    public int deleteNV(int id) {
+        return NhanVienDAO.getInstance().deleteNV(id);
+    }
 }

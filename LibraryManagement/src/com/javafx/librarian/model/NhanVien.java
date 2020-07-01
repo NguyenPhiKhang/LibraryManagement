@@ -13,15 +13,26 @@ public class NhanVien {
     private ObjectProperty<Date> NgaySinh;
     private StringProperty Email;
     private StringProperty SDT;
+    private StringProperty IdAccount;
 
     public NhanVien(int maNV, String tenNV, String diaChi,
-                    Date ngaySinh, String email, String sdt) {
+                    Date ngaySinh, String email, String sdt, String idAccount) {
         MaNV = new SimpleIntegerProperty(maNV);
         TenNV = new SimpleStringProperty(tenNV);
         DiaChi = new SimpleStringProperty(diaChi);
         NgaySinh = new SimpleObjectProperty<Date>(ngaySinh);
         Email = new SimpleStringProperty(email);
         SDT = new SimpleStringProperty(sdt);
+        IdAccount = new SimpleStringProperty(idAccount);
+    }
+
+    public NhanVien(String tenNV, String diaChi, java.sql.Date ngaySinh, String email, String sdt, String idAccount) {
+        TenNV = new SimpleStringProperty(tenNV);
+        DiaChi = new SimpleStringProperty(diaChi);
+        NgaySinh = new SimpleObjectProperty<Date>(ngaySinh);
+        Email = new SimpleStringProperty(email);
+        SDT = new SimpleStringProperty(sdt);
+        IdAccount = new SimpleStringProperty(idAccount);
     }
 
     public int getMaNV() {
@@ -70,5 +81,17 @@ public class NhanVien {
 
     public StringProperty SDTProperty() {
         return SDT;
+    }
+
+    public String getIdAccount() {
+        return IdAccount.get();
+    }
+
+    public StringProperty idAccountProperty() {
+        return IdAccount;
+    }
+
+    public void setIdAccount(String idAccount) {
+        this.IdAccount.set(idAccount);
     }
 }
