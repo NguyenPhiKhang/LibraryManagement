@@ -29,7 +29,7 @@ public class NhanVienController implements Initializable {
     @FXML
     public TableView<NhanVien> tbhienthi;
     @FXML
-    public TableColumn<NhanVien, Integer> tbcMaNV;
+    public TableColumn<NhanVien, String> tbcMaNV;
     @FXML
     public TableColumn<NhanVien, String> tbcTenNV;
     @FXML
@@ -70,7 +70,7 @@ public class NhanVienController implements Initializable {
     }
 
     private void setCell() {
-        tbcMaNV.setCellValueFactory(cellData -> cellData.getValue().maNVProperty().asObject());
+        tbcMaNV.setCellValueFactory(cellData -> cellData.getValue().maNVProperty());
         tbcTenNV.setCellValueFactory(cellData -> cellData.getValue().tenNVProperty());
         tbcDiaChi.setCellValueFactory(cellData -> cellData.getValue().diaChiProperty());
         tbcNgaySinh.setCellValueFactory(cellData -> cellData.getValue().ngaySinhProperty());

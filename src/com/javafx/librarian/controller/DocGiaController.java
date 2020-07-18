@@ -34,11 +34,11 @@ public class DocGiaController implements Initializable {
     @FXML
     public TableView<DocGia> tableDocGia;
     @FXML
-    public TableColumn<DocGia, Integer> colMaDocGia;
+    public TableColumn<DocGia, String> colMaDocGia;
     @FXML
     public TableColumn<DocGia, String> colTenDocGia;
     @FXML
-    public TableColumn<DocGia, Integer> colMaLoaiDocGia;
+    public TableColumn<DocGia, String> colMaLoaiDocGia;
     @FXML
     public TableColumn<DocGia, String> colEmail;
     @FXML

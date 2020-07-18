@@ -33,7 +33,7 @@ public class NhanVienDAO {
             PreparedStatement ps = conn.prepareStatement("select * from tbadmin where record_status IS NULL");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                int maNV = res.getInt(1);
+                String maNV = res.getString(1);
                 String idAccount = res.getString(2);
                 String tenNV = res.getString(3);
                 Date ngaySinh = res.getDate(4);
@@ -77,7 +77,7 @@ public class NhanVienDAO {
             ps.setString(3,nv.getDiaChi());
             ps.setString(4, nv.getEmail());
             ps.setString(5, nv.getSDT());
-            ps.setInt(6, nv.getMaNV());
+            ps.setString(6, nv.getMaNV());
             res = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -86,11 +86,11 @@ public class NhanVienDAO {
         return res;
     }
 
-    public int deleteNV(int id) {
+    public int deleteNV(String id) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbadmin set record_status = 0 where idadmin=?");
-            ps.setInt(1, id);
+            ps.setString(1, id);
             res = ps.executeUpdate();
 
         } catch (Exception e) {

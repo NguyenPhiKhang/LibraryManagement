@@ -59,7 +59,7 @@ public class CULoaiDocGiaController {
     }
 
     public void btnCapNhatClicked(ActionEvent actionEvent) {
-        this.ldg.setMaLoaiDocGia(Integer.parseInt(textMaLDG.getText()));
+        this.ldg.setMaLoaiDocGia(textMaLDG.getText());
         this.ldg.setTenLoaiDocGia(textTenLDG.getText());
 
         int rs = LoaiDocGiaService.getInstance().updateLoaiDocGia(this.ldg);
@@ -95,7 +95,7 @@ public class CULoaiDocGiaController {
 
     public void btnThemClicked(ActionEvent actionEvent) {
         LoaiDocGia loaiDocGia = new LoaiDocGia();
-        loaiDocGia.setMaLoaiDocGia(Integer.parseInt(textMaLDG.getText()));
+        loaiDocGia.setMaLoaiDocGia(textMaLDG.getText());
         loaiDocGia.setTenLoaiDocGia(textTenLDG.getText());
 
         int rs = LoaiDocGiaService.getInstance().addLoaiDocGia(loaiDocGia);

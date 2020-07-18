@@ -23,7 +23,7 @@ public class TheLoaiService {
         return TheLoaiDAO.getInstance().getAllTheLoai();
     }
 
-    public TheLoai getTheLoaiByID(int ID) {
+    public TheLoai getTheLoaiByID(String ID) {
         return TheLoaiDAO.getInstance().getTheLoaiByID(ID);
     }
 
@@ -35,7 +35,7 @@ public class TheLoaiService {
         return TheLoaiDAO.getInstance().editTheloai(theLoai);
     }
 
-    public int deleteTheLoai(int id) {
+    public int deleteTheLoai(String id) {
         return TheLoaiDAO.getInstance().deleteTheLoai(id);
     }
 }

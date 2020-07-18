@@ -31,7 +31,7 @@ public class NhanVienService {
         return NhanVienDAO.getInstance().editNV(nv);
     }
 
-    public int deleteNV(int id) {
+    public int deleteNV(String id) {
         return NhanVienDAO.getInstance().deleteNV(id);
     }
 }

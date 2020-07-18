@@ -6,23 +6,23 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class LoaiDocGia {
-    private IntegerProperty maLoaiDocGia;
+    private StringProperty maLoaiDocGia;
     private StringProperty tenLoaiDocGia;
 
     public LoaiDocGia() {
-        maLoaiDocGia = new SimpleIntegerProperty();
+        maLoaiDocGia = new SimpleStringProperty();
         tenLoaiDocGia = new SimpleStringProperty();
     }
 
-    public int getMaLoaiDocGia() {
+    public String getMaLoaiDocGia() {
         return maLoaiDocGia.get();
     }
 
-    public IntegerProperty maLoaiDocGiaProperty() {
+    public StringProperty maLoaiDocGiaProperty() {
         return maLoaiDocGia;
     }
 
-    public void setMaLoaiDocGia(int maLoaiDocGia) {
+    public void setMaLoaiDocGia(String maLoaiDocGia) {
         this.maLoaiDocGia.set(maLoaiDocGia);
     }
 

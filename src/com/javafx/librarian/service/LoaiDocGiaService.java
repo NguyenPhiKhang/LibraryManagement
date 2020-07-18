@@ -23,5 +23,5 @@ public class LoaiDocGiaService {
     public List<LoaiDocGia> searchLoaiDocGia(String find){return LoaiDocGiaDao.getInstance().searchLoaiDocGia(find);}
     public int updateLoaiDocGia(LoaiDocGia ldg){return LoaiDocGiaDao.getInstance().updateLoaiDocGia(ldg);}
     public int addLoaiDocGia(LoaiDocGia ldg){return LoaiDocGiaDao.getInstance().addLoaiDocGia(ldg);}
-    public LoaiDocGia getLoaiDocGia(int maldg){return LoaiDocGiaDao.getInstance().getLoaiDocGia(maldg);}
+    public LoaiDocGia getLoaiDocGia(String maldg){return LoaiDocGiaDao.getInstance().getLoaiDocGia(maldg);}
 }

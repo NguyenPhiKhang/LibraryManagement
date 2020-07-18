@@ -28,7 +28,7 @@ public class TacGiaController implements Initializable {
     @FXML
     public TableView<TacGia> tbhienthi;
     @FXML
-    public TableColumn<TacGia, Integer> tbcMaTacGia;
+    public TableColumn<TacGia, String> tbcMaTacGia;
     @FXML
     public TableColumn<TacGia, String> tbcTenTacGia;
     @FXML
@@ -56,7 +56,7 @@ public class TacGiaController implements Initializable {
     }
 
     private void setCell() {
-        tbcMaTacGia.setCellValueFactory(cellData -> cellData.getValue().maTacGiaProperty().asObject());
+        tbcMaTacGia.setCellValueFactory(cellData -> cellData.getValue().maTacGiaProperty());
         tbcTenTacGia.setCellValueFactory(cellData -> cellData.getValue().tenTacGiaProperty());
     }
 

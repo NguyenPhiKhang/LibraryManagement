@@ -30,7 +30,7 @@ public class TheLoaiController implements Initializable {
     @FXML
     public TableView<TheLoai> tableTheLoai;
     @FXML
-    public TableColumn<TheLoai, Integer> colMaTheLoai;
+    public TableColumn<TheLoai, String> colMaTheLoai;
     @FXML
     public TableColumn<TheLoai, String> colTenTheLoai;
     @FXML
@@ -63,7 +63,7 @@ public class TheLoaiController implements Initializable {
     }
 
     private void setCell() {
-        colMaTheLoai.setCellValueFactory(cellData -> cellData.getValue().maTheLoaiProperty().asObject());
+        colMaTheLoai.setCellValueFactory(cellData -> cellData.getValue().maTheLoaiProperty());
         colTenTheLoai.setCellValueFactory(cellData -> cellData.getValue().tenTheLoaiProperty());
     }
 
@@ -76,6 +76,7 @@ public class TheLoaiController implements Initializable {
     public void refreshTable() {
         listTheLoai.clear();
         loadData();
+        clearInput();
     }
 
     private void clearInput() {
@@ -107,7 +108,6 @@ public class TheLoaiController implements Initializable {
             } else if (option.get() == ButtonType.OK) {
                 TheLoaiService.getInstance().deleteTheLoai(temp.getMaTheLoai());
                 refreshTable();
-                clearInput();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {
             }

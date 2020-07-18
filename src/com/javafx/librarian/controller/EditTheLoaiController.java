@@ -49,7 +49,7 @@ public class EditTheLoaiController implements Initializable{
 
     public void btnLuu_Click(ActionEvent event) {
         //
-        int maTheLoai = Integer.parseInt(txtMaTheLoai.getText());
+        String maTheLoai = txtMaTheLoai.getText();
         String tenTheLoai = txtTenTheLoai.getText();
         TheLoai theloai = new TheLoai(maTheLoai, tenTheLoai);
         //

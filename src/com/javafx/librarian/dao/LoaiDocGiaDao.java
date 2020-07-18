@@ -35,7 +35,7 @@ public class LoaiDocGiaDao {
 
             while (rs.next()) {
                 LoaiDocGia loaiDocGia = new LoaiDocGia();
-                loaiDocGia.setMaLoaiDocGia(rs.getInt("maLoaiDocGia"));
+                loaiDocGia.setMaLoaiDocGia(rs.getString("maLoaiDocGia"));
                 loaiDocGia.setTenLoaiDocGia(rs.getString("tenLoaiDocGia"));
 
                 LoaiDocGias.add(loaiDocGia);
@@ -63,7 +63,7 @@ public class LoaiDocGiaDao {
 
             while (rs.next()) {
                 LoaiDocGia loaiDocGia = new LoaiDocGia();
-                loaiDocGia.setMaLoaiDocGia(rs.getInt("maloaidocgia"));
+                loaiDocGia.setMaLoaiDocGia(rs.getString("maloaidocgia"));
                 loaiDocGia.setTenLoaiDocGia(rs.getString("tenloaidocgia"));
 
                 loaidocGias.add(loaiDocGia);
@@ -86,7 +86,7 @@ public class LoaiDocGiaDao {
             assert connection != null;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, ldg.getTenLoaiDocGia());
-            preparedStatement.setInt(2, ldg.getMaLoaiDocGia());
+            preparedStatement.setString(2, ldg.getMaLoaiDocGia());
 
             rs = preparedStatement.executeUpdate();
             System.out.println(rs);
@@ -105,7 +105,7 @@ public class LoaiDocGiaDao {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, ldg.getMaLoaiDocGia());
+            preparedStatement.setString(1, ldg.getMaLoaiDocGia());
             preparedStatement.setString(2, ldg.getTenLoaiDocGia());
 
             rs = preparedStatement.executeUpdate();
@@ -117,7 +117,7 @@ public class LoaiDocGiaDao {
         return rs;
     }
 
-    public LoaiDocGia getLoaiDocGia(int maldg){
+    public LoaiDocGia getLoaiDocGia(String maldg){
         Connection connection = JDBCConnection.getJDBCConnection();
         String sql = "SELECT * FROM tbloaidocgia WHERE (maloaidocgia=?)";
 
@@ -125,12 +125,12 @@ public class LoaiDocGiaDao {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, maldg);
+            preparedStatement.setString(1, maldg);
 
             ResultSet rsLDG = preparedStatement.executeQuery();
             rsLDG.last();
             loaiDocGia = new LoaiDocGia();
-            loaiDocGia.setMaLoaiDocGia(rsLDG.getInt("maloaidocgia"));
+            loaiDocGia.setMaLoaiDocGia(rsLDG.getString("maloaidocgia"));
             loaiDocGia.setTenLoaiDocGia(rsLDG.getString("tenloaidocgia"));
 
         } catch (SQLException ex) {

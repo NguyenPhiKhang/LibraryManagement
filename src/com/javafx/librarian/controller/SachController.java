@@ -28,13 +28,13 @@ public class SachController implements Initializable {
     @FXML
     public TableView<Sach> tableSach;
     @FXML
-    public TableColumn<Sach, Integer> colMaSach;
+    public TableColumn<Sach, String> colMaSach;
     @FXML
     public TableColumn<Sach, String> colTenSach;
     @FXML
-    public TableColumn<Sach, Integer> colMaTheLoai;
+    public TableColumn<Sach, String> colMaTheLoai;
     @FXML
-    public TableColumn<Sach, Integer> colMaTacGia;
+    public TableColumn<Sach, String> colMaTacGia;
     @FXML
     public TableColumn<Sach, Integer> colNamXB;
     @FXML
@@ -99,10 +99,10 @@ public class SachController implements Initializable {
     }
 
     private void setCell() {
-        colMaSach.setCellValueFactory(cellData -> cellData.getValue().maSachProperty().asObject());
+        colMaSach.setCellValueFactory(cellData -> cellData.getValue().maSachProperty());
         colTenSach.setCellValueFactory(cellData -> cellData.getValue().tenSachProperty());
-        colMaTheLoai.setCellValueFactory(cellData -> cellData.getValue().maTheLoaiProperty().asObject());
-        colMaTacGia.setCellValueFactory(cellData -> cellData.getValue().maTacGiaProperty().asObject());
+        colMaTheLoai.setCellValueFactory(cellData -> cellData.getValue().maTheLoaiProperty());
+        colMaTacGia.setCellValueFactory(cellData -> cellData.getValue().maTacGiaProperty());
         colNamXB.setCellValueFactory(cellData -> cellData.getValue().namXBProperty().asObject());
         colNXB.setCellValueFactory(cellData -> cellData.getValue().nxbProperty());
         colNgayNhap.setCellValueFactory(cellData -> cellData.getValue().ngayNhapProperty());
@@ -118,6 +118,7 @@ public class SachController implements Initializable {
     public void refreshTable() {
         listSach.clear();
         loadData();
+        clearInput();
     }
 
     public void clearInput() {
@@ -135,7 +136,7 @@ public class SachController implements Initializable {
     public void bindingData() {
         Sach temp = tableSach.getSelectionModel().getSelectedItem();
         System.out.println(TacGiaService.getInstance().getTacGiaByID(temp.getMaTacGia()));
-        txtMaSach.setText((String.valueOf(temp.getMaSach())));
+        txtMaSach.setText(temp.getMaSach());
         txtTenSach.setText(temp.getTenSach());
         txtMaTacGia.setText((String.valueOf(temp.getMaTacGia())) + " - " + TacGiaService.getInstance().getTacGiaByID(temp.getMaTacGia()).getTenTacGia());
         txtMaTheLoai.setText((String.valueOf(temp.getMaTheLoai())) + " - " + TheLoaiService.getInstance().getTheLoaiByID(temp.getMaTheLoai()).getTenTheLoai());
@@ -211,7 +212,6 @@ public class SachController implements Initializable {
             } else if (option.get() == ButtonType.OK) {
                 SachService.getInstance().deleteSach(temp.getMaSach());
                 refreshTable();
-                clearInput();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {
             }

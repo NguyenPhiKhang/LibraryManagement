@@ -5,9 +5,9 @@ import javafx.beans.property.*;
 import java.util.Date;
 
 public class DocGia {
-    private IntegerProperty maDocGia;
+    private StringProperty maDocGia;
     private StringProperty tenDocGia;
-    private IntegerProperty maLoaiDocGia;
+    private StringProperty maLoaiDocGia;
     private ObjectProperty<Date> ngaySinh;
     private StringProperty diaChi;
     private StringProperty email;
@@ -19,9 +19,9 @@ public class DocGia {
     private StringProperty soDienThoai;
 
     public DocGia() {
-        maDocGia = new SimpleIntegerProperty();
+        maDocGia = new SimpleStringProperty();
         tenDocGia = new SimpleStringProperty();
-        maLoaiDocGia = new SimpleIntegerProperty();
+        maLoaiDocGia = new SimpleStringProperty();
         ngaySinh = new SimpleObjectProperty<>();
         diaChi = new SimpleStringProperty();
         email = new SimpleStringProperty();
@@ -33,15 +33,15 @@ public class DocGia {
         soDienThoai = new SimpleStringProperty();
     }
 
-    public int getMaDocGia() {
+    public String getMaDocGia() {
         return maDocGia.get();
     }
 
-    public IntegerProperty maDocGiaProperty() {
+    public StringProperty maDocGiaProperty() {
         return maDocGia;
     }
 
-    public void setMaDocGia(int maDocGia) {
+    public void setMaDocGia(String maDocGia) {
         this.maDocGia.set(maDocGia);
     }
 
@@ -165,15 +165,21 @@ public class DocGia {
         this.soDienThoai.set(soDienThoai);
     }
 
-    public int getMaLoaiDocGia() {
+    public String getMaLoaiDocGia() {
         return maLoaiDocGia.get();
     }
 
-    public IntegerProperty maLoaiDocGiaProperty() {
+    public StringProperty maLoaiDocGiaProperty() {
         return maLoaiDocGia;
     }
 
-    public void setMaLoaiDocGia(int maLoaiDocGia) {
+    public void setMaLoaiDocGia(String maLoaiDocGia) {
         this.maLoaiDocGia.set(maLoaiDocGia);
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.getMaDocGia() + " - " + this.getTenDocGia();
     }
 }

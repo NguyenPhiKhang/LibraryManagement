@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Sach {
-    private IntegerProperty MaSach;
+    private StringProperty MaSach;
     private StringProperty TenSach;
-    private IntegerProperty MaTheLoai;
-    private IntegerProperty MaTacGia;
+    private StringProperty MaTheLoai;
+    private StringProperty MaTacGia;
     private IntegerProperty NamXB;
     private StringProperty NXB;
     private ObjectProperty<Date> NgayNhap;
@@ -17,15 +17,15 @@ public class Sach {
     private StringProperty TinhTrang;
     private StringProperty AnhBia;
 
-    public int getMaSach() {
+    public String getMaSach() {
         return MaSach.get();
     }
 
-    public IntegerProperty maSachProperty() {
+    public StringProperty maSachProperty() {
         return MaSach;
     }
 
-    public void setMaSach(int maSach) {
+    public void setMaSach(String maSach) {
         this.MaSach.set(maSach);
     }
 
@@ -39,27 +39,27 @@ public class Sach {
         this.TenSach.set(tenSach);
     }
 
-    public int getMaTheLoai() {
+    public String getMaTheLoai() {
         return MaTheLoai.get();
     }
 
-    public IntegerProperty maTheLoaiProperty() {
+    public StringProperty maTheLoaiProperty() {
         return MaTheLoai;
     }
 
-    public void setMaTheLoai(int maTheLoai) {
+    public void setMaTheLoai(String maTheLoai) {
         this.MaTheLoai.set(maTheLoai);
     }
 
-    public int getMaTacGia() {
+    public String getMaTacGia() {
         return MaTacGia.get();
     }
 
-    public IntegerProperty maTacGiaProperty() {
+    public StringProperty maTacGiaProperty() {
         return MaTacGia;
     }
 
-    public void setMaTacGia(int maTacGia) {
+    public void setMaTacGia(String maTacGia) {
         this.MaTacGia.set(maTacGia);
     }
 
@@ -125,11 +125,11 @@ public class Sach {
         this.AnhBia.set(anhBia);
     }
 
-    public Sach(int maSach, String tenSach, int maTheLoai, int maTacGia, int namXB, String nxb, Date ngayNhap, int triGia, int tinhTrang, String anhBia) {
-        MaSach = new SimpleIntegerProperty(maSach);
+    public Sach(String maSach, String tenSach, String maTheLoai, String maTacGia, int namXB, String nxb, Date ngayNhap, int triGia, int tinhTrang, String anhBia) {
+        MaSach = new SimpleStringProperty(maSach);
         TenSach = new SimpleStringProperty(tenSach);
-        MaTheLoai = new SimpleIntegerProperty(maTheLoai);
-        MaTacGia = new SimpleIntegerProperty(maTacGia);
+        MaTheLoai = new SimpleStringProperty(maTheLoai);
+        MaTacGia = new SimpleStringProperty(maTacGia);
         NamXB = new SimpleIntegerProperty(namXB);
         NXB = new SimpleStringProperty(nxb);
         NgayNhap = new SimpleObjectProperty<Date>(ngayNhap);

@@ -127,4 +127,16 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void btnQLMTAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/MenuMuonTraView.fxml"));
+            AnchorPane MTView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(MTView);
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

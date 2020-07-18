@@ -24,10 +24,10 @@ public class TheLoaiDAO {
         List<TheLoai> ListTheLoai = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where record_status is null");
+            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where record_status = 1");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                int maTheLoai = res.getInt(1);
+                String maTheLoai = res.getString(1);
                 String tenTheLoai = res.getString(2);
                 ListTheLoai.add(new TheLoai(maTheLoai, tenTheLoai));
             }
@@ -38,13 +38,13 @@ public class TheLoaiDAO {
         return ListTheLoai;
     }
 
-    public TheLoai getTheLoaiByID(int ID) {
+    public TheLoai getTheLoaiByID(String ID) {
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where matheloai=?");
-            ps.setInt(1, ID);
+            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where matheloai=? and record_status = 1");
+            ps.setString(1, ID);
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                return new TheLoai(res.getInt(1), res.getString(2));
+                return new TheLoai(res.getString(1), res.getString(2));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,8 +56,8 @@ public class TheLoaiDAO {
     public int addTheloai(TheLoai theloai) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into tbtheloai values(?,?)");
-            ps.setInt(1, theloai.getMaTheLoai());
+            PreparedStatement ps = conn.prepareStatement("insert into tbtheloai (matheloai, tentheloai) values(?,?)");
+            ps.setString(1, theloai.getMaTheLoai());
             ps.setString(2, theloai.getTenTheLoai());
 
             res = ps.executeUpdate();
@@ -74,7 +74,7 @@ public class TheLoaiDAO {
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbtheloai set tentheloai=? where matheloai=?");
             ps.setString(1, theloai.getTenTheLoai());
-            ps.setInt(2, theloai.getMaTheLoai());
+            ps.setString(2, theloai.getMaTheLoai());
             res = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -83,11 +83,11 @@ public class TheLoaiDAO {
         return res;
     }
 
-    public int deleteTheLoai(int id) {
+    public int deleteTheLoai(String id) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbtheloai set record_status = 0 where matheloai=?");
-            ps.setInt(1, id);
+            ps.setString(1, id);
             res = ps.executeUpdate();
 
         } catch (Exception e) {
