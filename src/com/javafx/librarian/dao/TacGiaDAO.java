@@ -27,9 +27,7 @@ public class TacGiaDAO {
             PreparedStatement ps = conn.prepareStatement("select * from tbtacgia where record_status = 1");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                int kq1 = res.getInt(1);
-                String kq2 = res.getString(2);
-                ListTacGia.add(new TacGia(res.getInt(1), res.getString(2)));
+                ListTacGia.add(new TacGia(res.getString(1), res.getString(2)));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -38,13 +36,13 @@ public class TacGiaDAO {
         return ListTacGia;
     }
 
-    public TacGia getTacGiaByID(int ID) {
+    public TacGia getTacGiaByID(String ID) {
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
             PreparedStatement ps = conn.prepareStatement("select * from tbtacgia where matacgia=?");
-            ps.setInt(1, ID);
+            ps.setString(1, ID);
             ResultSet res = ps.executeQuery();
             if (res.next()) {
-                return new TacGia(res.getInt(1), res.getString(2));
+                return new TacGia(res.getString(1), res.getString(2));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,11 +50,11 @@ public class TacGiaDAO {
         return null;
     }
 
-    public int addTacGia(int maTacGia, String tenTacGia) {
+    public int addTacGia(String maTacGia, String tenTacGia) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into tbtacgia(matacgia, tentacgia) values(?,?)");
-            ps.setInt(1, maTacGia);
+            PreparedStatement ps = conn.prepareStatement("insert into tbtacgia values(?,?)");
+            ps.setString(1, maTacGia);
             ps.setString(2, tenTacGia);
 
             res = ps.executeUpdate();
@@ -68,12 +66,12 @@ public class TacGiaDAO {
         return res;
     }
 
-    public int editTacGia(int maTacGia, String tenTacGia) {
+    public int editTacGia(String maTacGia, String tenTacGia) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbtacgia set tentacgia=? where matacgia=?");
             ps.setString(1, tenTacGia);
-            ps.setInt(2, maTacGia);
+            ps.setString(2, maTacGia);
             res = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -82,11 +80,11 @@ public class TacGiaDAO {
         return res;
     }
 
-    public int deleteTacGia(int id) {
+    public int deleteTacGia(String id) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbtacgia set record_status = 0 where matacgia=?");
-            ps.setInt(1, id);
+            ps.setString(1, id);
             res = ps.executeUpdate();
 
         } catch (Exception e) {

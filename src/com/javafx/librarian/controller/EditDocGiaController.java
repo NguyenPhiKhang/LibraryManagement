@@ -90,8 +90,8 @@ public class EditDocGiaController{
         });
 
         cbbLoaiDG.setValue(listLDG.stream().filter(ldg->ldg.getMaLoaiDocGia()==dg.getMaLoaiDocGia()).collect(Collectors.toList()).get(0).getTenLoaiDocGia());
-        dateNgaySinh.setValue(Util.convertDateToLocalDate(dg.getNgaySinh()));
-        dateNgayHetHan.setValue(Util.convertDateToLocalDate(dg.getNgayHetHan()));
+        dateNgaySinh.setValue(Util.convertDateToLocalDateUI(dg.getNgaySinh()));
+        dateNgayHetHan.setValue(Util.convertDateToLocalDateUI(dg.getNgayHetHan()));
     }
 
     public void btnCloseMouseEnter(MouseEvent mouseEvent) {

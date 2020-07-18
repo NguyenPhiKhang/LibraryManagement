@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class NhanVien {
-    private IntegerProperty MaNV;
+    private StringProperty MaNV;
     private StringProperty TenNV;
     private StringProperty DiaChi;
     private ObjectProperty<Date> NgaySinh;
@@ -15,9 +15,9 @@ public class NhanVien {
     private StringProperty SDT;
     private StringProperty IdAccount;
 
-    public NhanVien(int maNV, String tenNV, String diaChi,
+    public NhanVien(String maNV, String tenNV, String diaChi,
                     Date ngaySinh, String email, String sdt, String idAccount) {
-        MaNV = new SimpleIntegerProperty(maNV);
+        MaNV = new SimpleStringProperty(maNV);
         TenNV = new SimpleStringProperty(tenNV);
         DiaChi = new SimpleStringProperty(diaChi);
         NgaySinh = new SimpleObjectProperty<Date>(ngaySinh);
@@ -35,11 +35,11 @@ public class NhanVien {
         IdAccount = new SimpleStringProperty(idAccount);
     }
 
-    public int getMaNV() {
+    public String getMaNV() {
         return MaNV.get();
     }
 
-    public IntegerProperty maNVProperty() {
+    public StringProperty maNVProperty() {
         return MaNV;
     }
 

@@ -1,6 +1,7 @@
 package com.javafx.librarian.controller;
 
 import com.javafx.librarian.service.TacGiaService;
+import com.javafx.librarian.utils.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,8 @@ public class AddTacGiaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtAddMaTacGia.setText(Util.generateID(Util.PREFIX_CODE.TG));
+        txtAddMaTacGia.setDisable(true);
     }
 
     public void setTacGia(TacGiaController tacGia) {
@@ -40,7 +43,7 @@ public class AddTacGiaController implements Initializable {
 
     public void btnAddThem_Click(ActionEvent event) {
         //
-        int maTacGia = Integer.parseInt(txtAddMaTacGia.getText());
+        String maTacGia = txtAddMaTacGia.getText();
         String tenTacGia = txtAddTenTacGia.getText();
         //
         TacGiaService.getInstance().addTacGia(maTacGia, tenTacGia);

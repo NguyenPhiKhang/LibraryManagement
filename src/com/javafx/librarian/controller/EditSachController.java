@@ -80,7 +80,7 @@ public class EditSachController implements Initializable {
             rdbTrong.setSelected(true);
         else
             rdbDangMuon.setSelected(true);
-        dtNgayNhap.setValue(Util.convertDateToLocalDate(sach.getNgayNhap()));
+        dtNgayNhap.setValue(Util.convertDateToLocalDateUI(sach.getNgayNhap()));
         txtTriGia.setText(String.valueOf(sach.getTriGia()));
         TheLoai theLoai = TheLoaiService.getInstance().getTheLoaiByID(sach.getMaTheLoai());
         TacGia tacGia = TacGiaService.getInstance().getTacGiaByID(sach.getMaTacGia());
@@ -111,14 +111,14 @@ public class EditSachController implements Initializable {
 
     public void btnLuu_Click(ActionEvent event) {
         //
-        int maSach = Integer.parseInt(txtMaSach.getText());
+        String maSach = txtMaSach.getText();
         String tenSach = txtTenSach.getText();
         String NXB = txtNXB.getText();
         int namXB = Integer.parseInt(txtNamXB.getText());
         Date ngayNhap = Date.valueOf(dtNgayNhap.getValue());
         int triGia = Integer.parseInt(txtTriGia.getText());
-        int maTheLoai = ((TheLoai) cbTheLoai.getSelectionModel().getSelectedItem()).getMaTheLoai();
-        int maTacGia = ((TacGia) cbTacGia.getSelectionModel().getSelectedItem()).getMaTacGia();
+        String maTheLoai = ((TheLoai) cbTheLoai.getSelectionModel().getSelectedItem()).getMaTheLoai();
+        String maTacGia = ((TacGia) cbTacGia.getSelectionModel().getSelectedItem()).getMaTacGia();
         int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
         String anhBia = null;
 

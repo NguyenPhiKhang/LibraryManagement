@@ -21,19 +21,19 @@ public class TacGiaService {
         return TacGiaDAO.getInstance().getAllTacGia();
     }
 
-    public TacGia getTacGiaByID(int ID) {
+    public TacGia getTacGiaByID(String ID) {
         return TacGiaDAO.getInstance().getTacGiaByID(ID);
     }
 
-    public int addTacGia(int maTacGia, String tenTacGia) {
+    public int addTacGia(String maTacGia, String tenTacGia) {
         return TacGiaDAO.getInstance().addTacGia(maTacGia, tenTacGia);
     }
 
-    public int editTacGia(int maTacGia, String tenTacGia) {
+    public int editTacGia(String maTacGia, String tenTacGia) {
         return TacGiaDAO.getInstance().editTacGia(maTacGia, tenTacGia);
     }
 
-    public int deleteTacGia(int id) {
+    public int deleteTacGia(String id) {
         return TacGiaDAO.getInstance().deleteTacGia(id);
     }
 

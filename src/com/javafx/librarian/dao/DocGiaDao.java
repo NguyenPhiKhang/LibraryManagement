@@ -27,7 +27,7 @@ public class DocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select * from tbdocgia";
+        String sql = "select * from tbdocgia where record_status = 1";
 
         try {
             assert connection != null;
@@ -37,9 +37,9 @@ public class DocGiaDao {
 
             while (rs.next()) {
                 DocGia docgia = new DocGia();
-                docgia.setMaDocGia(rs.getInt("madocgia"));
+                docgia.setMaDocGia(rs.getString("madocgia"));
                 docgia.setTenDocGia(rs.getString("tendocgia"));
-                docgia.setMaLoaiDocGia(rs.getInt("maloaidocgia"));
+                docgia.setMaLoaiDocGia(rs.getString("maloaidocgia"));
                 docgia.setNgaySinh(rs.getDate("ngaysinh"));
                 docgia.setDiaChi(rs.getString("diachi"));
                 docgia.setEmail(rs.getString("email"));
@@ -75,9 +75,9 @@ public class DocGiaDao {
 
             while (rs.next()) {
                 DocGia docgia = new DocGia();
-                docgia.setMaDocGia(rs.getInt("madocgia"));
+                docgia.setMaDocGia(rs.getString("madocgia"));
                 docgia.setTenDocGia(rs.getString("tendocgia"));
-                docgia.setMaLoaiDocGia(rs.getInt("maloaidocgia"));
+                docgia.setMaLoaiDocGia(rs.getString("maloaidocgia"));
                 docgia.setNgaySinh(rs.getDate("ngaysinh"));
                 docgia.setDiaChi(rs.getString("diachi"));
                 docgia.setEmail(rs.getString("email"));
@@ -98,7 +98,7 @@ public class DocGiaDao {
         return docGias;
     }
 
-    public int deleteDocGia(int madg){
+    public int deleteDocGia(String madg){
         Connection connection = JDBCConnection.getJDBCConnection();
 
         String sql = "DELETE FROM tbdocgia WHERE madocgia=?";
@@ -106,7 +106,7 @@ public class DocGiaDao {
         int rs=0;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, madg);
+            preparedStatement.setString(1, madg);
 
             rs = preparedStatement.executeUpdate();
             System.out.println(rs);
@@ -128,14 +128,14 @@ public class DocGiaDao {
             assert connection != null;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, dg.getTenDocGia());
-            preparedStatement.setInt(2, dg.getMaLoaiDocGia());
+            preparedStatement.setString(2, dg.getMaLoaiDocGia());
             preparedStatement.setDate(3, Date.valueOf(Util.convertDateToLocalDate(dg.getNgaySinh())));
             preparedStatement.setDate(4, Date.valueOf(Util.convertDateToLocalDate(dg.getNgayHetHan())));
             preparedStatement.setInt(5, dg.getTinhTrangThe());
             preparedStatement.setDouble(6, dg.getTongNo());
             preparedStatement.setString(7, dg.getSoDienThoai());
             preparedStatement.setString(8, dg.getDiaChi());
-            preparedStatement.setInt(9, dg.getMaDocGia());
+            preparedStatement.setString(9, dg.getMaDocGia());
 
             rs = preparedStatement.executeUpdate();
             System.out.println(rs);
@@ -156,7 +156,7 @@ public class DocGiaDao {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, dg.getTenDocGia());
-            preparedStatement.setInt(2, dg.getMaLoaiDocGia());
+            preparedStatement.setString(2, dg.getMaLoaiDocGia());
             preparedStatement.setDate(3, Date.valueOf(Util.convertDateToLocalDate(dg.getNgaySinh())));
             preparedStatement.setString(4, dg.getDiaChi());
             preparedStatement.setString(5, dg.getEmail());
@@ -176,7 +176,7 @@ public class DocGiaDao {
         return rs;
     }
 
-    public DocGia getDocGia(String idaccount, int madg){
+    public DocGia getDocGia(String idaccount, String madg){
         Connection connection = JDBCConnection.getJDBCConnection();
         String sql = "SELECT * FROM tbdocgia WHERE (madocgia=? or idaccount=?) LIMIT 1";
 
@@ -184,16 +184,16 @@ public class DocGiaDao {
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, madg);
+            preparedStatement.setString(1, madg);
             preparedStatement.setString(2, idaccount);
 
             ResultSet rsDG = preparedStatement.executeQuery();
             rsDG.last();
 
             docgia = new DocGia();
-            docgia.setMaDocGia(rsDG.getInt("madocgia"));
+            docgia.setMaDocGia(rsDG.getString("madocgia"));
             docgia.setTenDocGia(rsDG.getString("tendocgia"));
-            docgia.setMaLoaiDocGia(rsDG.getInt("maloaidocgia"));
+            docgia.setMaLoaiDocGia(rsDG.getString("maloaidocgia"));
             docgia.setNgaySinh(rsDG.getDate("ngaysinh"));
             docgia.setDiaChi(rsDG.getString("diachi"));
             docgia.setEmail(rsDG.getString("email"));
@@ -208,5 +208,73 @@ public class DocGiaDao {
             ex.printStackTrace();
         }
         return docgia;
+    }
+
+    public DocGia getDocGiaByID(String madg){
+        Connection connection = JDBCConnection.getJDBCConnection();
+        String sql = "SELECT * FROM tbdocgia WHERE madocgia=? and record_status = 1";
+        DocGia docgia = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, madg);
+
+            ResultSet rsDG = preparedStatement.executeQuery();
+            rsDG.last();
+
+            docgia = new DocGia();
+            docgia.setMaDocGia(rsDG.getString("madocgia"));
+            docgia.setTenDocGia(rsDG.getString("tendocgia"));
+            docgia.setMaLoaiDocGia(rsDG.getString("maloaidocgia"));
+            docgia.setNgaySinh(rsDG.getDate("ngaysinh"));
+            docgia.setDiaChi(rsDG.getString("diachi"));
+            docgia.setEmail(rsDG.getString("email"));
+            docgia.setNgayLapThe(rsDG.getDate("ngaylapthe"));
+            docgia.setNgayHetHan(rsDG.getDate("ngayhethan"));
+            docgia.setTinhTrangThe(rsDG.getByte("tinhtrangthe"));
+            docgia.setTongNo(rsDG.getDouble("tongno"));
+            docgia.setIdAccount((rsDG.getString("idaccount")));
+            docgia.setSoDienThoai(rsDG.getString("sdt"));
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return docgia;
+    }
+
+    public List<DocGia> getListDocGiaToCB(){
+        List<DocGia> docGias = new ArrayList<>();
+
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "select * from tbdocgia where tinhtrangthe = '1' and record_status = '1' and madocgia NOT IN (SELECT madocgia FROM tbphieumuon WHERE tinhtrang = '1')";
+
+        try {
+            assert connection != null;
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                DocGia docgia = new DocGia();
+                docgia.setMaDocGia(rs.getString("madocgia"));
+                docgia.setTenDocGia(rs.getString("tendocgia"));
+                docgia.setMaLoaiDocGia(rs.getString("maloaidocgia"));
+                docgia.setNgaySinh(rs.getDate("ngaysinh"));
+                docgia.setDiaChi(rs.getString("diachi"));
+                docgia.setEmail(rs.getString("email"));
+                docgia.setNgayLapThe(rs.getDate("ngaylapthe"));
+                docgia.setNgayHetHan(rs.getDate("ngayhethan"));
+                docgia.setTinhTrangThe(rs.getByte("tinhtrangthe"));
+                docgia.setTongNo(rs.getDouble("tongno"));
+                docgia.setIdAccount((rs.getString("idaccount")));
+                docgia.setSoDienThoai(rs.getString("sdt"));
+
+                docGias.add(docgia);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return docGias;
     }
 }

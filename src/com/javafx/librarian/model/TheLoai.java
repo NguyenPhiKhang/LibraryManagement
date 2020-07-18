@@ -6,18 +6,18 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class TheLoai {
-    private IntegerProperty MaTheLoai;
+    private StringProperty MaTheLoai;
     private StringProperty TenTheLoai;
 
-    public int getMaTheLoai() {
+    public String getMaTheLoai() {
         return MaTheLoai.get();
     }
 
-    public IntegerProperty maTheLoaiProperty() {
+    public StringProperty maTheLoaiProperty() {
         return MaTheLoai;
     }
 
-    public void setMaTheLoai(int maTheLoai) {
+    public void setMaTheLoai(String maTheLoai) {
         this.MaTheLoai.set(maTheLoai);
     }
 
@@ -35,8 +35,8 @@ public class TheLoai {
 
     public TheLoai(){}
 
-    public TheLoai(int maTheLoai, String tenTheLoai) {
-        MaTheLoai = new SimpleIntegerProperty(maTheLoai);
+    public TheLoai(String maTheLoai, String tenTheLoai) {
+        MaTheLoai = new SimpleStringProperty(maTheLoai);
         TenTheLoai = new SimpleStringProperty(tenTheLoai);
     }
 

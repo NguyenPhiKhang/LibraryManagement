@@ -29,7 +29,7 @@ public class SachService {
         return SachDAO.getInstance().editSach(sach);
     }
 
-    public int deleteSach(int id) {
+    public int deleteSach(String id) {
         return SachDAO.getInstance().deleteSach(id);
     }
 }

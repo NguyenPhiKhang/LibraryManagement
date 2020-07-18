@@ -63,7 +63,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutY="219.0" onAction="#btnQLSAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="QUẢN LÝ SÁCH" textFill="WHITE">
+                <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutY="219.0" onAction="#btnQLSAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="QUẢN LÝ SÁCH" textFill="WHITE">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                     </graphic>
@@ -71,7 +71,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutY="269.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="QUẢN LÝ MƯỢN TRẢ" textFill="WHITE">
+                <JFXButton alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" layoutY="269.0" onAction="#btnQLMTAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" stylesheets="@css/themes.css" text="QUẢN LÝ MƯỢN TRẢ" textFill="WHITE">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                     </graphic>

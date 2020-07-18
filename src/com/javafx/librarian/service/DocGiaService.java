@@ -20,8 +20,12 @@ public class DocGiaService {
         return DocGiaDao.getInstance().getListDocGia();
     }
     public List<DocGia> searchDocGia(String find){return DocGiaDao.getInstance().searchDocGia(find);}
-    public int deleteDocGia(int madg){return DocGiaDao.getInstance().deleteDocGia(madg);}
+    public int deleteDocGia(String madg){return DocGiaDao.getInstance().deleteDocGia(madg);}
     public int updateDocGia(DocGia dg){return DocGiaDao.getInstance().updateDocGia(dg);}
     public int addDocGia(DocGia dg){return DocGiaDao.getInstance().addDocGia(dg);}
-    public DocGia getDocGia(String idaccount, int madg){return DocGiaDao.getInstance().getDocGia(idaccount, madg);}
+    public DocGia getDocGia(String idaccount, String madg){return DocGiaDao.getInstance().getDocGia(idaccount, madg);}
+    public DocGia getDocGiaByID(String madg){return DocGiaDao.getInstance().getDocGiaByID(madg);}
+    public List<DocGia> getListDocGiaToCB(){
+        return DocGiaDao.getInstance().getListDocGiaToCB();
+    }
 }

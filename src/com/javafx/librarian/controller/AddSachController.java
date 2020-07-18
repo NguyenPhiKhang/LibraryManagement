@@ -2,10 +2,13 @@ package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TacGia;
+import com.javafx.librarian.model.ThamSo;
 import com.javafx.librarian.model.TheLoai;
 import com.javafx.librarian.service.SachService;
 import com.javafx.librarian.service.TacGiaService;
+import com.javafx.librarian.service.ThamSoService;
 import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,6 +55,8 @@ public class AddSachController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtMaSach.setText(Util.generateID(Util.PREFIX_CODE.S));
+        txtMaSach.setDisable(true);
         listTheLoai = FXCollections.observableArrayList(TheLoaiService.getInstance().getAllTheLoai());
         cbTheLoai.setItems(listTheLoai);
         cbTheLoai.getSelectionModel().selectFirst();
@@ -73,29 +78,41 @@ public class AddSachController implements Initializable {
 
     public void btnThem_Click(ActionEvent event) {
         //
-        int maSach = Integer.parseInt(txtMaSach.getText());
-        String tenSach = txtTenSach.getText();
-        String NXB = txtNXB.getText();
+        ThamSo thamSo = ThamSoService.getInstance().getThamSo();
         int namXB = Integer.parseInt(txtNamXB.getText());
-        Date ngayNhap = Date.valueOf(dtNgayNhap.getValue());
-        int triGia = Integer.parseInt(txtTriGia.getText());
-        int maTheLoai = ((TheLoai) cbTheLoai.getSelectionModel().getSelectedItem()).getMaTheLoai();
-        int maTacGia = ((TacGia) cbTacGia.getSelectionModel().getSelectedItem()).getMaTacGia();
-        int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
-        String anhBia = null;
+        if(LocalDate.now().getYear() - namXB <= thamSo.getKhoangCachXB())
+        {
+            String maSach = txtMaSach.getText();
+            String tenSach = txtTenSach.getText();
+            String NXB = txtNXB.getText();
 
-        Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBia);
+            Date ngayNhap = Date.valueOf(dtNgayNhap.getValue());
+            int triGia = Integer.parseInt(txtTriGia.getText());
+            String maTheLoai = ((TheLoai) cbTheLoai.getSelectionModel().getSelectedItem()).getMaTheLoai();
+            String maTacGia = ((TacGia) cbTacGia.getSelectionModel().getSelectedItem()).getMaTacGia();
+            int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
+            String anhBia = null;
 
-        SachService.getInstance().addSach(sach);
-        sachController.refreshTable();
-        txtTenSach.setText("");
-        cbTheLoai.getSelectionModel().selectFirst();
-        cbTacGia.getSelectionModel().selectFirst();
-        txtNXB.setText("");
-        txtNamXB.setText("");
-        dtNgayNhap.setValue(LocalDate.now());
-        rdbTrong.setSelected(false);
-        rdbDangMuon.setSelected(false);
-        txtTriGia.setText("");
+            Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBia);
+
+            SachService.getInstance().addSach(sach);
+            sachController.refreshTable();
+            txtMaSach.setText(Util.generateID(Util.PREFIX_CODE.S));
+            txtTenSach.setText("");
+            cbTheLoai.getSelectionModel().selectFirst();
+            cbTacGia.getSelectionModel().selectFirst();
+            txtNXB.setText("");
+            txtNamXB.setText("");
+            dtNgayNhap.setValue(LocalDate.now());
+            rdbTrong.setSelected(false);
+            rdbDangMuon.setSelected(false);
+            txtTriGia.setText("");
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Sách quá cũ. Chỉ nhận sách trong vòng " + thamSo.getKhoangCachXB() + " năm trở lại đây!");
+            alert.showAndWait();
+        }
     }
 }

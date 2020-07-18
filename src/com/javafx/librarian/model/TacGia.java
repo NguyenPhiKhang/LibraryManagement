@@ -7,18 +7,18 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class TacGia {
-    private IntegerProperty MaTacGia;
+    private StringProperty MaTacGia;
     private StringProperty TenTacGia;
 
-    public int getMaTacGia() {
+    public String getMaTacGia() {
         return MaTacGia.get();
     }
 
-    public IntegerProperty maTacGiaProperty() {
+    public StringProperty maTacGiaProperty() {
         return MaTacGia;
     }
 
-    public void setMaTacGia(int maTacGia) {
+    public void setMaTacGia(String maTacGia) {
         this.MaTacGia.set(maTacGia);
     }
 
@@ -36,8 +36,8 @@ public class TacGia {
 
     public TacGia(){}
 
-    public TacGia(int maTacGia, String tenTacGia) {
-        MaTacGia = new SimpleIntegerProperty(maTacGia);
+    public TacGia(String maTacGia, String tenTacGia) {
+        MaTacGia = new SimpleStringProperty(maTacGia);
         TenTacGia = new SimpleStringProperty(tenTacGia);
     }
 
