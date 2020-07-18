@@ -30,7 +30,7 @@ public class NhanVienDAO {
         List<NhanVien> ListNV = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbadmin where record_status IS NULL");
+            PreparedStatement ps = conn.prepareStatement("select * from tbadmin where record_status = 1");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 String maNV = res.getString(1);
@@ -52,13 +52,14 @@ public class NhanVienDAO {
     public int addNV(NhanVien nv) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into tbadmin(idaccount, hoten, ngaysinh, diachi, email, sdt) values(?,?,?,?,?,?)");
-            ps.setString(2, nv.getTenNV());
-            ps.setString(1, nv.getIdAccount());
-            ps.setDate(3, java.sql.Date.valueOf(Util.convertDateToLocalDate(nv.getNgaySinh())));
-            ps.setString(4, nv.getDiaChi());
-            ps.setString(5, nv.getEmail());
-            ps.setString(6, nv.getSDT());
+            PreparedStatement ps = conn.prepareStatement("insert into tbadmin(idadmin,idaccount, hoten, ngaysinh, diachi, email, sdt) values(?,?,?,?,?,?,?)");
+            ps.setString(1, nv.getMaNV());
+            ps.setString(2, nv.getIdAccount());
+            ps.setString(3, nv.getTenNV());
+            ps.setDate(4, java.sql.Date.valueOf(Util.convertDateToLocalDate(nv.getNgaySinh())));
+            ps.setString(5, nv.getDiaChi());
+            ps.setString(6, nv.getEmail());
+            ps.setString(7, nv.getSDT());
             res = ps.executeUpdate();
             System.out.println(res + "row is effected");
         } catch (Exception e) {

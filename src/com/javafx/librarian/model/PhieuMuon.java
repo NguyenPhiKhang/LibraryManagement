@@ -67,4 +67,8 @@ public class PhieuMuon {
         TinhTrang = new SimpleStringProperty(tinhTrang == 0? "Trả đủ" : "Chưa trả đủ");
     }
 
+    @Override
+    public String toString() {
+        return this.getMaPM();
+    }
 }

@@ -13,16 +13,17 @@ import java.util.List;
 public class DocGiaDao {
     private static DocGiaDao instance;
 
-    private DocGiaDao(){}
+    private DocGiaDao() {
+    }
 
-    public static DocGiaDao getInstance(){
-        if(instance == null){
+    public static DocGiaDao getInstance() {
+        if (instance == null) {
             instance = new DocGiaDao();
         }
         return instance;
     }
 
-    public List<DocGia> getListDocGia(){
+    public List<DocGia> getListDocGia() {
         List<DocGia> docGias = new ArrayList<>();
 
         Connection connection = JDBCConnection.getJDBCConnection();
@@ -59,7 +60,7 @@ public class DocGiaDao {
         return docGias;
     }
 
-    public List<DocGia> searchDocGia(String find){
+    public List<DocGia> searchDocGia(String find) {
         List<DocGia> docGias = new ArrayList<>();
 
         Connection connection = JDBCConnection.getJDBCConnection();
@@ -69,7 +70,7 @@ public class DocGiaDao {
         try {
             assert connection != null;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "%"+find+"%");
+            preparedStatement.setString(1, "%" + find + "%");
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -98,12 +99,12 @@ public class DocGiaDao {
         return docGias;
     }
 
-    public int deleteDocGia(String madg){
+    public int deleteDocGia(String madg) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
         String sql = "DELETE FROM tbdocgia WHERE madocgia=?";
 
-        int rs=0;
+        int rs = 0;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, madg);
@@ -117,13 +118,13 @@ public class DocGiaDao {
         return rs;
     }
 
-    public int updateDocGia(DocGia dg){
+    public int updateDocGia(DocGia dg) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
         String sql = "Update tbdocgia set tendocgia=?, maloaidocgia=?, ngaysinh=?, ngayhethan=?, " +
                 "tinhtrangthe=?, tongno=?, sdt=?, diachi=? where madocgia=?";
 
-        int rs =  0;
+        int rs = 0;
         try {
             assert connection != null;
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -139,13 +140,13 @@ public class DocGiaDao {
 
             rs = preparedStatement.executeUpdate();
             System.out.println(rs);
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return rs;
     }
 
-    public int addDocGia(DocGia dg){
+    public int addDocGia(DocGia dg) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
         String sql = "INSERT INTO tbdocgia(tendocgia, maloaidocgia, ngaysinh, diachi, email, ngaylapthe, ngayhethan, tinhtrangthe, tongno, idaccount, sdt)" +
@@ -176,7 +177,7 @@ public class DocGiaDao {
         return rs;
     }
 
-    public DocGia getDocGia(String idaccount, String madg){
+    public DocGia getDocGia(String idaccount, String madg) {
         Connection connection = JDBCConnection.getJDBCConnection();
         String sql = "SELECT * FROM tbdocgia WHERE (madocgia=? or idaccount=?) LIMIT 1";
 
@@ -210,7 +211,7 @@ public class DocGiaDao {
         return docgia;
     }
 
-    public DocGia getDocGiaByID(String madg){
+    public DocGia getDocGiaByID(String madg) {
         Connection connection = JDBCConnection.getJDBCConnection();
         String sql = "SELECT * FROM tbdocgia WHERE madocgia=? and record_status = 1";
         DocGia docgia = null;
@@ -241,12 +242,49 @@ public class DocGiaDao {
         return docgia;
     }
 
-    public List<DocGia> getListDocGiaToCB(){
+    public List<DocGia> getListDocGiaToCB() {
         List<DocGia> docGias = new ArrayList<>();
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
         String sql = "select * from tbdocgia where tinhtrangthe = '1' and record_status = '1' and madocgia NOT IN (SELECT madocgia FROM tbphieumuon WHERE tinhtrang = '1')";
+
+        try {
+            assert connection != null;
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                DocGia docgia = new DocGia();
+                docgia.setMaDocGia(rs.getString("madocgia"));
+                docgia.setTenDocGia(rs.getString("tendocgia"));
+                docgia.setMaLoaiDocGia(rs.getString("maloaidocgia"));
+                docgia.setNgaySinh(rs.getDate("ngaysinh"));
+                docgia.setDiaChi(rs.getString("diachi"));
+                docgia.setEmail(rs.getString("email"));
+                docgia.setNgayLapThe(rs.getDate("ngaylapthe"));
+                docgia.setNgayHetHan(rs.getDate("ngayhethan"));
+                docgia.setTinhTrangThe(rs.getByte("tinhtrangthe"));
+                docgia.setTongNo(rs.getDouble("tongno"));
+                docgia.setIdAccount((rs.getString("idaccount")));
+                docgia.setSoDienThoai(rs.getString("sdt"));
+
+                docGias.add(docgia);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return docGias;
+    }
+
+    public List<DocGia> getListDocGiaToPhieuTraCB() {
+        List<DocGia> docGias = new ArrayList<>();
+
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "select * from tbdocgia where tinhtrangthe = '1' and record_status = '1' and madocgia IN (SELECT madocgia FROM tbphieumuon WHERE tinhtrang = 1)";
 
         try {
             assert connection != null;

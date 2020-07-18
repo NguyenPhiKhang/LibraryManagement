@@ -32,4 +32,6 @@ public class SachService {
     public int deleteSach(String id) {
         return SachDAO.getInstance().deleteSach(id);
     }
+
+    public Sach getSachByID(String maSach) {return SachDAO.getInstance().getSachByID(maSach);}
 }

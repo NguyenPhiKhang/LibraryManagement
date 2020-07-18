@@ -226,10 +226,7 @@ public class AddPhieuMuonController implements Initializable {
         ObservableList<Sach> temp = tbSachMuon.getSelectionModel().getSelectedItems();
         System.out.println(listSelectionSach.size());
         for(int i = 0; i < temp.size(); i++){
-            if(listSelectionSach.contains(temp.get(i)))
-            {
-                listSelectionSach.remove(temp.get(i));
-            }
+            listSelectionSach.remove(temp.get(i));
         }
         list = FXCollections.observableArrayList(listSelectionSach);
         tbSachMuon.setItems(list);

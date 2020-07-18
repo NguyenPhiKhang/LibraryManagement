@@ -109,5 +109,55 @@ public class SachDAO {
         return res;
     }
 
+    public List<Sach> getAllSachByDocGiaInPM(String maDocGia) {
+        List<Sach> ListSach = new ArrayList<>();
 
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbsach where record_status = 1 and masach in (select masach from tbctphieumuon ct, tbphieumuon pm WHERE ct.maphieumuon = pm.maphieumuon and pm.madocgia = ? and pm.tinhtrang = 1 and ct.record_status = 1) ");
+            ps.setString(1, maDocGia);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maSach = res.getString(1);
+                String tenSach = res.getString(2);
+                String maTheLoai = res.getString(3);
+                String maTacGia = res.getString(4);
+                int namXb = res.getInt(5);
+                String nxb = res.getString(6);
+                Date ngayNhap = res.getDate(7);
+                int triGia = res.getInt(8);
+                int tinhTrang = res.getInt(9);
+                String anhBia = res.getString(10);
+                ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBia));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListSach;
+    }
+
+    public Sach getSachByID(String maSach) {
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbsach where record_status = 1 and masach = ?");
+            ps.setString(1, maSach);
+            ResultSet res = ps.executeQuery();
+            res.next();
+                String masach = res.getString(1);
+                String tenSach = res.getString(2);
+                String maTheLoai = res.getString(3);
+                String maTacGia = res.getString(4);
+                int namXb = res.getInt(5);
+                String nxb = res.getString(6);
+                Date ngayNhap = res.getDate(7);
+                int triGia = res.getInt(8);
+                int tinhTrang = res.getInt(9);
+                String anhBia = res.getString(10);
+                return new Sach(masach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBia);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

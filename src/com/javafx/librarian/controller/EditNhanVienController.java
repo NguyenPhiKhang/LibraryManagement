@@ -22,6 +22,8 @@ public class EditNhanVienController {
     //@FXML
     //public JFXButton btnDong;
     @FXML
+    public TextField txtMaNV;
+    @FXML
     public JFXButton btnCapNhat;
     @FXML
     public TextField txtTenNV;
@@ -48,12 +50,13 @@ public class EditNhanVienController {
     }
 
     private void bindingData() {
-        //txtMaNV.setText(String.valueOf(nv.getTenNV()));
+
         Account acc = AccountService.getInstance().getUserById(nv.getIdAccount());
+        txtMaNV.setText(String.valueOf(nv.getMaNV()));
         txtTenNV.setText(String.valueOf(nv.getTenNV()));
         txtDiaChi.setText(nv.getDiaChi());
         txtEmail.setText(String.valueOf(nv.getEmail()));
-        dpNgaySinh.setValue(Util.convertDateToLocalDate(nv.getNgaySinh()));
+        dpNgaySinh.setValue(Util.convertDateToLocalDateUI(nv.getNgaySinh()));
         txtSDT.setText(String.valueOf(nv.getSDT()));
         txtUsername.setText(acc.getUsername());
         txtPassword.setText(acc.getPassword());

@@ -53,7 +53,7 @@ public class TacGiaDAO {
     public int addTacGia(String maTacGia, String tenTacGia) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("insert into tbtacgia values(?,?)");
+            PreparedStatement ps = conn.prepareStatement("insert into tbtacgia(matacgia, tentacgia) values(?,?)");
             ps.setString(1, maTacGia);
             ps.setString(2, tenTacGia);
 
