@@ -36,6 +36,15 @@
                         </AnchorPane>
                     </content>
                 </Tab>
+            <Tab text="Thu Tien Phat">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane fx:id="borderPaneThuTienPhat" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb;" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
             </tabs>
         </TabPane>
     </children>
