@@ -6,9 +6,11 @@ import com.javafx.librarian.dao.SachDAO;
 import com.javafx.librarian.model.*;
 import com.javafx.librarian.service.*;
 import com.javafx.librarian.utils.Util;
+import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -105,6 +107,7 @@ public class AddPhieuMuonController implements Initializable {
                 tbSachMuon.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
             }
         });
+        new AutoCompleteComboBoxListener<>(cbMaDG);
     }
     public void setMuonController(MuonController muon) {
         this.muonController = muon;
@@ -128,7 +131,8 @@ public class AddPhieuMuonController implements Initializable {
 
     private void loadData() {
         listDG = FXCollections.observableArrayList(DocGiaDao.getInstance().getListDocGiaToCB());
-        cbMaDG.setItems(listDG);
+        cbMaDG.setTooltip(new Tooltip());
+        cbMaDG.getItems().addAll(listDG);
         cbMaDG.getSelectionModel().selectFirst();
         listSach = FXCollections.observableArrayList(SachDAO.getInstance().getAllSach());
         tableSach.setItems(listSach);
@@ -148,7 +152,9 @@ public class AddPhieuMuonController implements Initializable {
         //
         ThamSo thamSo = ThamSoService.getInstance().getThamSo();
         String maPM = txtMaPM.getText();
-        String maDG = ((DocGia) cbMaDG.getSelectionModel().getSelectedItem()).getMaDocGia();
+        System.out.println(cbMaDG.getSelectionModel().getSelectedItem().toString());
+        String[] info = cbMaDG.getSelectionModel().getSelectedItem().toString().split(" - ");
+        String maDG = info[0];
         Date ngayMuon = java.sql.Date.valueOf(dtNgayMuon.getValue());
         Date hanTra = java.sql.Date.valueOf(dtHanTra.getValue());
         int tinhTrang = 1;

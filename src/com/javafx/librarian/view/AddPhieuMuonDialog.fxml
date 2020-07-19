@@ -86,7 +86,7 @@
                               <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                  <children>
                                     <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" text="Mã đọc giả" />
-                                    <ComboBox fx:id="cbMaDG" prefHeight="27.0" prefWidth="190.0" />
+                                    <ComboBox fx:id="cbMaDG" editable="true" prefHeight="27.0" prefWidth="190.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">

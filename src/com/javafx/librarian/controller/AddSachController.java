@@ -58,13 +58,18 @@ public class AddSachController implements Initializable {
         txtMaSach.setText(Util.generateID(Util.PREFIX_CODE.S));
         txtMaSach.setDisable(true);
         listTheLoai = FXCollections.observableArrayList(TheLoaiService.getInstance().getAllTheLoai());
+        cbTheLoai.setTooltip(new Tooltip());
         cbTheLoai.setItems(listTheLoai);
         cbTheLoai.getSelectionModel().selectFirst();
 
         listTacGia = FXCollections.observableArrayList(TacGiaService.getInstance().getAllTacGia());
+        cbTacGia.setTooltip(new Tooltip());
         cbTacGia.setItems(listTacGia);
         cbTacGia.getSelectionModel().selectFirst();
         dtNgayNhap.setValue(LocalDate.now());
+
+        new AutoCompleteComboBoxListener<>(cbTheLoai);
+        new AutoCompleteComboBoxListener<>(cbTacGia);
     }
 
     public void setSachController(SachController sach) {
@@ -88,8 +93,8 @@ public class AddSachController implements Initializable {
 
             Date ngayNhap = Date.valueOf(dtNgayNhap.getValue());
             int triGia = Integer.parseInt(txtTriGia.getText());
-            String maTheLoai = ((TheLoai) cbTheLoai.getSelectionModel().getSelectedItem()).getMaTheLoai();
-            String maTacGia = ((TacGia) cbTacGia.getSelectionModel().getSelectedItem()).getMaTacGia();
+            String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0];
+            String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0];
             int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
             String anhBia = null;
 
