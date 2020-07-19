@@ -1,14 +1,11 @@
 package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.CTPhieuMuon;
+import com.javafx.librarian.model.DocGia;
 import com.javafx.librarian.model.PhieuMuon;
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.utils.Util;
-
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +43,26 @@ public class PhieuMuonDAO {
         return ListPM;
     }
 
+    public PhieuMuon getPhieuMuonByID(String maPhieuMuon) {
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbphieumuon where maphieumuon = ?");
+            ps.setString(1,maPhieuMuon);
+            ResultSet res = ps.executeQuery();
+            res.next();
+            String maPM = res.getString(1);
+            String maDG = res.getString(2);
+            Date ngayMuon = res.getDate(3);
+            Date hanTra = res.getDate(4);
+            int tinhTrang = res.getInt(5);
+            return new PhieuMuon(maPM, maDG, ngayMuon, hanTra, tinhTrang);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     public List<CTPhieuMuon> getAllCTPhieuMuonByMaPM(String maPM) {
         List<CTPhieuMuon> ListCTPM = new ArrayList<>();
 
@@ -66,6 +83,23 @@ public class PhieuMuonDAO {
         }
 
         return ListCTPM;
+    }
+
+    public List<Integer> getAllRecordStatusCTPMByMaPM(String maPM) {
+        List<Integer> records = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select record_status from tbctphieumuon where maphieumuon = ?");
+            ps.setString(1, maPM);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                records.add(res.getInt(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return records;
     }
 
     public int addPhieuMuon(PhieuMuon phieuMuon) {
@@ -118,6 +152,60 @@ public class PhieuMuonDAO {
             e.printStackTrace();
         }
 
+        return res;
+    }
+
+    public List<PhieuMuon> getListPMByDGToCB(String maDocGia) {
+        List<PhieuMuon> PMs = new ArrayList<>();
+
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "select * from tbphieumuon where madocgia = ? and tinhtrang = 1 and record_status = 1";
+
+        try {
+            assert connection != null;
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, maDocGia);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maPM = res.getString(1);
+                String maDG = res.getString(2);
+                Date ngayMuon = res.getDate(3);
+                Date hanTra = res.getDate(4);
+                int tinhTrang = res.getInt(5);
+                PMs.add(new PhieuMuon(maPM, maDG, ngayMuon, hanTra, tinhTrang));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return PMs;
+    }
+
+    public int deleteCTPhieuMuon(String maPhieuMuon, String maSach) {
+        int res = 0;
+        try (Connection conn = JDBCConnection.getJDBCConnection();) {
+            PreparedStatement ps = conn.prepareStatement("update tbctphieumuon set record_status = 0 where maphieumuon=? and masach =?");
+            ps.setString(1, maPhieuMuon);
+            ps.setString(2, maSach);
+            res = ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public int finishPhieuMuon(String maPhieuMuon) {
+        int res = 0;
+        try (Connection conn = JDBCConnection.getJDBCConnection();) {
+            PreparedStatement ps = conn.prepareStatement("update tbphieumuon set tinhtrang = 0 where maphieumuon=?");
+            ps.setString(1, maPhieuMuon);
+            res = ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return res;
     }
 }

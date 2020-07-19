@@ -19,7 +19,7 @@ public class MenuMuonTraController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //.setCenter(getPage("../view/docgia/DocGiaView.fxml"));
         borderPaneMuon.setCenter(getPage("../view/MuonView.fxml"));
-        //borderPaneTra.setCenter(getPage("../view/TraView.fxml"));
+        borderPaneTra.setCenter(getPage("../view/TraView.fxml"));
     }
 
     private <T> T getPage(String url) {

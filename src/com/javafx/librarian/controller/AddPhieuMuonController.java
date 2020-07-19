@@ -154,7 +154,7 @@ public class AddPhieuMuonController implements Initializable {
         String maPM = txtMaPM.getText();
         System.out.println(cbMaDG.getSelectionModel().getSelectedItem().toString());
         String[] info = cbMaDG.getSelectionModel().getSelectedItem().toString().split(" - ");
-        String maDG = info[0];
+        String maDG = info[0].trim();
         Date ngayMuon = java.sql.Date.valueOf(dtNgayMuon.getValue());
         Date hanTra = java.sql.Date.valueOf(dtHanTra.getValue());
         int tinhTrang = 1;

@@ -124,8 +124,8 @@ public class EditSachController implements Initializable {
         int namXB = Integer.parseInt(txtNamXB.getText());
         Date ngayNhap = Date.valueOf(dtNgayNhap.getValue());
         int triGia = Integer.parseInt(txtTriGia.getText());
-        String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0];
-        String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0];
+        String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
+        String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
         int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
         String anhBia = null;
 
