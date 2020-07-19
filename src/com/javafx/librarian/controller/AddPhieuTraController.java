@@ -109,6 +109,53 @@ public class AddPhieuTraController implements Initializable {
             }
         });
         new AutoCompleteComboBoxListener<>(cbMaDG);
+
+        dtNgayTra.valueProperty().addListener((ov, oldValue, newValue) -> {
+            tbSachTra.getItems().clear();
+            double tongtien = Double.parseDouble(txtTienPhat.getText());
+            ThamSo thamSo = ThamSoService.getInstance().getThamSo();
+            Date ngayMuon = ((PhieuMuon) cbMaPM.getSelectionModel().getSelectedItem()).getNgayMuon();
+            Date hanTra = ((PhieuMuon) cbMaPM.getSelectionModel().getSelectedItem()).getHanTra();
+            // TimeS soNM = ngayMuon
+        /*Date nw = java.util.Calendar.getInstance().getTime();
+        Date diff =new Date(nw - ngayMuon.getTime());
+        long days = TimeUnit.MILLISECONDS.toDays(diff);*/
+            ObservableList<Sach> temp = tableSach.getSelectionModel().getSelectedItems();
+            //System.out.println(temp.si);
+            if(listSelectionSach == null)
+                listSelectionSach = new ArrayList<>();
+            for(int i = 0; i < temp.size(); i++){
+                if(!listSelectionSach.contains(temp.get(i)))
+                {
+                    listSelectionSach.add(temp.get(i));
+                }
+            }
+            list = FXCollections.observableArrayList();
+            for(int i = 0; i < listSelectionSach.size(); i++){
+                long soNM = 0;
+                double tienPhat = 0;
+                Date dateAfter = java.sql.Date.valueOf(dtNgayTra.getValue());
+                long difference = dateAfter.getTime() - ngayMuon.getTime();
+                long difference1 = hanTra.getTime() - ngayMuon.getTime();
+                long daysBetween = (difference / (1000*60*60*24));
+                long daysBetween1 = (difference1 / (1000*60*60*24));
+                if(daysBetween > daysBetween1) {
+                    tienPhat = (daysBetween - daysBetween1) * thamSo.getTienPhat();
+                    soNM = daysBetween - daysBetween1;
+                    CTPhieuTra ctPhieuTra = new CTPhieuTra(txtMaPT.getText(), listSelectionSach.get(i).getMaSach(), listSelectionSach.get(i).getTenSach(), ngayMuon, (int)soNM, tienPhat);
+                    list.add(ctPhieuTra);
+                    tongtien += tienPhat;
+                }
+                else
+                {
+                    CTPhieuTra ctPhieuTra = new CTPhieuTra(txtMaPT.getText(), listSelectionSach.get(i).getMaSach(), listSelectionSach.get(i).getTenSach(), ngayMuon, (int)soNM, tienPhat);
+                    list.add(ctPhieuTra);
+                    tongtien += tienPhat;
+                }
+            }
+            tbSachTra.setItems(list);
+            txtTienPhat.setText(tongtien + "");
+        });
     }
 
     private void setCell() {

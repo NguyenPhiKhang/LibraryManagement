@@ -166,23 +166,33 @@ public class MuonController implements Initializable {
     public void btnGiaHan_Click(ActionEvent event) {
         if (tableMuon.getSelectionModel().getSelectedIndex() >= 0) {
             PhieuMuon temp = tableMuon.getSelectionModel().getSelectedItem();
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("../view/GiaHanPMDialog.fxml"));
-                AnchorPane page = (AnchorPane) loader.load();
+            if(temp.getTinhTrang().equals("Trả đủ"))
+            {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("THÔNG BÁO");
+                alert.setHeaderText("Các đầu sách trong phiếu mượn đã được trả đầy đủ. Không thể gia hạn phiếu mượn này!");
+                alert.showAndWait();
+            }
+            else
+            {
+                try {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("../view/GiaHanPMDialog.fxml"));
+                    AnchorPane page = (AnchorPane) loader.load();
 
-                // Create the dialog Stage.
-                Stage dialogStage = new Stage();
-                dialogStage.initStyle(StageStyle.UNDECORATED);
-                Scene scene = new Scene(page);
-                dialogStage.setScene(scene);
-                //
-                GiaHanPMController giaHanPMController = loader.getController();
-                giaHanPMController.setMuonController(this);
-                giaHanPMController.setGiaHanPM(temp);
-                dialogStage.showAndWait();
-            } catch (IOException e) {
-                e.printStackTrace();
+                    // Create the dialog Stage.
+                    Stage dialogStage = new Stage();
+                    dialogStage.initStyle(StageStyle.UNDECORATED);
+                    Scene scene = new Scene(page);
+                    dialogStage.setScene(scene);
+                    //
+                    GiaHanPMController giaHanPMController = loader.getController();
+                    giaHanPMController.setMuonController(this);
+                    giaHanPMController.setGiaHanPM(temp);
+                    dialogStage.showAndWait();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         else

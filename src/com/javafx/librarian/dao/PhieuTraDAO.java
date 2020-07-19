@@ -73,7 +73,7 @@ public class PhieuTraDAO {
             ps.setString(1, phieuTra.getMaPT());
             ps.setString(2, phieuTra.getMaPM());
             ps.setString(3,phieuTra.getMaDG());
-            ps.setDate(4,Date.valueOf(Util.convertDateToLocalDate(phieuTra.getNgayTra())));
+            ps.setDate(4,Date.valueOf(Util.convertDateToLocalDateUI(phieuTra.getNgayTra()).plusDays(1)));
             ps.setDouble(5,phieuTra.getTienPhatKyNay());
             res = ps.executeUpdate();
             System.out.println(res + "row is effected");

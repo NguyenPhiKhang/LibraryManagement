@@ -77,6 +77,8 @@ public class TraController implements Initializable {
         txtMaPT.setDisable(true);
         cbMaDG.setDisable(true);
         txtNgayTra.setDisable(true);
+        txtNgayMuon.setDisable(true);
+        txtTienPhatKyNay.setDisable(true);
     }
 
 
