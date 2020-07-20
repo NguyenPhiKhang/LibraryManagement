@@ -91,6 +91,18 @@ public class MainViewController implements Initializable {
         this.stage = stage;
     }
 
+    public void btnTrangChuAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/TrangChuView.fxml"));
+            AnchorPane frmDocgiaView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(frmDocgiaView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void btnQLDGAction(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();

@@ -13,6 +13,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -75,6 +77,8 @@ public class SachController implements Initializable {
     public TextField textTimKiem;
     @FXML
     public AnchorPane panelSach;
+    @FXML
+    public ImageView imgAnhBia;
     //endregion
 
     //region controller
@@ -148,6 +152,9 @@ public class SachController implements Initializable {
             rdbTrong.setSelected(true);
         else
             rdbDangMuon.setSelected(true);
+
+        imgAnhBia.setImage(temp.getImage());
+        imgAnhBia.setCache(true);
 
     }
 

@@ -1,7 +1,9 @@
 package com.javafx.librarian.model;
 
 import javafx.beans.property.*;
+import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -15,7 +17,23 @@ public class Sach {
     private ObjectProperty<Date> NgayNhap;
     private IntegerProperty TriGia;
     private StringProperty TinhTrang;
-    private StringProperty AnhBia;
+    private FileInputStream AnhBia;
+    private Image showAnh;
+    public FileInputStream getAnhBia() {
+        return AnhBia;
+    }
+
+    public void setAnhBia(FileInputStream anhBia) {
+        AnhBia = anhBia;
+    }
+
+    public Image getImage() {
+       if(showAnh == null)
+       {
+           showAnh = new Image(AnhBia);
+       }
+       return showAnh;
+    }
 
     public String getMaSach() {
         return MaSach.get();
@@ -115,17 +133,7 @@ public class Sach {
         this.TinhTrang.set(tinhTrang);
     }
 
-    public String getAnhBia() { return AnhBia.get();}
-
-    public StringProperty anhBiaProperty() {
-        return AnhBia;
-    }
-
-    public void setAnhBia(String anhBia) {
-        this.AnhBia.set(anhBia);
-    }
-
-    public Sach(String maSach, String tenSach, String maTheLoai, String maTacGia, int namXB, String nxb, Date ngayNhap, int triGia, int tinhTrang, String anhBia) {
+    public Sach(String maSach, String tenSach, String maTheLoai, String maTacGia, int namXB, String nxb, Date ngayNhap, int triGia, int tinhTrang, FileInputStream anhBia) {
         MaSach = new SimpleStringProperty(maSach);
         TenSach = new SimpleStringProperty(tenSach);
         MaTheLoai = new SimpleStringProperty(maTheLoai);
@@ -149,6 +157,6 @@ public class Sach {
         else {
             TinhTrang = new SimpleStringProperty("Mất");
         }
-        AnhBia = new SimpleStringProperty(anhBia);
+        AnhBia = anhBia;
     }
 }

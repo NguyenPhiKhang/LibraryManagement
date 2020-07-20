@@ -35,7 +35,9 @@ public class PrintReport extends JFrame {
 
         // First, compile jrxml file.
         System.out.println(getClass().getResource(path));
-        JasperReport jasperReport = JasperCompileManager.compileReport("D:/LibraryManagement/LibraryManagement/src/com/javafx/librarian/view/report/BCMuonTL.jrxml");
+        File sourceName = new File("src/com/javafx/librarian/view/report/BCMuonTL.jrxml");
+        System.out.println("Absolute path" + sourceName.getAbsolutePath());
+        JasperReport jasperReport = JasperCompileManager.compileReport(sourceName.getAbsolutePath());
         // Fields for report
         Map<String, Object> parameters = new HashMap<String, Object>();
 
@@ -69,7 +71,8 @@ public class PrintReport extends JFrame {
 
         // First, compile jrxml file.
         System.out.println(getClass().getResource(path));
-        JasperReport jasperReport = JasperCompileManager.compileReport("D:/LibraryManagement/LibraryManagement/src/com/javafx/librarian/view/report/BCSachTT.jrxml");
+        File sourceName = new File("src/com/javafx/librarian/view/report/BCSachTT.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(sourceName.getAbsolutePath());
         // Fields for report
         Map<String, Object> parameters = new HashMap<String, Object>();
 

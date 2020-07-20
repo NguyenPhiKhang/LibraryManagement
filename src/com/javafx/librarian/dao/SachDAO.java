@@ -4,7 +4,11 @@ import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TheLoai;
 import javafx.collections.ObservableList;
 import com.javafx.librarian.utils.*;
+import org.apache.logging.log4j.core.util.FileUtils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -40,8 +44,19 @@ public class SachDAO {
                 Date ngayNhap = res.getDate(7);
                 int triGia = res.getInt(8);
                 int tinhTrang = res.getInt(9);
-                String anhBia = res.getString(10);
-                ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBia));
+                Blob anhBiaBlob = res.getBlob(10);
+                if (anhBiaBlob != null) {
+                    InputStream anhBiaStream = anhBiaBlob.getBinaryStream();
+                    File anhBia = File.createTempFile("temp", null);
+                    org.apache.commons.io.FileUtils.copyInputStreamToFile(anhBiaStream, anhBia);
+                    FileInputStream anhBiaDTO = new FileInputStream(anhBia);
+
+                    ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBiaDTO));
+                }
+
+                else
+                    ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, null));
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,14 +71,14 @@ public class SachDAO {
             PreparedStatement ps = conn.prepareStatement("insert into tbsach(`masach`, `tensach`, `matheloai`, `matacgia`, `namxb`, `nxb`, `ngaynhap`, `trigia`, `tinhtrang`, `anhbia`) values(?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, sach.getMaSach());
             ps.setString(2, sach.getTenSach());
-            ps.setString(3,sach.getMaTheLoai());
+            ps.setString(3, sach.getMaTheLoai());
             ps.setString(4, sach.getMaTacGia());
             ps.setInt(5, sach.getNamXB());
-            ps.setString(6,sach.getNXB());
-            ps.setDate(7,Date.valueOf(Util.convertDateToLocalDate(sach.getNgayNhap())));
-            ps.setInt(8,sach.getTriGia());
-            ps.setInt(9,sach.getTinhTrang() == "Trống" ? 0 : 1);
-            ps.setString(10,sach.getAnhBia());
+            ps.setString(6, sach.getNXB());
+            ps.setDate(7, Date.valueOf(Util.convertDateToLocalDate(sach.getNgayNhap())));
+            ps.setInt(8, sach.getTriGia());
+            ps.setInt(9, sach.getTinhTrang() == "Trống" ? 0 : 1);
+            ps.setBinaryStream(10, sach.getAnhBia(), sach.getAnhBia().available());
 
             res = ps.executeUpdate();
             System.out.println(res + "row is effected");
@@ -79,14 +94,14 @@ public class SachDAO {
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbsach set tensach=?, matheloai=?, matacgia=?, namxb=?, nxb=?, ngaynhap=?, trigia=?, tinhtrang=?, anhbia=? where masach=?");
             ps.setString(1, sach.getTenSach());
-            ps.setString(2,sach.getMaTheLoai());
+            ps.setString(2, sach.getMaTheLoai());
             ps.setString(3, sach.getMaTacGia());
             ps.setInt(4, sach.getNamXB());
-            ps.setString(5,sach.getNXB());
-            ps.setDate(6,Date.valueOf(Util.convertDateToLocalDate(sach.getNgayNhap())));
-            ps.setInt(7,sach.getTriGia());
-            ps.setInt(8,sach.getTinhTrang()== "Trống" ? 0 : 1);
-            ps.setString(9,sach.getAnhBia());
+            ps.setString(5, sach.getNXB());
+            ps.setDate(6, Date.valueOf(Util.convertDateToLocalDate(sach.getNgayNhap())));
+            ps.setInt(7, sach.getTriGia());
+            ps.setInt(8, sach.getTinhTrang() == "Trống" ? 0 : 1);
+            ps.setBinaryStream(9, sach.getAnhBia());
             ps.setString(10, sach.getMaSach());
             res = ps.executeUpdate();
 
@@ -127,7 +142,7 @@ public class SachDAO {
                 int triGia = res.getInt(8);
                 int tinhTrang = res.getInt(9);
                 String anhBia = res.getString(10);
-                ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBia));
+                ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, null));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,17 +157,17 @@ public class SachDAO {
             ps.setString(1, maSach);
             ResultSet res = ps.executeQuery();
             res.next();
-                String masach = res.getString(1);
-                String tenSach = res.getString(2);
-                String maTheLoai = res.getString(3);
-                String maTacGia = res.getString(4);
-                int namXb = res.getInt(5);
-                String nxb = res.getString(6);
-                Date ngayNhap = res.getDate(7);
-                int triGia = res.getInt(8);
-                int tinhTrang = res.getInt(9);
-                String anhBia = res.getString(10);
-                return new Sach(masach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBia);
+            String masach = res.getString(1);
+            String tenSach = res.getString(2);
+            String maTheLoai = res.getString(3);
+            String maTacGia = res.getString(4);
+            int namXb = res.getInt(5);
+            String nxb = res.getString(6);
+            Date ngayNhap = res.getDate(7);
+            int triGia = res.getInt(8);
+            int tinhTrang = res.getInt(9);
+            String anhBia = res.getString(10);
+            return new Sach(masach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, null);
 
         } catch (Exception e) {
             e.printStackTrace();

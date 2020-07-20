@@ -3,10 +3,10 @@ package com.javafx.librarian.dao;
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.ThamSo;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +37,14 @@ public class ThamSoDAO {
             int HanMuon = res.getInt(7);
             int TienPhat = res.getInt(8);
             int TienPhatSach = res.getInt(9);
+            Blob anhMacDinhBlob = res.getBlob(10);
 
-            return new ThamSo(maxTuoi, minTuoi, hanThe, soTacGia, KhoangCachXB, MaxSachMuon, HanMuon, TienPhat, TienPhatSach);
+            InputStream anhBiaStream = anhMacDinhBlob.getBinaryStream();
+            File anhBia = File.createTempFile("temp", null);
+            org.apache.commons.io.FileUtils.copyInputStreamToFile(anhBiaStream, anhBia);
+            FileInputStream anhBiaDTO = new FileInputStream(anhBia);
+
+            return new ThamSo(maxTuoi, minTuoi, hanThe, soTacGia, KhoangCachXB, MaxSachMuon, HanMuon, TienPhat, TienPhatSach, anhBiaDTO);
 
         } catch (Exception e) {
             e.printStackTrace();
