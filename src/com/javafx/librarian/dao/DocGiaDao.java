@@ -311,4 +311,19 @@ public class DocGiaDao {
 
         return docGias;
     }
+
+    public int getCount() {
+        int ret = 0;
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select count(*) from tbdocgia where record_status = 1");
+            ResultSet res = ps.executeQuery();
+            res.next();
+            ret = res.getInt(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
 }
