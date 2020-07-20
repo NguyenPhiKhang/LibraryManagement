@@ -13,8 +13,9 @@ public class ThamSo {
     private IntegerProperty MaxSachMuon;
     private IntegerProperty HanMuon;
     private IntegerProperty TienPhat;
+    private IntegerProperty TienPhatSach;
 
-    public ThamSo(int maxTuoi, int minTuoi, int hanThe, int maxTG, int khoangCachXB, int maxSachMuon, int hanMuon, int tienPhat) {
+    public ThamSo(int maxTuoi, int minTuoi, int hanThe, int maxTG, int khoangCachXB, int maxSachMuon, int hanMuon, int tienPhat, int tienPhatSach) {
         MaxTuoi = new SimpleIntegerProperty(maxTuoi);
         MinTuoi = new SimpleIntegerProperty(minTuoi);
         HanThe = new SimpleIntegerProperty(hanThe);
@@ -23,6 +24,7 @@ public class ThamSo {
         MaxSachMuon = new SimpleIntegerProperty(maxSachMuon);
         HanMuon = new SimpleIntegerProperty(hanMuon);
         TienPhat = new SimpleIntegerProperty(tienPhat);
+        TienPhatSach = new SimpleIntegerProperty(tienPhatSach);
     }
 
     public int getMaxTuoi() {
@@ -119,5 +121,17 @@ public class ThamSo {
 
     public void setTienPhat(int tienPhat) {
         this.TienPhat.set(tienPhat);
+    }
+
+    public int getTienPhatSach() {
+        return TienPhatSach.get();
+    }
+
+    public IntegerProperty tienPhatSachProperty() {
+        return TienPhatSach;
+    }
+
+    public void setTienPhatSach(int tienPhat) {
+        this.TienPhatSach.set(tienPhat);
     }
 }

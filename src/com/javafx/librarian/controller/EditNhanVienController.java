@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import com.jfoenix.controls.JFXButton;
+import javafx.stage.Stage;
 
 import java.sql.Date;
 
@@ -39,6 +40,8 @@ public class EditNhanVienController {
     public TextField txtUsername;
     @FXML
     public TextField txtPassword;
+    @FXML
+    public Button btnHuy;
 
     public void setNhanVienController(NhanVienController nv) {
         this.nhanVienController = nv;
@@ -47,6 +50,11 @@ public class EditNhanVienController {
     public void setEditNV(NhanVien nv) {
         this.nv = nv;
         bindingData();
+    }
+
+    public void btnHuy_Click(ActionEvent event) {
+        Stage stage = (Stage) btnHuy.getScene().getWindow();
+        stage.close();
     }
 
     private void bindingData() {

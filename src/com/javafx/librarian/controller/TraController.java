@@ -48,6 +48,8 @@ public class TraController implements Initializable {
     @FXML
     public TableColumn<CTPhieuTra, Double> colTienPhat;
     @FXML
+    public TableColumn<CTPhieuTra, String> colTinhTrangSach;
+    @FXML
     public TextField txtMaPM;
     @FXML
     public ComboBox<DocGia> cbMaDG;
@@ -93,6 +95,7 @@ public class TraController implements Initializable {
         colTenSach.setCellValueFactory(cellData -> cellData.getValue().tenSachProperty());
         colTienPhat.setCellValueFactory(cellData -> cellData.getValue().tienPhatProperty().asObject());
         colSoNM.setCellValueFactory(cellData -> cellData.getValue().soNMProperty().asObject());
+        colTinhTrangSach.setCellValueFactory(cellData -> cellData.getValue().tinhTrangProperty());
     }
 
     private void loadData() {

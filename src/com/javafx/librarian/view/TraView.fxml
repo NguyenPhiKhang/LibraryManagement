@@ -36,7 +36,6 @@
                   <AnchorPane prefHeight="354.0" prefWidth="1023.0" style="-fx-background-color: grey; -fx-background-radius: 5;">
                      <children>
                         <JFXButton fx:id="btnThemPM" layoutX="7.0" layoutY="31.0" onAction="#btnThemPT_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" />
-                        <JFXButton fx:id="btnGiaHanPM" layoutX="85.0" layoutY="31.0" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="GIA HẠN" />
                         <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="29.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="29.0" />
                         <HBox layoutY="-32.0" prefHeight="26.0" prefWidth="1023.0" style="-fx-background-color: #e4e4e4; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -50,12 +49,13 @@
                         <Label layoutX="721.0" layoutY="36.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="36.0" />
                         <AnchorPane layoutX="7.0" layoutY="65.0" prefHeight="267.0" prefWidth="1001.0" style="-fx-background-color: #cccccc;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="65.0">
                            <children>
-                              <TableView fx:id="tableSachTra" layoutX="491.0" layoutY="14.0" prefHeight="238.0" prefWidth="597.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
+                              <TableView fx:id="tableSachTra" layoutX="491.0" layoutY="14.0" prefHeight="248.0" prefWidth="660.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
                                  <columns>
                                     <TableColumn fx:id="colMaSach" prefWidth="116.0" text="Mã sách" />
-                                    <TableColumn fx:id="colTenSach" prefWidth="239.0" text="Tên sách" />
-                                    <TableColumn fx:id="colSoNM" minWidth="0.0" prefWidth="125.0" text="Số ngày trả trễ" />
-                                    <TableColumn fx:id="colTienPhat" prefWidth="116.0" text="Tiền phạt" />
+                                    <TableColumn fx:id="colTenSach" prefWidth="179.0" text="Tên sách" />
+                                    <TableColumn fx:id="colTinhTrangSach" minWidth="0.0" prefWidth="131.0" text="Tình trạng sách" />
+                                    <TableColumn fx:id="colSoNM" prefWidth="117.0" text="Số ngày trả trễ" />
+                                    <TableColumn fx:id="colTienPhat" prefWidth="128.0" text="Tiền phạt" />
                                  </columns>
                               </TableView>
                               <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="14.0" layoutY="2.0" prefHeight="264.0" prefWidth="312.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" stylesheets="@css/themes.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="675.0" AnchorPane.topAnchor="2.0">

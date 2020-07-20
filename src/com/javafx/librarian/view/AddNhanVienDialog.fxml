@@ -18,7 +18,7 @@
     <children>
         <Pane layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="240.0" layoutY="-1.0" text="Thêm nhân viên" textFill="WHITE">
+                <Label layoutX="240.0" layoutY="-1.0" text="THÊM NHÂN VIÊN" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
@@ -117,9 +117,9 @@
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
                 <JFXButton fx:id="btnThem" layoutX="239.0" layoutY="6.0" onAction="#btnAddThem_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="THÊM" />
-                <JFXButton fx:id="btnHuy" layoutX="325.0" layoutY="6.0" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #d1e4f9;" text="HỦY" />
+                <JFXButton fx:id="btnHuy" layoutX="325.0" layoutY="6.0" onAction="#btnHuy_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #d1e4f9;" text="HỦY" />
             </children></Pane>
-        <JFXButton fx:id="btnDong" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="6.0" onAction="#btnDong_Click" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
+        <JFXButton fx:id="btnDong" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="6.0" onAction="#btnHuy_Click" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
             <font>
                 <Font size="5.0" />
             </font>

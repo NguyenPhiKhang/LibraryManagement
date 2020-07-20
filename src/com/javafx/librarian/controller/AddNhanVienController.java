@@ -51,7 +51,7 @@ public class AddNhanVienController implements Initializable {
         this.nhanVienController = nv;
     }
 
-    public void btnDong_Click(ActionEvent event) {
+    public void btnHuy_Click(ActionEvent event) {
         Stage stage = (Stage) btnDong.getScene().getWindow();
         stage.close();
     }

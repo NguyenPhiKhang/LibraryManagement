@@ -80,6 +80,8 @@ public class MuonController implements Initializable {
         txtHanTra.setDisable(true);
         rdbChuaTraDu.setDisable(true);
         rdbTraDu.setDisable(true);
+        rdbChuaTraDu.setSelected(false);
+        rdbTraDu.setSelected(false);
     }
 
     private void setCell() {
@@ -125,9 +127,15 @@ public class MuonController implements Initializable {
         txtNgayMuon.setText((String.valueOf(temp.getNgayMuon())));
         txtHanTra.setText((String.valueOf(temp.getHanTra())));
         if (String.valueOf(temp.getTinhTrang()).equals("Trả đủ"))
+        {
             rdbTraDu.setSelected(true);
+            rdbChuaTraDu.setSelected(false);
+        }
         else
+        {
             rdbChuaTraDu.setSelected(true);
+            rdbTraDu.setSelected(false);
+        }
 
         DocGia docgia = DocGiaService.getInstance().getDocGiaByID(temp.getMaDG());
         for(int i = 0; i < cbMaDG.getItems().size(); i++)

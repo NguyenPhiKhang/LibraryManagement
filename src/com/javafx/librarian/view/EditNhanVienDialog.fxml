@@ -16,9 +16,9 @@
 
 <AnchorPane prefHeight="296.0" prefWidth="631.0" style="-fx-background-radius: 5;" stylesheets="@css/textFieldTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.EditNhanVienController">
     <children>
-        <Pane fx:id="panelSuaDocGia" layoutY="36.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+        <Pane fx:id="panelSuaDocGia" layoutY="-1.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
             <children>
-                <Label layoutX="220.0" layoutY="-1.0" text="Chỉnh sửa nhân viên" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="1.0" layoutY="4.0" prefHeight="30.0" prefWidth="631.0" text="CHỈNH SỬA NHÂN VIÊN" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
@@ -28,9 +28,9 @@
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
                 <JFXButton fx:id="btnCapNhat" layoutX="231.0" layoutY="7.0" onAction="#btnCapNhat_Click" prefHeight="27.0" prefWidth="84.0" style="-fx-background-color: #6DBCF5;" text="CẬP NHẬT" />
-                <JFXButton fx:id="btnHuy" layoutX="331.0" layoutY="7.0" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #d1e4f9;" text="HỦY" />
+                <JFXButton fx:id="btnHuy" layoutX="331.0" layoutY="7.0" onAction="#btnHuy_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #d1e4f9;" text="HỦY" />
             </children></Pane>
-        <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="6.0" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
+        <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="6.0" onAction="#btnHuy_Click" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
             <font>
                 <Font size="5.0" />
             </font>

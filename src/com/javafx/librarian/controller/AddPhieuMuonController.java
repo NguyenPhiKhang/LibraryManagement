@@ -130,6 +130,7 @@ public class AddPhieuMuonController implements Initializable {
     }
 
     private void loadData() {
+        cbMaDG.getItems().clear();
         listDG = FXCollections.observableArrayList(DocGiaDao.getInstance().getListDocGiaToCB());
         cbMaDG.setTooltip(new Tooltip());
         cbMaDG.getItems().addAll(listDG);
@@ -166,6 +167,13 @@ public class AddPhieuMuonController implements Initializable {
             alert.setHeaderText("Chỉ được mượn tối đa " + thamSo.getMaxSachMuon() + " quyển sách!");
             alert.showAndWait();
         }
+        else if (temp.size() == 0)
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Không có quyển sách nào được mượn!");
+            alert.showAndWait();
+        }
         else
         {
             PhieuMuon phieuMuon = new PhieuMuon(maPM, maDG, ngayMuon, hanTra, tinhTrang);
@@ -185,7 +193,6 @@ public class AddPhieuMuonController implements Initializable {
 
             muonController.refreshTable();
             txtMaPM.setText(Util.generateID(Util.PREFIX_CODE.PM));
-            cbMaDG.getSelectionModel().selectFirst();
             dtNgayMuon.setValue(LocalDate.now());
             dtHanTra.setValue(dtNgayMuon.getValue().plusDays(7));
             list.clear();
@@ -197,6 +204,7 @@ public class AddPhieuMuonController implements Initializable {
     public void btnThemSach_Click(ActionEvent event) {
         //
         ObservableList<Sach> temp = tableSach.getSelectionModel().getSelectedItems();
+        listSelectionSach = tbSachMuon.getItems();
         List<Sach> unavailable = new ArrayList<>();
         if(listSelectionSach == null)
             listSelectionSach = new ArrayList<>();

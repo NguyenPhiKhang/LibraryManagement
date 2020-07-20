@@ -15,7 +15,6 @@
 
 .tab{
     -fx-background-color: white;
-    -fx-pref-width: 120;
     -fx-pref-height: 40;
     -fx-background-radius: 5 5 0 0;
     -fx-alignment: center;
@@ -38,7 +37,6 @@
 
 .tab .tab-label{
     -fx-text-fill: black;
-    -fx-pref-width: 100.0;
 }
 
 .tab:focused{

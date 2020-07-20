@@ -95,7 +95,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="367.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="BÁO CÁO THỐNG KÊ" textFill="WHITE">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="367.0" onAction="#btnBCTKAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="BÁO CÁO THỐNG KÊ" textFill="WHITE">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                     </graphic>

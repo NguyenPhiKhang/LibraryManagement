@@ -36,8 +36,9 @@ public class ThamSoDAO {
             int MaxSachMuon = res.getInt(6);
             int HanMuon = res.getInt(7);
             int TienPhat = res.getInt(8);
+            int TienPhatSach = res.getInt(9);
 
-            return new ThamSo(maxTuoi, minTuoi, hanThe, soTacGia, KhoangCachXB, MaxSachMuon, HanMuon, TienPhat);
+            return new ThamSo(maxTuoi, minTuoi, hanThe, soTacGia, KhoangCachXB, MaxSachMuon, HanMuon, TienPhat, TienPhatSach);
 
         } catch (Exception e) {
             e.printStackTrace();

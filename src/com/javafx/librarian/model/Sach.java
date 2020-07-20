@@ -134,7 +134,21 @@ public class Sach {
         NXB = new SimpleStringProperty(nxb);
         NgayNhap = new SimpleObjectProperty<Date>(ngayNhap);
         TriGia = new SimpleIntegerProperty(triGia);
-        TinhTrang = new SimpleStringProperty(tinhTrang == 0? "Trống" : "Đang mượn");
+        if(tinhTrang == 0)
+        {
+            TinhTrang = new SimpleStringProperty("Trống");
+        }
+        else if(tinhTrang == 1)
+        {
+            TinhTrang = new SimpleStringProperty("Đang mượn");
+        }
+        else if(tinhTrang == 2)
+        {
+            TinhTrang = new SimpleStringProperty("Hư hỏng");
+        }
+        else {
+            TinhTrang = new SimpleStringProperty("Mất");
+        }
         AnhBia = new SimpleStringProperty(anhBia);
     }
 }
