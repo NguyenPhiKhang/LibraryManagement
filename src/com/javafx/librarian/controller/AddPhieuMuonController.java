@@ -84,6 +84,8 @@ public class AddPhieuMuonController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        dtHanTra.setDisable(true);
+        dtHanTra.setEditable(false);
         txtMaPM.setText(Util.generateID(Util.PREFIX_CODE.PM));
         txtMaPM.setDisable(true);
         setCell();
