@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -35,13 +36,13 @@
                         <HBox alignment="CENTER_LEFT" layoutX="21.0" layoutY="23.0" prefHeight="40.0" prefWidth="305.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="23.0">
                            <children>
                               <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Tháng:" />
-                              <DatePicker fx:id="dtThang" />
+                              <ComboBox fx:id="cbThang" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="357.0" layoutY="23.0" prefHeight="40.0" prefWidth="305.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="357.0" AnchorPane.topAnchor="23.0">
                            <children>
                               <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Năm:" />
-                              <DatePicker fx:id="dtNam" />
+                              <TextField fx:id="txtNam" />
                            </children>
                         </HBox>
                         <JFXButton fx:id="btnThongKe" layoutX="797.0" layoutY="30.0" onAction="#btnThongKe_Click" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #65D36E;" text="THỐNG KÊ" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="158.0" AnchorPane.topAnchor="30.0" />
