@@ -5,6 +5,7 @@ import com.javafx.librarian.model.NhanVien;
 import com.javafx.librarian.model.TacGia;
 import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.service.NhanVienService;
+import com.javafx.librarian.service.PhieuTraService;
 import com.javafx.librarian.service.TacGiaService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,6 +59,8 @@ public class NhanVienController implements Initializable {
     public TextField txtUsername;
     @FXML
     public TextField txtPassword;
+    @FXML
+    public TextField textTimKiem;
 
     //region controller
     private ObservableList<NhanVien> listNV;
@@ -67,6 +70,11 @@ public class NhanVienController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listNV.clear();
+            listNV.addAll(NhanVienService.getInstance().searchNV(t1));
+        });
     }
 
     private void setCell() {

@@ -392,11 +392,11 @@ public class AddPhieuTraController implements Initializable {
     public void refreshTienPhat()
     {
         double tongtien = 0;
-        int tienPhatSach = ThamSoService.getInstance().getThamSo().getTienPhatSach();
         int tienPhat = ThamSoService.getInstance().getThamSo().getTienPhat();
         List<CTPhieuTra> listct = tbSachTra.getItems();
         for(int i = 0; i < listct.size(); i++)
         {
+            int tienPhatSach = SachService.getInstance().getSachByID(listct.get(i).getMaSach()).getTriGia();
             if(listct.get(i).getTinhTrang().equals("Hư hỏng") || listct.get(i).getTinhTrang().equals("Mất"))
             {
                 listct.get(i).setTienPhat(tienPhatSach + listct.get(i).getSoNM() * tienPhat);

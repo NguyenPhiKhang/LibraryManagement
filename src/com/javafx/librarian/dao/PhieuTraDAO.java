@@ -154,4 +154,26 @@ public class PhieuTraDAO {
         }
         return res;
     }
+
+    public List<PhieuTra> searchPT(String find) {
+        List<PhieuTra> ListPT = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select pt.* from tbphieutra pt, tbdocgia dg where dg.madocgia = pt.madocgia and (dg.tendocgia is null or dg.tendocgia = '' or dg.tendocgia LIKE ?) and pt.record_status = 1");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maPT = res.getString(1);
+                String maPM = res.getString(2);
+                String maDG = res.getString(3);
+                Date ngayTra = res.getDate(4);
+                Double tienPhat = res.getDouble(5);
+                ListPT.add(new PhieuTra(maPT ,maPM, maDG, ngayTra, tienPhat));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListPT;
+    }
 }

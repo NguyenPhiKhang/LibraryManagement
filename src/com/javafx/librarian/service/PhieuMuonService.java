@@ -1,8 +1,10 @@
 package com.javafx.librarian.service;
 
+import com.javafx.librarian.dao.NhanVienDAO;
 import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.dao.SachDAO;
 import com.javafx.librarian.model.CTPhieuMuon;
+import com.javafx.librarian.model.NhanVien;
 import com.javafx.librarian.model.PhieuMuon;
 import com.javafx.librarian.model.Sach;
 
@@ -34,4 +36,6 @@ public class PhieuMuonService {
     public int addCTPhieuMuon(CTPhieuMuon ctphieuMuon) {return PhieuMuonDAO.getInstance().addCTPhieuMuon(ctphieuMuon);}
 
     public int giaHanPhieuMuon(String maPM, Date hanTra){return PhieuMuonDAO.getInstance().giaHanPhieuMuon(maPM, hanTra);}
+
+    public List<PhieuMuon> searchPM(String find){return PhieuMuonDAO.getInstance().searchPM(find);}
 }

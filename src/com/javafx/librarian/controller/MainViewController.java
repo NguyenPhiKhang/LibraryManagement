@@ -163,4 +163,17 @@ public class MainViewController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void btnHeThongAction(ActionEvent actionEvent)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/MenuHeThong.fxml"));
+            AnchorPane MTView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(MTView);
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

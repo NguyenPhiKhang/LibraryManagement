@@ -1,6 +1,8 @@
 package com.javafx.librarian.service;
 
+import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.dao.TacGiaDAO;
+import com.javafx.librarian.model.PhieuMuon;
 import com.javafx.librarian.model.TacGia;
 
 import java.util.List;
@@ -36,5 +38,7 @@ public class TacGiaService {
     public int deleteTacGia(String id) {
         return TacGiaDAO.getInstance().deleteTacGia(id);
     }
+
+    public List<TacGia> searchTG(String find){return TacGiaDAO.getInstance().searchTacGia(find);}
 
 }

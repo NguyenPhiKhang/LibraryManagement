@@ -1,6 +1,7 @@
 package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.TacGia;
+import com.javafx.librarian.model.TheLoai;
 
 
 import java.sql.*;
@@ -91,5 +92,22 @@ public class TacGiaDAO {
             e.printStackTrace();
         }
         return res;
+    }
+
+    public List<TacGia> searchTacGia(String find) {
+        List<TacGia> ListTacGia = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbtacgia where (tentacgia is null or tentacgia = '' or tentacgia LIKE ?) and record_status = 1");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                ListTacGia.add(new TacGia(res.getString(1), res.getString(2)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListTacGia;
     }
 }

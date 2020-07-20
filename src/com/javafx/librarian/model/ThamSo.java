@@ -38,6 +38,17 @@ public class ThamSo {
         AnhMacDinh = anhMacDinh;
     }
 
+    public ThamSo(int maxTuoi, int minTuoi, int hanThe, int khoangCachXB, int maxSachMuon, int hanMuon, int tienPhat, int tienPhatSach) {
+        MaxTuoi = new SimpleIntegerProperty(maxTuoi);
+        MinTuoi = new SimpleIntegerProperty(minTuoi);
+        HanThe = new SimpleIntegerProperty(hanThe);
+        KhoangCachXB = new SimpleIntegerProperty(khoangCachXB);
+        MaxSachMuon = new SimpleIntegerProperty(maxSachMuon);
+        HanMuon = new SimpleIntegerProperty(hanMuon);
+        TienPhat = new SimpleIntegerProperty(tienPhat);
+        TienPhatSach = new SimpleIntegerProperty(tienPhatSach);
+    }
+
     public int getMaxTuoi() {
         return MaxTuoi.get();
     }

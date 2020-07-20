@@ -2,6 +2,7 @@ package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.ThamSo;
+import groovy.grape.GrapeIvy;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -51,5 +52,24 @@ public class ThamSoDAO {
         }
 
         return null;
+    }
+
+    public int suaThamSo(ThamSo thamSo) {
+        int res = 0;
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("update tbthamso set tuoitoida=?, tuoitoithieu=?, thoihanthe=?, khoangcachxb=?, sosachmuontoida=?, thoigianmuontoida=?, tienphatmotngay=?, tienphatsachhu=? where record_status = 1");
+            ps.setInt(1, thamSo.getMaxTuoi());
+            ps.setInt(2, thamSo.getMinTuoi());
+            ps.setInt(3, thamSo.getHanThe());
+            ps.setInt(4, thamSo.getKhoangCachXB());
+            ps.setInt(5, thamSo.getMaxSachMuon());
+            ps.setInt(6, thamSo.getHanMuon());
+            ps.setInt(7, thamSo.getTienPhat());
+            ps.setInt(8, thamSo.getTienPhatSach());
+            res = ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 }
