@@ -2,6 +2,7 @@ package com.javafx.librarian.model;
 
 import javafx.beans.property.*;
 
+import java.io.FileInputStream;
 import java.util.Date;
 
 public class ThamSo {
@@ -14,8 +15,9 @@ public class ThamSo {
     private IntegerProperty HanMuon;
     private IntegerProperty TienPhat;
     private IntegerProperty TienPhatSach;
+    private FileInputStream AnhMacDinh;
 
-    public ThamSo(int maxTuoi, int minTuoi, int hanThe, int maxTG, int khoangCachXB, int maxSachMuon, int hanMuon, int tienPhat, int tienPhatSach) {
+    public ThamSo(int maxTuoi, int minTuoi, int hanThe, int maxTG, int khoangCachXB, int maxSachMuon, int hanMuon, int tienPhat, int tienPhatSach, FileInputStream anhMacDinh) {
         MaxTuoi = new SimpleIntegerProperty(maxTuoi);
         MinTuoi = new SimpleIntegerProperty(minTuoi);
         HanThe = new SimpleIntegerProperty(hanThe);
@@ -25,6 +27,15 @@ public class ThamSo {
         HanMuon = new SimpleIntegerProperty(hanMuon);
         TienPhat = new SimpleIntegerProperty(tienPhat);
         TienPhatSach = new SimpleIntegerProperty(tienPhatSach);
+        AnhMacDinh = anhMacDinh;
+    }
+
+    public FileInputStream getAnhMacDinh() {
+        return AnhMacDinh;
+    }
+
+    public void setAnhMacDinh(FileInputStream anhMacDinh) {
+        AnhMacDinh = anhMacDinh;
     }
 
     public ThamSo(int maxTuoi, int minTuoi, int hanThe, int khoangCachXB, int maxSachMuon, int hanMuon, int tienPhat, int tienPhatSach) {

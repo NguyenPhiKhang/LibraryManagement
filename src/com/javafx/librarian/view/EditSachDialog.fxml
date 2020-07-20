@@ -89,8 +89,8 @@
             </children></Pane>
         <VBox layoutX="57.0" layoutY="27.0" prefHeight="212.0" prefWidth="195.0">
             <children>
-                <ImageView fitHeight="170.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" />
-                <JFXButton fx:id="btnChonAnh" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #3ce02d;" text="CHỌN ẢNH">
+                <ImageView fx:id="imgPreview" fitHeight="170.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" />
+                <JFXButton fx:id="btnChonAnh" onAction="#btnChonAnh_Click" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #3ce02d;" text="CHỌN ẢNH">
                     <VBox.margin>
                         <Insets left="40.0" top="10.0" />
                     </VBox.margin>

@@ -47,7 +47,7 @@
                         <FontAwesomeIcon fx:id="iconMaximize" glyphName="PLUS" size="1.5em" />
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnTrangChu" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="5.0" layoutY="119.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="TRANG CHỦ" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
+                <JFXButton fx:id="btnTrangChu" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="5.0" layoutY="119.0" onAction="#btnTrangChuAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="TRANG CHỦ" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BANK" size="1.3em" wrappingWidth="19.80000114440918" />
                     </graphic>

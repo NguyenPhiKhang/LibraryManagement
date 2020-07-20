@@ -26,10 +26,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class BaoCaoMuonTLController implements Initializable {
     @FXML
@@ -45,9 +42,9 @@ public class BaoCaoMuonTLController implements Initializable {
     @FXML
     public TableColumn<CTBaoCaoTheoTheLoai, Double> colTiLe;
     @FXML
-    public DatePicker dtThang;
+    public ComboBox<Integer> cbThang;
     @FXML
-    public DatePicker dtNam;
+    public TextField txtNam;
     @FXML
     public Button btnThongKe;
     @FXML
@@ -75,55 +72,35 @@ public class BaoCaoMuonTLController implements Initializable {
     }
 
     private void loadData() {
-        dtThang.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM");
-
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
+        List<Integer> dataThang  = new ArrayList<Integer>();
+        dataThang.add(1);
+        dataThang.add(2);
+        dataThang.add(3);
+        dataThang.add(4);
+        dataThang.add(5);
+        dataThang.add(6);
+        dataThang.add(7);
+        dataThang.add(8);
+        dataThang.add(9);
+        dataThang.add(10);
+        dataThang.add(11);
+        dataThang.add(12);
+        cbThang.setItems(FXCollections.observableList(dataThang));
+        txtNam.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
                     return null;
-                }
-            }
-        });
-
-        dtNam.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy");
-
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter.format(date);
-                } else {
-                    return "";
-                }
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
             }
 
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter);
-                } else {
-                    return null;
-                }
-            }
-        });
+            return change;
+        }));
     }
 
     public void btnThongKe_Click()
     {
-        int thang = dtThang.getValue().getMonthValue();
-        int nam = dtNam.getValue().getYear();
+        int thang = cbThang.getValue();
+        int nam = Integer.parseInt(txtNam.getText());
         BaoCaoTheoTheLoaiService.getInstance().deleteBaoCaoTheoTheLoai(thang, nam);
         int tongluotmuon = BaoCaoTheoTheLoaiService.getInstance().getTongLuotMuon(thang, nam);
         listBCTTL = FXCollections.observableArrayList(BaoCaoTheoTheLoaiService.getInstance().getAllCTBCTheoTL(thang, nam));
@@ -138,8 +115,8 @@ public class BaoCaoMuonTLController implements Initializable {
     }
 
     public void btnlapBaoCao_Click() throws JRException {
-        int thang = dtThang.getValue().getMonthValue();
-        int nam = dtNam.getValue().getYear();
+        int thang = cbThang.getValue();
+        int nam = Integer.parseInt(txtNam.getText());
         int tongluotmuon = BaoCaoTheoTheLoaiService.getInstance().getTongLuotMuon(thang, nam);
         String reportSrcFile = "../view/report/ReportSachTheoTheLoai.jrxml";
         try {
