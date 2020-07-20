@@ -7,6 +7,7 @@ import com.javafx.librarian.utils.Util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -100,7 +101,22 @@ public class NhanVienDAO {
         return res;
     }
 
-    public List<NhanVien> searchNV(String find) {
+    public int getCount() {
+        int ret = 0;
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select count(*) from tbadmin where record_status = 1");
+            ResultSet res = ps.executeQuery();
+            res.next();
+            ret = res.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ret;
+    }
+
+    public List<NhanVien> searchNV(String find){
         List<NhanVien> ListNV = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
@@ -124,3 +140,4 @@ public class NhanVienDAO {
         return ListNV;
     }
 }
+

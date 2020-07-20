@@ -16,5 +16,6 @@
     <orderEntry type="library" name="jasperreports-6.1.0" level="project" />
     <orderEntry type="library" name="commons-io-2.4" level="project" />
     <orderEntry type="library" name="xmpcore-5.1.3" level="project" />
+    <orderEntry type="library" name="charm-glisten-4.4.4" level="project" />
   </component>
 </module>

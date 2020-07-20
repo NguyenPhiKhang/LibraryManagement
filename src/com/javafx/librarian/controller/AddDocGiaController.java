@@ -14,14 +14,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.print.Doc;
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -81,7 +88,7 @@ public class AddDocGiaController {
             cbbLoaiDG.getItems().add(ldg.getTenLoaiDocGia());
         });
 
-        listAccount.addAll(AccountService.getInstance().getAllUsers());
+        listAccount.addAll(AccountService.getInstance().getUserNoOwner());
         listAccount.forEach(acc->{
             cbbAccount.getItems().add(acc.getUsername());
         });
@@ -129,7 +136,34 @@ public class AddDocGiaController {
     }
 
     public void btnThemAccountClicked(ActionEvent actionEvent) {
+        try {
+            // Load the fxml file and create a new stage for the popup dialog.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/AddAccountView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
 
+            AddAccountController controller = loader.getController();
+            controller.setListAccount(listAccount);
+
+            // Create the dialog Stage.
+            Stage dialogStage = new Stage();
+            Scene scene = new Scene(page);
+            scene.setFill(Color.TRANSPARENT);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(panelThemDocGia.getScene().getWindow());
+            dialogStage.initStyle(StageStyle.TRANSPARENT);
+            dialogStage.setScene(scene);
+
+            // Show the dialog and wait until the user closes it
+            dialogStage.showAndWait();
+
+            cbbAccount.getItems().clear();
+            listAccount.forEach(acc->{
+                cbbAccount.getItems().add(acc.getUsername());
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void btnCloseMouseExit(MouseEvent mouseEvent) {

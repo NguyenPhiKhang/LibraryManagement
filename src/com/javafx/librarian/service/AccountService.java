@@ -37,4 +37,6 @@ public class AccountService {
     public int editUser(Account user) {
         return AccountDao.getInstance().editUser(user);
     }
+
+    public List<Account> getUserNoOwner(){return AccountDao.getInstance().getUserNoOwner();}
 }

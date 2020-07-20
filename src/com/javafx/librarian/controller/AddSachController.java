@@ -129,8 +129,7 @@ public class AddSachController implements Initializable {
         //
         ThamSo thamSo = ThamSoService.getInstance().getThamSo();
         int namXB = Integer.parseInt(txtNamXB.getText());
-        if(LocalDate.now().getYear() - namXB <= thamSo.getKhoangCachXB())
-        {
+        if (LocalDate.now().getYear() - namXB <= thamSo.getKhoangCachXB()) {
             String maSach = txtMaSach.getText();
             String tenSach = txtTenSach.getText();
             String NXB = txtNXB.getText();
@@ -140,7 +139,14 @@ public class AddSachController implements Initializable {
             String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
             String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
             int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
-            FileInputStream anhBiaBlob = new FileInputStream(anhBia);
+
+            FileInputStream anhBiaBlob = null;
+
+            if (anhBia == null) {
+                anhBiaBlob = ThamSoService.getInstance().getThamSo().getAnhMacDinh();
+            } else {
+                anhBiaBlob = new FileInputStream(anhBia);
+            }
 
             Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBiaBlob);
 
@@ -156,8 +162,7 @@ public class AddSachController implements Initializable {
             rdbTrong.setSelected(true);
             rdbDangMuon.setSelected(false);
             txtTriGia.setText("");
-        }
-        else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");
             alert.setHeaderText("Sách quá cũ. Chỉ nhận sách trong vòng " + thamSo.getKhoangCachXB() + " năm trở lại đây!");

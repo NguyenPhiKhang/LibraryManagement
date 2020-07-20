@@ -44,6 +44,30 @@ public class AccountDao {
         return users;
     }
 
+    public List<Account> getUserNoOwner() {
+        List<Account> users = new ArrayList<>();
+
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "select c.idaccount, c.password, c.idper from (select a.idaccount, a.password, a.idper, b.madocgia from tbaccount as a left join tbdocgia as b on a.idaccount = b.idaccount where a.idper=1 and a.record_status=1) as c where c.madocgia is null;";
+
+        try {
+            assert connection != null;
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                Account user = new Account(rs.getString("idaccount"), rs.getString("password"), rs.getInt("idper"), "","");
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return users;
+    }
+
     public void addUser(Account user) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
