@@ -175,4 +175,42 @@ public class SachDAO {
 
         return null;
     }
+
+    public List<Sach> searchSach(String find) {
+        List<Sach> ListSach = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbsach where (tensach is null or tensach = '' or tensach LIKE ?) and record_status = 1");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maSach = res.getString(1);
+                String tenSach = res.getString(2);
+                String maTheLoai = res.getString(3);
+                String maTacGia = res.getString(4);
+                int namXb = res.getInt(5);
+                String nxb = res.getString(6);
+                Date ngayNhap = res.getDate(7);
+                int triGia = res.getInt(8);
+                int tinhTrang = res.getInt(9);
+                Blob anhBiaBlob = res.getBlob(10);
+                if (anhBiaBlob != null) {
+                    InputStream anhBiaStream = anhBiaBlob.getBinaryStream();
+                    File anhBia = File.createTempFile("temp", null);
+                    org.apache.commons.io.FileUtils.copyInputStreamToFile(anhBiaStream, anhBia);
+                    FileInputStream anhBiaDTO = new FileInputStream(anhBia);
+
+                    ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBiaDTO));
+                }
+
+                else
+                    ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, null));
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListSach;
+    }
 }

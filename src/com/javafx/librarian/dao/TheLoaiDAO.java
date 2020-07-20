@@ -1,5 +1,6 @@
 package com.javafx.librarian.dao;
 
+import com.javafx.librarian.model.DocGia;
 import com.javafx.librarian.model.TheLoai;
 import javafx.collections.ObservableList;
 
@@ -94,5 +95,24 @@ public class TheLoaiDAO {
             e.printStackTrace();
         }
         return res;
+    }
+
+    public List<TheLoai> searchTheLoai(String find) {
+        List<TheLoai> ListTheLoai = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbtheloai where (tentheloai is null or tentheloai = '' or tentheloai LIKE ?) and record_status = 1");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maTheLoai = res.getString(1);
+                String tenTheLoai = res.getString(2);
+                ListTheLoai.add(new TheLoai(maTheLoai, tenTheLoai));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListTheLoai;
     }
 }

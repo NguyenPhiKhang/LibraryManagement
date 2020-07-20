@@ -1,6 +1,8 @@
 package com.javafx.librarian.service;
 
+import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.dao.SachDAO;
+import com.javafx.librarian.model.PhieuMuon;
 import com.javafx.librarian.model.Sach;
 
 import java.util.List;
@@ -34,4 +36,6 @@ public class SachService {
     }
 
     public Sach getSachByID(String maSach) {return SachDAO.getInstance().getSachByID(maSach);}
+
+    public List<Sach> searchSach(String find){return SachDAO.getInstance().searchSach(find);}
 }

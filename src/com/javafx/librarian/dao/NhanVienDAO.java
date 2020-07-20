@@ -99,4 +99,28 @@ public class NhanVienDAO {
         }
         return res;
     }
+
+    public List<NhanVien> searchNV(String find) {
+        List<NhanVien> ListNV = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select * from tbadmin where (hoten is null or hoten = '' or hoten LIKE ?) and record_status = 1");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maNV = res.getString(1);
+                String idAccount = res.getString(2);
+                String tenNV = res.getString(3);
+                Date ngaySinh = res.getDate(4);
+                String diaChi = res.getString(5);
+                String email = res.getString(6);
+                String sdt = res.getString(7);
+                ListNV.add(new NhanVien(maNV, tenNV, diaChi, ngaySinh, email, sdt, idAccount));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListNV;
+    }
 }

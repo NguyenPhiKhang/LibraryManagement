@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -66,6 +67,7 @@ public class AddSachController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        rdbTrong.setSelected(true);
         txtMaSach.setText(Util.generateID(Util.PREFIX_CODE.S));
         txtMaSach.setDisable(true);
         listTheLoai = FXCollections.observableArrayList(TheLoaiService.getInstance().getAllTheLoai());
@@ -79,11 +81,39 @@ public class AddSachController implements Initializable {
         cbTacGia.getSelectionModel().selectFirst();
         dtNgayNhap.setValue(LocalDate.now());
 
+        txtNamXB.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
+                    return null;
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+            }
+
+            return change;
+        }));
+
+        txtTriGia.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
+                    return null;
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+            }
+
+            return change;
+        }));
+
         new AutoCompleteComboBoxListener<>(cbTheLoai);
         new AutoCompleteComboBoxListener<>(cbTacGia);
 
         ThamSo ts = ThamSoService.getInstance().getThamSo();
         imgPreview.setImage(new Image(ts.getAnhMacDinh()));
+
+        try {
+            anhBia =  File.createTempFile("temp", null);
+            org.apache.commons.io.FileUtils.copyInputStreamToFile(ts.getAnhMacDinh(), anhBia);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(ts.getAnhMacDinh());
     }
 
     public void setSachController(SachController sach) {
@@ -123,7 +153,7 @@ public class AddSachController implements Initializable {
             txtNXB.setText("");
             txtNamXB.setText("");
             dtNgayNhap.setValue(LocalDate.now());
-            rdbTrong.setSelected(false);
+            rdbTrong.setSelected(true);
             rdbDangMuon.setSelected(false);
             txtTriGia.setText("");
         }

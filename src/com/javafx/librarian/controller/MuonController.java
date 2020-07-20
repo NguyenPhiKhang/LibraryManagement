@@ -3,10 +3,7 @@ package com.javafx.librarian.controller;
 import com.javafx.librarian.dao.DocGiaDao;
 import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.model.*;
-import com.javafx.librarian.service.DocGiaService;
-import com.javafx.librarian.service.SachService;
-import com.javafx.librarian.service.TacGiaService;
-import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.service.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -82,6 +79,11 @@ public class MuonController implements Initializable {
         rdbTraDu.setDisable(true);
         rdbChuaTraDu.setSelected(false);
         rdbTraDu.setSelected(false);
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listPM.clear();
+            listPM.addAll(PhieuMuonService.getInstance().searchPM(t1));
+        });
     }
 
     private void setCell() {

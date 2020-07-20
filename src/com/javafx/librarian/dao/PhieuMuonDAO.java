@@ -208,4 +208,26 @@ public class PhieuMuonDAO {
         }
         return res;
     }
+
+    public List<PhieuMuon> searchPM(String find) {
+        List<PhieuMuon> ListPM = new ArrayList<>();
+
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select pm.* from tbphieumuon pm, tbdocgia dg where dg.madocgia = pm.madocgia and (dg.tendocgia is null or dg.tendocgia = '' or dg.tendocgia LIKE ?) and pm.record_status = 1");
+            ps.setString(1, "%" + find + "%");
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                String maPM = res.getString(1);
+                String maDG = res.getString(2);
+                Date ngayMuon = res.getDate(3);
+                Date hanTra = res.getDate(4);
+                int tinhTrang = res.getInt(5);
+                ListPM.add(new PhieuMuon(maPM, maDG, ngayMuon, hanTra, tinhTrang));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ListPM;
+    }
 }

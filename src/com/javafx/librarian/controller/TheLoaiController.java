@@ -2,6 +2,7 @@ package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.TacGia;
 import com.javafx.librarian.model.TheLoai;
+import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.TheLoaiService;
 import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
@@ -60,6 +61,11 @@ public class TheLoaiController implements Initializable {
 
         txtMaTheLoai.setDisable(true);
         txtTenTheLoai.setDisable(true);
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listTheLoai.clear();
+            listTheLoai.addAll(TheLoaiService.getInstance().searchTL(t1));
+        });
     }
 
     private void setCell() {

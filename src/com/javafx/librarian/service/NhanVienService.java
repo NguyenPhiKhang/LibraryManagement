@@ -1,7 +1,9 @@
 package com.javafx.librarian.service;
 
+import com.javafx.librarian.dao.LoaiDocGiaDao;
 import com.javafx.librarian.dao.NhanVienDAO;
 import com.javafx.librarian.dao.TacGiaDAO;
+import com.javafx.librarian.model.LoaiDocGia;
 import com.javafx.librarian.model.NhanVien;
 import com.javafx.librarian.model.TacGia;
 
@@ -34,4 +36,6 @@ public class NhanVienService {
     public int deleteNV(String id) {
         return NhanVienDAO.getInstance().deleteNV(id);
     }
+
+    public List<NhanVien> searchNV(String find){return NhanVienDAO.getInstance().searchNV(find);}
 }

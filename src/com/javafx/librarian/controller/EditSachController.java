@@ -74,6 +74,26 @@ public class EditSachController implements Initializable {
         cbTacGia.setItems(listTacGia);
         cbTacGia.getSelectionModel().selectFirst();
 
+        txtNamXB.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
+                    return null;
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+            }
+
+            return change;
+        }));
+
+        txtTriGia.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
+                    return null;
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+            }
+
+            return change;
+        }));
+
         new AutoCompleteComboBoxListener<>(cbTheLoai);
         new AutoCompleteComboBoxListener<>(cbTacGia);
     }
