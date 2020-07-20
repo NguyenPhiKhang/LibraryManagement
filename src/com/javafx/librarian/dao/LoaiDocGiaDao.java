@@ -25,7 +25,7 @@ public class LoaiDocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select * from tbloaidocgia";
+        String sql = "select * from tbloaidocgia where record_status=1";
 
         try {
             assert connection != null;
@@ -137,5 +137,22 @@ public class LoaiDocGiaDao {
             ex.printStackTrace();
         }
         return loaiDocGia;
+    }
+
+    public int deleteLDG(String maldg) {
+        Connection connection = JDBCConnection.getJDBCConnection();
+        String sql = "update tbloaidocgia set record_status=0 WHERE maloaidocgia=?";
+        int rs = 0;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, maldg);
+
+            rs = preparedStatement.executeUpdate();
+            System.out.println(rs);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return rs;
     }
 }

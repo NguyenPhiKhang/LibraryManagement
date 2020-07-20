@@ -27,13 +27,13 @@
                         <Font size="5.0" />
                      </font>
                   </JFXButton>
-                  <TextField fx:id="textUserLogin" layoutX="116.0" layoutY="189.0" prefHeight="32.0" prefWidth="258.0" promptText="Username" text="admin" />
+                  <TextField fx:id="textUserLogin" layoutX="116.0" layoutY="189.0" prefHeight="32.0" prefWidth="258.0" promptText="Username" text="17520616" />
                   <Label fx:id="lbForget" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="294.0" prefHeight="10.0" prefWidth="267.0" text="Forget Your Password" textAlignment="CENTER" textFill="#300d33">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="passUserLogin" layoutX="116.0" layoutY="239.0" prefHeight="32.0" prefWidth="258.0" promptText="password" text="admin@123" />
+                  <PasswordField fx:id="passUserLogin" layoutX="116.0" layoutY="239.0" prefHeight="32.0" prefWidth="258.0" promptText="password" text="12345678" />
                   <Label fx:id="lbCreateAccount" alignment="CENTER" contentDisplay="CENTER" layoutX="117.0" layoutY="75.0" prefHeight="36.0" prefWidth="258.0" text="Create Account" textAlignment="CENTER" textFill="#300d33">
                      <font>
                         <Font name="Arial" size="30.0" />

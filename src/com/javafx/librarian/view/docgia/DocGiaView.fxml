@@ -59,7 +59,7 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                  <children>
-                                    <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="ma loai doc gia" />
+                                    <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Loai doc gia" />
                                     <TextField fx:id="textMaLDG" editable="false" prefWidth="190.0" />
                                  </children>
                               </HBox>

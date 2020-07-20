@@ -34,7 +34,7 @@ public class AccountDao {
             ResultSet rs = statement.executeQuery(sql);
 
             while (rs.next()) {
-                Account user = new Account(rs.getString("idaccount"), rs.getString("password"), rs.getInt("idper"));
+                Account user = new Account(rs.getString("idaccount"), rs.getString("password"), rs.getInt("idper"), "","");
                 users.add(user);
             }
         } catch (SQLException ex) {
@@ -67,7 +67,7 @@ public class AccountDao {
     public Account getUser(String username, String password) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "SELECT * FROM tbaccount WHERE idaccount=? and password=?";
+        String sql = "SELECT idper FROM tbaccount WHERE idaccount=? and password=? limit 1";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -75,12 +75,34 @@ public class AccountDao {
             preparedStatement.setString(2, password);
 
             ResultSet rs = preparedStatement.executeQuery();
+            rs.last();
 
-            if (rs.next()) {
-                return new Account(rs.getString("idaccount"), rs.getString("Password"), rs.getInt("idper"));
+            if(rs.getInt("idper")==1){
+                sql = "SELECT * FROM tbaccount as a inner join tbdocgia as b on a.idaccount=b.idaccount WHERE a.idaccount=? and a.password=? limit 1";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, username);
+                preparedStatement.setString(2, password);
+
+                rs = preparedStatement.executeQuery();
+                rs.last();
+                return new Account(rs.getString("idaccount"), rs.getString("password"),
+                        rs.getInt("idper"), rs.getString("tendocgia"), rs.getString("email"));
+            } else {
+                sql = "SELECT * FROM tbaccount as a inner join tbadmin as b on a.idaccount=b.idaccount WHERE a.idaccount=? and a.password=? limit 1";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, username);
+                preparedStatement.setString(2, password);
+
+                rs = preparedStatement.executeQuery();
+                rs.last();
+                return new Account(rs.getString("idaccount"), rs.getString("password"),
+                        rs.getInt("idper"), rs.getString("hoten"), rs.getString("email"));
             }
+
+//            if (rs.next()) {
+//            }
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
         return null;
     }
@@ -97,7 +119,7 @@ public class AccountDao {
             ResultSet rs = preparedStatement.executeQuery();
 
             if (rs.next()) {
-                return new Account(rs.getString("idaccount"), rs.getString("Password"), rs.getInt("idper"));
+                return new Account(rs.getString("idaccount"), rs.getString("Password"), rs.getInt("idper"), "", "");
             }
         } catch (SQLException e) {
             e.printStackTrace();

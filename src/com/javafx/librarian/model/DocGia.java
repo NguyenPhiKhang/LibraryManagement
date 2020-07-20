@@ -17,6 +17,8 @@ public class DocGia {
     private DoubleProperty tongNo;
     private StringProperty idAccount;
     private StringProperty soDienThoai;
+    private StringProperty tenLoaiDG;
+    private StringProperty gioiThieu;
 
     public DocGia() {
         maDocGia = new SimpleStringProperty();
@@ -31,6 +33,8 @@ public class DocGia {
         tongNo = new SimpleDoubleProperty();
         idAccount = new SimpleStringProperty();
         soDienThoai = new SimpleStringProperty();
+        tenLoaiDG = new SimpleStringProperty();
+        gioiThieu = new SimpleStringProperty();
     }
 
     public String getMaDocGia() {
@@ -175,6 +179,34 @@ public class DocGia {
 
     public void setMaLoaiDocGia(String maLoaiDocGia) {
         this.maLoaiDocGia.set(maLoaiDocGia);
+    }
+
+    public void setTinhTrangThe(int tinhTrangThe) {
+        this.tinhTrangThe.set(tinhTrangThe);
+    }
+
+    public String getTenLoaiDG() {
+        return tenLoaiDG.get();
+    }
+
+    public StringProperty tenLoaiDGProperty() {
+        return tenLoaiDG;
+    }
+
+    public void setTenLoaiDG(String tenLoaiDG) {
+        this.tenLoaiDG.set(tenLoaiDG);
+    }
+
+    public String getGioiThieu() {
+        return gioiThieu.get();
+    }
+
+    public StringProperty gioiThieuProperty() {
+        return gioiThieu;
+    }
+
+    public void setGioiThieu(String gioiThieu) {
+        this.gioiThieu.set(gioiThieu);
     }
 
     @Override

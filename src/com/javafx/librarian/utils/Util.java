@@ -24,7 +24,8 @@ public class Util {
         TL,
         TG,
         DG,
-        LDG
+        LDG,
+        PTT, //PHIEU THU TIEN
     };
 
     public static String dateFormat(Date date){

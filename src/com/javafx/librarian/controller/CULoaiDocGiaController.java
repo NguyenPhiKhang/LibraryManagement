@@ -3,6 +3,7 @@ package com.javafx.librarian.controller;
 import com.javafx.librarian.model.LoaiDocGia;
 import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.LoaiDocGiaService;
+import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.Observable;
@@ -71,21 +72,20 @@ public class CULoaiDocGiaController {
         labelLDG.setText(label);
         if(Objects.equals(label, "Thêm loại độc giả")) {
             btnCapNhat.setVisible(false);
-            textMaLDG.setDisable(false);
         }else{
             btnThem.setVisible(false);
-            textMaLDG.setDisable(true);
         }
     }
 
     public void setListLDG(ObservableList<LoaiDocGia> listLDG){
+        textMaLDG.setText(Util.generateID(Util.PREFIX_CODE.LDG));
         this.listLDG = listLDG;
     }
 
     public void setLoaiDocGia(LoaiDocGia ldg){
         this.ldg = ldg;
 
-        textMaLDG.setText(String.valueOf(this.ldg.getMaLoaiDocGia()));
+        textMaLDG.setText(this.ldg.getMaLoaiDocGia());
         textTenLDG.setText(this.ldg.getTenLoaiDocGia());
     }
 

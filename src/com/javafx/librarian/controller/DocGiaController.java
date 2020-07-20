@@ -2,6 +2,7 @@ package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.DocGia;
 import com.javafx.librarian.service.DocGiaService;
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -112,7 +113,7 @@ public class DocGiaController implements Initializable {
             textMaDocGia.setText(String.valueOf(dg.getMaDocGia()));
             textDiaChi.setText(dg.getDiaChi());
             textEmail.setText(dg.getEmail());
-            textMaLDG.setText(String.valueOf(dg.getMaLoaiDocGia()));
+            textMaLDG.setText(dg.getTenLoaiDG());
             textNgayHetHan.setText(Util.dateFormat(dg.getNgayHetHan()));
             textNgayLapThe.setText(Util.dateFormat(dg.getNgayLapThe()));
             textNgaySinh.setText(Util.dateFormat(dg.getNgaySinh()));

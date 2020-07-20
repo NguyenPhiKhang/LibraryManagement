@@ -24,4 +24,5 @@ public class LoaiDocGiaService {
     public int updateLoaiDocGia(LoaiDocGia ldg){return LoaiDocGiaDao.getInstance().updateLoaiDocGia(ldg);}
     public int addLoaiDocGia(LoaiDocGia ldg){return LoaiDocGiaDao.getInstance().addLoaiDocGia(ldg);}
     public LoaiDocGia getLoaiDocGia(String maldg){return LoaiDocGiaDao.getInstance().getLoaiDocGia(maldg);}
+    public int deleteLDG(String maldg){return  LoaiDocGiaDao.getInstance().deleteLDG(maldg);}
 }

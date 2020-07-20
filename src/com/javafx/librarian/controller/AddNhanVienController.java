@@ -67,7 +67,7 @@ public class AddNhanVienController implements Initializable {
         String passWord = txtPassword.getText();
 
         //create account according to new NhanVien
-        Account acc = new Account(userName, passWord, 3);
+        Account acc = new Account(userName, passWord, 3, "", "");
         AccountService.getInstance().addUser(acc);
 
         //

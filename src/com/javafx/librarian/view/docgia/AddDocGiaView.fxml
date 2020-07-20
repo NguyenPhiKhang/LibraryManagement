@@ -38,7 +38,7 @@
             <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0" GridPane.rowIndex="1">
                <children>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="email:">
                      <padding>
@@ -56,7 +56,7 @@
                   <TextField fx:id="textTenDocGia" prefWidth="190.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="297.0" GridPane.rowIndex="1">
+            <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="297.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Loai doc gia:">
                      <padding>
@@ -65,7 +65,7 @@
                   <JFXComboBox fx:id="cbbLoaiDG" focusColor="#039ed3" prefHeight="27.0" prefWidth="190.0" unFocusColor="#cfcfcf" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="ngay sinh:">
                      <padding>
@@ -83,7 +83,7 @@
                   <TextField fx:id="textDiaChi" prefWidth="190.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="so dien thoai:">
                      <padding>
@@ -105,6 +105,16 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="PLUS" />
                      </graphic>
                   </JFXButton>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0">
+               <children>
+                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="ma doc gia:">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="textMaDG" editable="false" prefHeight="27.0" prefWidth="190.0" />
                </children>
             </HBox>
          </children>

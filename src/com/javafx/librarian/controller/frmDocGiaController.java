@@ -20,11 +20,13 @@ public class frmDocGiaController implements Initializable {
     public BorderPane borderPaneDocGia;
     @FXML
     public BorderPane borderPaneLDG;
+    public BorderPane borderPaneThuTienPhat;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         borderPaneDocGia.setCenter(getPage("../view/docgia/DocGiaView.fxml"));
         borderPaneLDG.setCenter(getPage("../view/docgia/LoaiDocGiaView.fxml"));
+        borderPaneThuTienPhat.setCenter(getPage("../view/docgia/ThuTienPhatView.fxml"));
     }
 
     private <T> T getPage(String url){

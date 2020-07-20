@@ -154,7 +154,8 @@ public class LoginViewController implements Initializable {
                 root = loader.load();
 
                 MainViewController controller = loader.getController();
-                controller.setMainStage(stageMain);
+                controller.setMainStage(stageMain, user);
+
                 Scene scene = new Scene(root);
                 scene.setFill(Color.TRANSPARENT);
                 stageMain.setScene(scene);

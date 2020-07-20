@@ -1,5 +1,6 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.model.DocGia;
 import com.javafx.librarian.model.LoaiDocGia;
 import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.LoaiDocGiaService;
@@ -12,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -25,6 +23,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoaiDocGiaController implements Initializable {
@@ -111,6 +110,34 @@ public class LoaiDocGiaController implements Initializable {
     }
 
     public void btnXoaLDGClicked(ActionEvent actionEvent) {
+        LoaiDocGia ldg = tableLoaiDocGia.getSelectionModel().getSelectedItem();
+        if (ldg != null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(panelLDG.getScene().getWindow());
+            alert.setTitle("Xoá Loại Độc Giả");
+            alert.setHeaderText("Xoá loại độc giả " + ldg.getTenLoaiDocGia());
+            alert.setContentText("Bạn chắc chắn chứ?");
+
+            ButtonType btnYes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
+            ButtonType btnNo = new ButtonType("No", ButtonBar.ButtonData.NO);
+            ButtonType btnCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+            alert.getButtonTypes().setAll(btnYes, btnNo, btnCancel);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == btnYes) {
+                int resultDel = LoaiDocGiaService.getInstance().deleteLDG(ldg.getMaLoaiDocGia());
+                if (resultDel == 1) {
+                    listLoaiDocGia.remove(ldg);
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(panelLDG.getScene().getWindow());
+            //alert.setTitle("");
+            alert.setHeaderText("Lỗi");
+            alert.setContentText("Vui lòng chọn loại độc giả muốn xoá!");
+            alert.show();
+        }
     }
 
     public void btnSuaLDGClicked(ActionEvent actionEvent) {

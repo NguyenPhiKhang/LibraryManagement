@@ -40,7 +40,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="textMaLDG" prefHeight="27.0" prefWidth="195.0" />
+                  <TextField fx:id="textMaLDG" editable="false" prefHeight="27.0" prefWidth="195.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="315.0" GridPane.rowIndex="1">

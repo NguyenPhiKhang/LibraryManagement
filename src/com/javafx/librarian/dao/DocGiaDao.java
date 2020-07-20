@@ -2,6 +2,7 @@ package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.DocGia;
+import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.utils.Util;
 
 import java.sql.*;
@@ -28,7 +29,7 @@ public class DocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select * from tbdocgia where record_status = 1";
+        String sql = "select a.*, b.* from tbdocgia as a inner join tbloaidocgia  as b on a.maloaidocgia = b.maloaidocgia where a.record_status = 1";
 
         try {
             assert connection != null;
@@ -50,6 +51,7 @@ public class DocGiaDao {
                 docgia.setTongNo(rs.getDouble("tongno"));
                 docgia.setIdAccount((rs.getString("idaccount")));
                 docgia.setSoDienThoai(rs.getString("sdt"));
+                docgia.setTenLoaiDG(rs.getString("tenloaidocgia"));
 
                 docGias.add(docgia);
             }
@@ -65,7 +67,7 @@ public class DocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select * from tbdocgia where tendocgia is null or tendocgia = '' or tendocgia LIKE ?";
+        String sql = "select * from tbdocgia where (tendocgia is null or tendocgia = '' or tendocgia LIKE ?) and record_status = 1";
 
         try {
             assert connection != null;
@@ -101,7 +103,7 @@ public class DocGiaDao {
 
     public int deleteDocGia(String madg) {
         Connection connection = JDBCConnection.getJDBCConnection();
-        String sql = "DELETE FROM tbdocgia WHERE madocgia=?";
+        String sql = "update tbdocgia set record_status=0 WHERE madocgia=?";
         int rs = 0;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -146,8 +148,8 @@ public class DocGiaDao {
     public int addDocGia(DocGia dg) {
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "INSERT INTO tbdocgia(tendocgia, maloaidocgia, ngaysinh, diachi, email, ngaylapthe, ngayhethan, tinhtrangthe, tongno, idaccount, sdt)" +
-                " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tbdocgia(tendocgia, maloaidocgia, ngaysinh, diachi, email, ngaylapthe, ngayhethan, tinhtrangthe, tongno, idaccount, sdt, madocgia, record_status)" +
+                " VALUES (?,?,?,?,?,?,?,?,?,?,?,?, 1)";
 
         int rs = 0;
 
@@ -164,6 +166,7 @@ public class DocGiaDao {
             preparedStatement.setDouble(9, dg.getTongNo());
             preparedStatement.setString(10, dg.getIdAccount());
             preparedStatement.setString(11, dg.getSoDienThoai());
+            preparedStatement.setString(12, dg.getMaDocGia());
 
             rs = preparedStatement.executeUpdate();
             System.out.println(rs);
@@ -176,7 +179,7 @@ public class DocGiaDao {
 
     public DocGia getDocGia(String idaccount, String madg) {
         Connection connection = JDBCConnection.getJDBCConnection();
-        String sql = "SELECT * FROM tbdocgia WHERE (madocgia=? or idaccount=?) LIMIT 1";
+        String sql = "SELECT a.*, b.* FROM tbdocgia as a inner join tbloaidocgia as b on a.maloaidocgia = b.maloaidocgia WHERE (a.madocgia=? or a.idaccount=?) LIMIT 1";
 
         DocGia docgia = null;
 
@@ -201,6 +204,8 @@ public class DocGiaDao {
             docgia.setTongNo(rsDG.getDouble("tongno"));
             docgia.setIdAccount((rsDG.getString("idaccount")));
             docgia.setSoDienThoai(rsDG.getString("sdt"));
+            docgia.setTenLoaiDG(rsDG.getString("tenloaidocgia"));
+            docgia.setGioiThieu(rsDG.getString("introduction"));
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -275,6 +280,7 @@ public class DocGiaDao {
 
         return docGias;
     }
+
     public List<DocGia> getListDocGiaToPhieuTraCB() {
         List<DocGia> docGias = new ArrayList<>();
 
@@ -311,4 +317,84 @@ public class DocGiaDao {
 
         return docGias;
     }
+
+    public List<DocGia> getListDGHasADebt(){
+        List<DocGia> docGias = new ArrayList<>();
+
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "select madocgia, tendocgia, tongno from tbdocgia where record_status = 1 and tongno>0";
+
+        try {
+            assert connection != null;
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                DocGia docgia = new DocGia();
+                docgia.setMaDocGia(rs.getString("madocgia"));
+                docgia.setTenDocGia(rs.getString("tendocgia"));
+                docgia.setTongNo(rs.getDouble("tongno"));
+
+                docGias.add(docgia);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return docGias;
+    }
+
+    public int updateInfoDocDG(String madg, String ten, String diachi, String sdt, Date ngaysinh, String idacc, String pass, String gt){
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "Update tbdocgia set tendocgia=?, diachi=?, sdt=?, ngaysinh=?, introduction=? where madocgia=?";
+        int rs = 0;
+        try {
+            assert connection != null;
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, ten);
+            preparedStatement.setString(2, diachi);
+            preparedStatement.setString(3, sdt);
+            preparedStatement.setDate(4, Date.valueOf(Util.convertDateToLocalDate(ngaysinh)));
+            preparedStatement.setString(5, gt);
+            preparedStatement.setString(6, madg);
+
+            rs = preparedStatement.executeUpdate();
+
+            rs += AccountDao.getInstance().editUser(new Account(idacc, pass, 1, "",""));
+            System.out.println(rs);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return rs;
+    }
+
+//    public boolean updatecodedg(){
+//        Connection connection = JDBCConnection.getJDBCConnection();
+////        String sql = "update tbdocgia set madocgia=? where madocgia=?";
+////
+////        String sql1 = "select * from tbdocgia where record_status = 1";
+//        String sql = "insert into tbloaidocgia(maloaidocgia, tenloaidocgia, record_status) values(?, 'Sinh Viên', 1)";
+//
+//        try {
+//            assert connection != null;
+////            Statement statement = connection.createStatement();
+////
+////            ResultSet rs = statement.executeQuery(sql1);
+//
+////            while (rs.next()) {
+////                System.out.println("1");
+//                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//                preparedStatement.setString(1, Util.generateID((Util.PREFIX_CODE.LDG)));
+////                preparedStatement.setString(2, rs.getString("madocgia"));
+//
+//                preparedStatement.executeUpdate();
+////            }
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        return true;
+//    }
 }

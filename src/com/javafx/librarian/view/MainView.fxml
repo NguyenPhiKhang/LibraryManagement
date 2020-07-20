@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="772.0" prefWidth="1304.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.MainViewController">
+<AnchorPane fx:id="paneMain" prefHeight="772.0" prefWidth="1304.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.MainViewController">
     <children>
         <AnchorPane layoutX="21.0" prefHeight="586.0" prefWidth="239.0" style="-fx-background-color: #3f2b62;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -113,11 +113,12 @@
                         <JFXButton contentDisplay="GRAPHIC_ONLY" focusTraversable="false" layoutX="711.0" layoutY="4.0" prefHeight="36.0" prefWidth="14.0" />
                         <AnchorPane layoutX="479.0" prefHeight="47.0" prefWidth="229.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
-                                <Label focusTraversable="false" layoutX="31.0" layoutY="13.0" text="Nguyen Phi Khang" textFill="#7e7f80" />
-                                <MenuButton focusTraversable="false" layoutX="142.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #dbdbdb;" text="admin" textFill="#148ff5">
+                                <Label fx:id="lbNameAccount" focusTraversable="false" layoutX="31.0" layoutY="13.0" text="Nguyen Phi Khang" textFill="#7e7f80" />
+                                <MenuButton fx:id="lbUsername" focusTraversable="false" layoutX="142.0" layoutY="2.0" mnemonicParsing="false" style="-fx-background-color: #dbdbdb;" text="admin" textFill="#148ff5">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" text="Thông tin" />
-                                        <MenuItem mnemonicParsing="false" text="Đăng xuất" />
+                                        <MenuItem fx:id="menuItemInfo" mnemonicParsing="false" onAction="#MenuThongTinClicked" text="Thông tin" />
+                              <MenuItem fx:id="menuItemDMK" mnemonicParsing="false" onAction="#menuItemDMKClicked" text="Doi mat khau" />
+                                        <MenuItem mnemonicParsing="false" onAction="#MenuDangXuatClicked" text="Đăng xuất" />
                                     </items>
                                     <graphic>
                                         <FontAwesomeIcon fill="#7e7f80" glyphName="USER" size="2em" />

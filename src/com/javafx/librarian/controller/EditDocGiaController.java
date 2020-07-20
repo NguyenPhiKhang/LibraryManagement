@@ -78,8 +78,7 @@ public class EditDocGiaController{
 
     public void setDocGia(DocGia dg){
         this.dg = dg;
-
-        textMaDocGia.setText(String.valueOf(dg.getMaDocGia()));
+        textMaDocGia.setText(dg.getMaDocGia());
         textTenDocGia.setText(dg.getTenDocGia());
         textTinhTrangThe.setText(String.valueOf(dg.getTinhTrangThe()));
         textTongNo.setText(String.valueOf(dg.getTongNo()));
@@ -89,7 +88,7 @@ public class EditDocGiaController{
             cbbLoaiDG.getItems().add(ldg.getTenLoaiDocGia());
         });
 
-        cbbLoaiDG.setValue(listLDG.stream().filter(ldg->ldg.getMaLoaiDocGia()==dg.getMaLoaiDocGia()).collect(Collectors.toList()).get(0).getTenLoaiDocGia());
+        cbbLoaiDG.setValue(listLDG.stream().filter(ldg->ldg.getMaLoaiDocGia().equals(dg.getMaLoaiDocGia())).collect(Collectors.toList()).get(0).getTenLoaiDocGia());
         dateNgaySinh.setValue(Util.convertDateToLocalDateUI(dg.getNgaySinh()));
         dateNgayHetHan.setValue(Util.convertDateToLocalDateUI(dg.getNgayHetHan()));
     }

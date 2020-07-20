@@ -9,13 +9,41 @@ public class Account {
     private StringProperty username;
     private StringProperty password;
     private IntegerProperty idper;
+    private StringProperty name;
+    private StringProperty email;
+
+    public String getName() {
+        return name.get();
+    }
+
+    public StringProperty nameProperty() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name.set(name);
+    }
+
+    public String getEmail() {
+        return email.get();
+    }
+
+    public StringProperty emailProperty() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
 
     public Account(){};
 
-    public Account(String userName, String password, int idPer){
+    public Account(String userName, String password, int idPer, String name, String email){
         this.username = new SimpleStringProperty(userName);
         this.password = new SimpleStringProperty(password);
         this.idper = new SimpleIntegerProperty(idPer);
+        this.name = new SimpleStringProperty(name);
+        this.email = new SimpleStringProperty(email);
     }
 
     public Account(String userName, String password){

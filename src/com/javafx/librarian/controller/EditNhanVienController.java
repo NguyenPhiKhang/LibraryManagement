@@ -63,7 +63,7 @@ public class EditNhanVienController {
 
     public void btnCapNhat_Click(ActionEvent event) {
         // Update account
-        Account acc = new Account(txtUsername.getText(), txtPassword.getText(), 1);
+        Account acc = new Account(txtUsername.getText(), txtPassword.getText(), 1, "", "");
         AccountService.getInstance().editUser(acc);
         //
         NhanVien upNv = new NhanVien(

@@ -6,6 +6,7 @@ import com.javafx.librarian.model.LoaiDocGia;
 import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.LoaiDocGiaService;
+import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -53,6 +54,8 @@ public class AddDocGiaController {
     public JFXButton btnClose;
     @FXML
     public FontAwesomeIcon iconClose;
+    @FXML
+    public TextField textMaDG;
 
     private double mousepX = 0;
     private double mousepY = 0;
@@ -82,6 +85,8 @@ public class AddDocGiaController {
         listAccount.forEach(acc->{
             cbbAccount.getItems().add(acc.getUsername());
         });
+
+        textMaDG.setText(Util.generateID(Util.PREFIX_CODE.DG));
     }
 
     public void setListDG(ObservableList<DocGia> listDG){
@@ -90,6 +95,7 @@ public class AddDocGiaController {
 
     public void btnThemClicked(ActionEvent actionEvent) {
         DocGia dg = new DocGia();
+        dg.setMaDocGia(textMaDG.getText());
         dg.setTenDocGia(textTenDocGia.getText());
         dg.setMaLoaiDocGia(listLDG.stream().filter(ldg-> Objects.equals(ldg.getTenLoaiDocGia(), cbbLoaiDG.getValue())).collect(Collectors.toList()).get(0).getMaLoaiDocGia());
         dg.setEmail(textEmail.getText());
@@ -103,6 +109,9 @@ public class AddDocGiaController {
         int rs = DocGiaService.getInstance().addDocGia(dg);
         System.out.println(rs);
         listDocGia.add(DocGiaService.getInstance().getDocGia(dg.getIdAccount(), dg.getMaDocGia()));
+
+//        boolean rs = DocGiaService.getInstance().updatecodedg();
+//        System.out.println(rs);
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
     }
 
