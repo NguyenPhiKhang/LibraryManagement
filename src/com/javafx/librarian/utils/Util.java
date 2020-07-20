@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -26,6 +27,8 @@ public class Util {
         DG,
         LDG,
         PTT, //PHIEU THU TIEN
+        BCTL,
+        BCTT,
     };
 
     public static String dateFormat(Date date){
@@ -36,13 +39,17 @@ public class Util {
     public static LocalDate convertDateToLocalDate(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH)+1);
+        LocalDate ret = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH)+1);
+        ret.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return ret;
     }
 
     public static LocalDate convertDateToLocalDateUI(Date date){
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        LocalDate ret = LocalDate.of(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        ret.format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        return ret;
     }
 
     //auto generate ID

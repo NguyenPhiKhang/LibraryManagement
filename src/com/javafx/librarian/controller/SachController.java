@@ -2,6 +2,7 @@ package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TheLoai;
+import com.javafx.librarian.service.PhieuTraService;
 import com.javafx.librarian.service.SachService;
 import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.service.TheLoaiService;
@@ -13,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -75,6 +78,8 @@ public class SachController implements Initializable {
     public TextField textTimKiem;
     @FXML
     public AnchorPane panelSach;
+    @FXML
+    public ImageView imgAnhBia;
     //endregion
 
     //region controller
@@ -96,6 +101,11 @@ public class SachController implements Initializable {
         txtTriGia.setDisable(true);
         rdbTrong.setDisable(true);
         rdbDangMuon.setDisable(true);
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listSach.clear();
+            listSach.addAll(SachService.getInstance().searchSach(t1));
+        });
     }
 
     private void setCell() {
@@ -148,6 +158,9 @@ public class SachController implements Initializable {
             rdbTrong.setSelected(true);
         else
             rdbDangMuon.setSelected(true);
+
+        imgAnhBia.setImage(temp.getImage());
+        imgAnhBia.setCache(true);
 
     }
 

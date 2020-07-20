@@ -3,10 +3,7 @@ package com.javafx.librarian.controller;
 import com.javafx.librarian.dao.DocGiaDao;
 import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.model.*;
-import com.javafx.librarian.service.DocGiaService;
-import com.javafx.librarian.service.SachService;
-import com.javafx.librarian.service.TacGiaService;
-import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.service.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -80,6 +77,13 @@ public class MuonController implements Initializable {
         txtHanTra.setDisable(true);
         rdbChuaTraDu.setDisable(true);
         rdbTraDu.setDisable(true);
+        rdbChuaTraDu.setSelected(false);
+        rdbTraDu.setSelected(false);
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listPM.clear();
+            listPM.addAll(PhieuMuonService.getInstance().searchPM(t1));
+        });
     }
 
     private void setCell() {
@@ -125,9 +129,15 @@ public class MuonController implements Initializable {
         txtNgayMuon.setText((String.valueOf(temp.getNgayMuon())));
         txtHanTra.setText((String.valueOf(temp.getHanTra())));
         if (String.valueOf(temp.getTinhTrang()).equals("Trả đủ"))
+        {
             rdbTraDu.setSelected(true);
+            rdbChuaTraDu.setSelected(false);
+        }
         else
+        {
             rdbChuaTraDu.setSelected(true);
+            rdbTraDu.setSelected(false);
+        }
 
         DocGia docgia = DocGiaService.getInstance().getDocGiaByID(temp.getMaDG());
         for(int i = 0; i < cbMaDG.getItems().size(); i++)

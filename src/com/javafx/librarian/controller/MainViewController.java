@@ -122,6 +122,18 @@ public class MainViewController implements Initializable {
         }
     }
 
+    public void btnTrangChuAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/TrangChuView.fxml"));
+            AnchorPane frmDocgiaView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(frmDocgiaView);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void btnQLDGAction(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -171,6 +183,7 @@ public class MainViewController implements Initializable {
         }
     }
 
+
     public void MenuThongTinClicked(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -181,11 +194,24 @@ public class MainViewController implements Initializable {
             controller.setAccount(this.User);
 
             borderPaneMain.setCenter(infoView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void btnBCTKAction(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/MenuBaoCao.fxml"));
+            AnchorPane MTView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(MTView);
+
             //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public void MenuDangXuatClicked(ActionEvent actionEvent) throws IOException {
         String tilte = "Sign Out";
@@ -215,34 +241,48 @@ public class MainViewController implements Initializable {
         stageLogin.show();
     }
 
-    public void menuItemDMKClicked(ActionEvent actionEvent) {
-        try {
-            String mk = User.getPassword();
-            // Load the fxml file and create a new stage for the popup dialog.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/DoiMatKhauView.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
+    public void menuItemDMKClicked(ActionEvent actionEvent){
+                try {
+                    String mk = User.getPassword();
+                    // Load the fxml file and create a new stage for the popup dialog.
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("../view/DoiMatKhauView.fxml"));
+                    AnchorPane page = (AnchorPane) loader.load();
 
-            DoiMatKhauController controller = loader.getController();
-            controller.setMK(User);
+                    DoiMatKhauController controller = loader.getController();
+                    controller.setMK(User);
 
-            // Create the dialog Stage.
-            Stage dialogStage = new Stage();
-            Scene scene = new Scene(page);
-            scene.setFill(Color.TRANSPARENT);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(paneMain.getScene().getWindow());
-            dialogStage.initStyle(StageStyle.TRANSPARENT);
-            dialogStage.setScene(scene);
+                    // Create the dialog Stage.
+                    Stage dialogStage = new Stage();
+                    Scene scene = new Scene(page);
+                    scene.setFill(Color.TRANSPARENT);
+                    dialogStage.initModality(Modality.WINDOW_MODAL);
+                    dialogStage.initOwner(paneMain.getScene().getWindow());
+                    dialogStage.initStyle(StageStyle.TRANSPARENT);
+                    dialogStage.setScene(scene);
 
-            // Show the dialog and wait until the user closes it
-            dialogStage.showAndWait();
+                    // Show the dialog and wait until the user closes it
+                    dialogStage.showAndWait();
 
-            if(!mk.equals(User.getPassword())){
-                int rs = AccountService.getInstance().editUser(User);
-                System.out.println(rs);
+                    if (!mk.equals(User.getPassword())) {
+                        int rs = AccountService.getInstance().editUser(User);
+                        System.out.println(rs);
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
+
+    public void btnHeThongAction(ActionEvent actionEvent)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("../view/MenuHeThong.fxml"));
+            AnchorPane MTView = (AnchorPane) loader.load();
+            borderPaneMain.setCenter(MTView);
+            //TODO: Nếu xong phần nào thì setContent vào đúng Tab của nó
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -11,14 +11,16 @@ public class CTPhieuTra {
     public ObjectProperty<Date> NgayMuon;
     public IntegerProperty SoNM;
     public DoubleProperty TienPhat;
+    private StringProperty TinhTrang;
 
-    public CTPhieuTra(String maPT, String maSach, String tenSach, Date ngayMuon, int soNM, double tienPhat) {
+    public CTPhieuTra(String maPT, String maSach, String tenSach, Date ngayMuon, int soNM, double tienPhat, String tinhTrang) {
         MaPT = new SimpleStringProperty(maPT);
         MaSach = new SimpleStringProperty(maSach);
         TenSach = new SimpleStringProperty(tenSach);
         NgayMuon = new SimpleObjectProperty<Date>(ngayMuon);
         SoNM = new SimpleIntegerProperty(soNM);
         TienPhat = new SimpleDoubleProperty(tienPhat);
+        TinhTrang = new SimpleStringProperty(tinhTrang);
     }
 
     public String getMaPT() {
@@ -91,5 +93,17 @@ public class CTPhieuTra {
 
     public void setTienPhat(double tienPhat) {
         this.TienPhat.set(tienPhat);
+    }
+
+    public String getTinhTrang() {
+        return TinhTrang.get();
+    }
+
+    public StringProperty tinhTrangProperty() {
+        return TinhTrang;
+    }
+
+    public void setTinhTrang(String tinhTrang) {
+        this.TinhTrang.set(tinhTrang);
     }
 }

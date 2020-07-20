@@ -7,6 +7,7 @@ import com.javafx.librarian.dao.PhieuTraDAO;
 import com.javafx.librarian.model.*;
 import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.PhieuTraService;
+import com.javafx.librarian.service.TacGiaService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,6 +49,8 @@ public class TraController implements Initializable {
     @FXML
     public TableColumn<CTPhieuTra, Double> colTienPhat;
     @FXML
+    public TableColumn<CTPhieuTra, String> colTinhTrangSach;
+    @FXML
     public TextField txtMaPM;
     @FXML
     public ComboBox<DocGia> cbMaDG;
@@ -79,6 +82,11 @@ public class TraController implements Initializable {
         txtNgayTra.setDisable(true);
         txtNgayMuon.setDisable(true);
         txtTienPhatKyNay.setDisable(true);
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listPT.clear();
+            listPT.addAll(PhieuTraService.getInstance().searchPT(t1));
+        });
     }
 
 
@@ -93,6 +101,7 @@ public class TraController implements Initializable {
         colTenSach.setCellValueFactory(cellData -> cellData.getValue().tenSachProperty());
         colTienPhat.setCellValueFactory(cellData -> cellData.getValue().tienPhatProperty().asObject());
         colSoNM.setCellValueFactory(cellData -> cellData.getValue().soNMProperty().asObject());
+        colTinhTrangSach.setCellValueFactory(cellData -> cellData.getValue().tinhTrangProperty());
     }
 
     private void loadData() {

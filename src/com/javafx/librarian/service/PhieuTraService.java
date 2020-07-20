@@ -1,8 +1,12 @@
 package com.javafx.librarian.service;
 
+import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.dao.PhieuTraDAO;
 import com.javafx.librarian.model.CTPhieuTra;
+import com.javafx.librarian.model.PhieuMuon;
 import com.javafx.librarian.model.PhieuTra;
+
+import java.util.List;
 
 public class PhieuTraService {
     private static PhieuTraService instance;
@@ -23,5 +27,7 @@ public class PhieuTraService {
     public int addCTPhieuTra(CTPhieuTra ctPhieuTra) {
         return PhieuTraDAO.getInstance().addCTPhieuTra(ctPhieuTra);
     }
+
+    public List<PhieuTra> searchPT(String find){return PhieuTraDAO.getInstance().searchPT(find);}
 
 }

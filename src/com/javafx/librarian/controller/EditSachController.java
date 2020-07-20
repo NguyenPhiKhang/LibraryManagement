@@ -14,8 +14,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -49,10 +55,12 @@ public class EditSachController implements Initializable {
     public Button btnThem;
     @FXML
     public Button btnHuy;
+    @FXML
+    public ImageView imgPreview;
 
     private ObservableList<TheLoai> listTheLoai;
     private ObservableList<TacGia> listTacGia;
-
+    File anhBia;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtMaSach.setDisable(true);
@@ -65,6 +73,26 @@ public class EditSachController implements Initializable {
         cbTacGia.setTooltip(new Tooltip());
         cbTacGia.setItems(listTacGia);
         cbTacGia.getSelectionModel().selectFirst();
+
+        txtNamXB.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
+                    return null;
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+            }
+
+            return change;
+        }));
+
+        txtTriGia.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(change.getControlNewText().matches("^0\\d?+"))
+                    return null;
+                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+            }
+
+            return change;
+        }));
 
         new AutoCompleteComboBoxListener<>(cbTheLoai);
         new AutoCompleteComboBoxListener<>(cbTacGia);
@@ -109,6 +137,9 @@ public class EditSachController implements Initializable {
                 break;
             }
         }
+
+        imgPreview.setImage(sach.getImage());
+        imgPreview.setCache(true);
     }
 
     public void btnHuy_Click(ActionEvent event) {
@@ -116,7 +147,7 @@ public class EditSachController implements Initializable {
         stage.close();
     }
 
-    public void btnLuu_Click(ActionEvent event) {
+    public void btnLuu_Click(ActionEvent event) throws FileNotFoundException {
         //
         String maSach = txtMaSach.getText();
         String tenSach = txtTenSach.getText();
@@ -127,9 +158,9 @@ public class EditSachController implements Initializable {
         String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
         String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
         int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
-        String anhBia = null;
+        FileInputStream anhBiaBlob = new FileInputStream(anhBia);
 
-        Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBia);
+        Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBiaBlob);
 
         SachService.getInstance().editSach(sach);
         sachController.refreshTable();
@@ -144,5 +175,15 @@ public class EditSachController implements Initializable {
         txtTriGia.setText("");
         Stage stage = (Stage) btnHuy.getScene().getWindow();
         stage.close();
+    }
+
+    public void btnChonAnh_Click(ActionEvent actionEvent) throws FileNotFoundException {
+        //
+        FileChooser imgChooser = new FileChooser();
+        Stage stage = (Stage) btnHuy.getScene().getWindow();
+        anhBia = imgChooser.showOpenDialog(stage);
+        //
+        imgPreview.setImage(new Image(new FileInputStream(anhBia.getAbsolutePath())));
+        //
     }
 }

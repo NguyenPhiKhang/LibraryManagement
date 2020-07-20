@@ -16,4 +16,7 @@ public class ThamSoService {
     public ThamSo getThamSo() {
       return ThamSoDAO.getInstance().getThamSo();
     };
+    public int suaThamSo(ThamSo thamSo) {
+        return ThamSoDAO.getInstance().suaThamSo(thamSo);
+    };
 }

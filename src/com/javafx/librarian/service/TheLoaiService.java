@@ -1,7 +1,9 @@
 package com.javafx.librarian.service;
 
+import com.javafx.librarian.dao.PhieuMuonDAO;
 import com.javafx.librarian.dao.TacGiaDAO;
 import com.javafx.librarian.dao.TheLoaiDAO;
+import com.javafx.librarian.model.PhieuMuon;
 import com.javafx.librarian.model.TacGia;
 import com.javafx.librarian.model.TheLoai;
 import java.util.List;
@@ -38,4 +40,6 @@ public class TheLoaiService {
     public int deleteTheLoai(String id) {
         return TheLoaiDAO.getInstance().deleteTheLoai(id);
     }
+
+    public List<TheLoai> searchTL(String find){return TheLoaiDAO.getInstance().searchTheLoai(find);}
 }

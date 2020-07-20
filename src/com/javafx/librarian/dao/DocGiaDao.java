@@ -249,7 +249,7 @@ public class DocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select * from tbdocgia where tinhtrangthe = '1' and record_status = '1' and madocgia NOT IN (SELECT madocgia FROM tbphieumuon WHERE tinhtrang = '1')";
+        String sql = "select * from tbdocgia where tinhtrangthe = 1 and record_status = 1 and madocgia NOT IN (SELECT madocgia FROM tbphieumuon WHERE tinhtrang = 1)";
 
         try {
             assert connection != null;

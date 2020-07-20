@@ -2,6 +2,7 @@ package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.TacGia;
 import com.javafx.librarian.service.TacGiaService;
+import com.javafx.librarian.service.TheLoaiService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -43,6 +44,8 @@ public class TacGiaController implements Initializable {
     public Button btnSua;
     @FXML
     public Tab tpTheLoai;
+    @FXML
+    public TextField textTimKiem;
     //endregion
 
     //region controller
@@ -53,6 +56,11 @@ public class TacGiaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
+
+        textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
+            listTacGia.clear();
+            listTacGia.addAll(TacGiaService.getInstance().searchTG(t1));
+        });
     }
 
     private void setCell() {

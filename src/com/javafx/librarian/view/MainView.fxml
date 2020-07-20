@@ -47,7 +47,7 @@
                         <FontAwesomeIcon fx:id="iconMaximize" glyphName="PLUS" size="1.5em" />
                     </graphic>
                 </JFXButton>
-                <JFXButton fx:id="btnTrangChu" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="5.0" layoutY="119.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="TRANG CHỦ" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
+                <JFXButton fx:id="btnTrangChu" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="5.0" layoutY="119.0" onAction="#btnTrangChuAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="TRANG CHỦ" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="119.0">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BANK" size="1.3em" wrappingWidth="19.80000114440918" />
                     </graphic>
@@ -87,7 +87,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="415.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="HỆ THỐNG" textFill="WHITE">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="415.0" onAction="#btnHeThongAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="HỆ THỐNG" textFill="WHITE">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                     </graphic>
@@ -95,7 +95,7 @@
                         <Font size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="367.0" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="BÁO CÁO THỐNG KÊ" textFill="WHITE">
+                <JFXButton alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutY="367.0" onAction="#btnBCTKAction" prefHeight="48.0" prefWidth="239.0" style="-fx-padding: 0 0 0 20;" styleClass="menuButton" text="BÁO CÁO THỐNG KÊ" textFill="WHITE">
                     <graphic>
                         <FontAwesomeIcon fill="#f5f3f3" glyphName="BOOK" size="1.5em" />
                     </graphic>

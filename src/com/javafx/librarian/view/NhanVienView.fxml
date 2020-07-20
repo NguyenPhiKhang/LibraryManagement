@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXMasonryPane?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,12 +15,12 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #7b6fe1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.NhanVienController">
    <children>
-      <Label layoutX="71.0" layoutY="15.0" prefHeight="37.0" prefWidth="274.0" text="QUAN LY NHAN VIEN" textFill="#300d30">
+      <Label layoutX="71.0" layoutY="15.0" prefHeight="37.0" prefWidth="274.0" text="QUẢN LÝ NHÂN VIÊN" textFill="#300d30">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="59.0" prefHeight="680.0" prefWidth="1043.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+      <AnchorPane layoutY="59.0" prefHeight="680.0" prefWidth="1043.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d2d2d2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <center>
@@ -42,58 +43,85 @@
                      <center>
                         <AnchorPane prefHeight="259.0" prefWidth="1035.0" style="-fx-background-color: grey; -fx-background-radius: 5;">
                            <children>
-                              <JFXButton fx:id="btnThem" layoutX="8.0" layoutY="31.0" onAction="#btnThem_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="Them" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="31.0" />
-                              <JFXButton fx:id="btnXoa" layoutX="162.0" layoutY="31.0" onAction="#btnXoa_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="Xoa" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="31.0" />
-                              <JFXButton fx:id="btnCapNhat" layoutX="84.0" layoutY="31.0" onAction="#btnSua_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="Sua" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="31.0" />
-                              <JFXButton fx:id="btnLamMoiDG" layoutX="238.0" layoutY="31.0" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: white;" text="Lam moi" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="31.0" />
-                              <TextField fx:id="textTimKiemDG" layoutX="829.0" layoutY="29.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/textFieldTheme.css" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="29.0" />
-                              <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="46.0" layoutY="65.0" prefHeight="181.0" prefWidth="932.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" styleClass="css/themes.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="65.0">
+                              <JFXButton fx:id="btnThem" layoutX="8.0" layoutY="31.0" onAction="#btnThem_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="31.0" />
+                              <JFXButton fx:id="btnXoa" layoutX="162.0" layoutY="31.0" onAction="#btnXoa_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="XÓA" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="31.0" />
+                              <JFXButton fx:id="btnCapNhat" layoutX="84.0" layoutY="31.0" onAction="#btnSua_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="SỬA" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="31.0" />
+                              <JFXButton fx:id="btnLamMoiDG" layoutX="238.0" layoutY="31.0" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: white;" text="LÀM MỚI" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="31.0" />
+                              <TextField fx:id="textTimKiem" layoutX="829.0" layoutY="29.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/textFieldTheme.css" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="29.0" />
+                              <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="8.0" layoutY="65.0" prefHeight="181.0" prefWidth="992.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" styleClass="css/themes.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="65.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="91.0" text="Mã NV" />
+                                          <Label prefHeight="17.0" prefWidth="91.0" text="Mã NV">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtMaNV" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Ngày sinh" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Ngày sinh">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtNgaySinh" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Email" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Email">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtEmail" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tên NV" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tên NV">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtTenNV" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Địa chỉ" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Địa chỉ">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtDiaChi" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="SDT" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="SĐT">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtSDT" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản:" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản:">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtUsername" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Mật khẩu:" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Mật khẩu:">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding></Label>
                                           <TextField fx:id="txtPassword" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -101,14 +129,14 @@
                               </JFXMasonryPane>
                               <HBox layoutY="-1.0" prefHeight="26.0" prefWidth="1035.0" style="-fx-background-color: #e4e4e4; -fx-background-radius: 5 5 0 0;" AnchorPane.bottomAnchor="226.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label alignment="TOP_LEFT" style="-fx-label-padding: 5 0 0 10;" text="Thong tin chi tiet">
+                                    <Label alignment="TOP_LEFT" style="-fx-label-padding: 5 0 0 10;" text="THÔNG TIN CHI TIẾT">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
                                  </children>
                               </HBox>
-                              <Label layoutX="719.0" layoutY="38.0" text="Tim kiem theo ten:" AnchorPane.rightAnchor="204.0" AnchorPane.topAnchor="38.0" />
+                              <Label layoutX="719.0" layoutY="38.0" text="Tìm kiếm theo tên" AnchorPane.rightAnchor="204.0" AnchorPane.topAnchor="38.0" />
                            </children>
                         </AnchorPane>
                      </center>
