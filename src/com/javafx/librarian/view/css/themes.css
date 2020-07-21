@@ -10,8 +10,16 @@
     -fx-background-color:  rgba(255,255,255, 0.1);;
     -fx-background-radius:  25 0 0 25;
     -fx-border-width:  0 3 0 0;
-    -fx-border-color: #d03a0b;
+    -fx-border-color: #4ba9e1;
 }
+
+/*.menuButton:focused{*/
+/*    -fx-background-color:  red;*/
+/*    -fx-background-radius:  25 0 0 25;*/
+/*    -fx-border-width:  0 3 0 0;*/
+/*    !*-fx-border-color: #d03a0b;*!*/
+/*    -fx-color-label-visible: #4ba9e1;*/
+/*}*/
 
 .tab{
     -fx-background-color: white;

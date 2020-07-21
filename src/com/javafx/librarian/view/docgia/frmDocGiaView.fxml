@@ -8,15 +8,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="layoutDocGia" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #7b6fe1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.frmDocGiaController">
+<AnchorPane fx:id="layoutDocGia" prefHeight="540.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.frmDocGiaController">
     <children>
-        <Label layoutX="71.0" layoutY="15.0" prefHeight="37.0" prefWidth="274.0" text="QUAN LY DOC GIA" textFill="#300d30">
-            <font>
-                <Font name="Arial Rounded MT Bold" size="25.0" />
-            </font>
-        </Label>
-        <ImageView fx:id="imgQLDG" fitHeight="52.0" fitWidth="61.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;file:resources/images/reader.png&quot;);" />
-        <TabPane layoutX="-3.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@../css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <AnchorPane layoutY="4.0" prefHeight="49.0" prefWidth="730.0" style="-fx-background-color: #fff; -fx-border-radius: 10;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+              <Label layoutX="64.0" layoutY="5.0" opacity="0.7" prefHeight="37.0" prefWidth="274.0" text="Quan Li Doc Gia" textFill="#3d4056">
+                  <font>
+                      <Font name="Verdana" size="22.0" />
+                  </font>
+              </Label>
+              <ImageView fx:id="imgQLDG" fitHeight="37.0" fitWidth="48.0" layoutX="9.0" layoutY="4.0" opacity="0.4" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;file:resources/images/reader.png&quot;);" />
+         </children>
+      </AnchorPane>
+        <TabPane layoutX="10.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@../css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
             <tabs>
                 <Tab text="Doc gia">
                     <content>

@@ -6,6 +6,7 @@ import com.javafx.librarian.model.LoaiDocGia;
 import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.LoaiDocGiaService;
+import com.javafx.librarian.service.ThamSoService;
 import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -16,9 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -31,6 +30,7 @@ import javax.print.Doc;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -70,6 +70,9 @@ public class AddDocGiaController {
     ObservableList<Account> listAccount = FXCollections.observableArrayList();
     ObservableList<LoaiDocGia> listLDG = FXCollections.observableArrayList();
     ObservableList<DocGia> listDocGia;
+    int tuoimax;
+    int tuoimin;
+    int hanthe;
 
     @FXML
     public void initialize(){
@@ -93,7 +96,28 @@ public class AddDocGiaController {
             cbbAccount.getItems().add(acc.getUsername());
         });
 
+        var ts = ThamSoService.getInstance().getThamSo();
+        tuoimax = ts.getMaxTuoi();
+        tuoimin = ts.getMinTuoi();
+        hanthe = ts.getHanThe();
+
         textMaDG.setText(Util.generateID(Util.PREFIX_CODE.DG));
+
+        dateNgaySinh.valueProperty().addListener((observableValue, localDate, t1) -> {
+            int a = Period.between(t1, LocalDate.now()).getYears();
+            if(!(a>=tuoimin&&a<=tuoimax)){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(panelThemDocGia.getScene().getWindow());
+                alert.setTitle("Lỗi");
+                alert.setContentText("Tuổi không thoả lớn hơn 18 và nhỏ hơn 55");
+                ButtonType btnYes = new ButtonType("OK", ButtonBar.ButtonData.YES);
+                alert.getButtonTypes().setAll(btnYes);
+                alert.showAndWait();
+
+                LocalDate dateDefault = LocalDate.now().minusYears(20);
+                dateNgaySinh.setValue(dateDefault);
+            }
+        });
     }
 
     public void setListDG(ObservableList<DocGia> listDG){
@@ -108,7 +132,7 @@ public class AddDocGiaController {
         dg.setEmail(textEmail.getText());
         dg.setNgaySinh(Date.valueOf(dateNgaySinh.getValue()));
         dg.setNgayLapThe(Date.valueOf(LocalDate.now()));
-        dg.setNgayHetHan(Date.valueOf((LocalDate.now()).plusMonths(6)));
+        dg.setNgayHetHan(Date.valueOf((LocalDate.now()).plusMonths(hanthe)));
         dg.setIdAccount(cbbAccount.getValue());
         dg.setDiaChi(textDiaChi.getText());
         dg.setSoDienThoai(textSoDienThoai.getText());
