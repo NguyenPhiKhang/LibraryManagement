@@ -3,6 +3,7 @@ package com.javafx.librarian.controller;
 import com.javafx.librarian.model.TacGia;
 import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -106,12 +107,19 @@ public class TacGiaController implements Initializable {
 
             if (option.get() == null) {
             } else if (option.get() == ButtonType.OK) {
-                TacGiaService.getInstance().deleteTacGia(temp.getMaTacGia());
+                int rs = TacGiaService.getInstance().deleteTacGia(temp.getMaTacGia());
+                Util.showSuccess(rs, "Quản lý tác giả", "Xóa tác giả thành công!");
                 refreshTable();
                 clearInput();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {
             }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn tác giả cần xóa!");
+            alert.showAndWait();
         }
 
     }
@@ -161,6 +169,12 @@ public class TacGiaController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn tác giả cần chỉnh sửa!");
+            alert.showAndWait();
         }
     }
 

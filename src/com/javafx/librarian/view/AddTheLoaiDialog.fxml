@@ -22,6 +22,14 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
+            <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="7.0" onAction="#btnCloseAction" onMouseEntered="#btnCloseMouseEnter" onMouseExited="#btnCloseMouseExit" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
+               <font>
+                  <Font size="5.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fx:id="iconClose" glyphName="CLOSE" size="1.5em" />
+               </graphic>
+            </JFXButton>
             </children>
         </Pane>
         <GridPane layoutX="151.0" layoutY="46.0" prefHeight="104.0" prefWidth="315.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">

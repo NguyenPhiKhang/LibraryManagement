@@ -6,6 +6,7 @@ import com.javafx.librarian.service.PhieuTraService;
 import com.javafx.librarian.service.SachService;
 import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -91,14 +92,14 @@ public class SachController implements Initializable {
         setCell();
         loadData();
 
-        txtMaSach.setDisable(true);
-        txtTenSach.setDisable(true);
-        txtMaTacGia.setDisable(true);
-        txtMaTheLoai.setDisable(true);
-        txtNamXB.setDisable(true);
-        txtNXB.setDisable(true);
-        txtNgayNhap.setDisable(true);
-        txtTriGia.setDisable(true);
+        txtMaSach.setEditable(false);
+        txtTenSach.setEditable(false);
+        txtMaTacGia.setEditable(false);
+        txtMaTheLoai.setEditable(false);
+        txtNamXB.setEditable(false);
+        txtNXB.setEditable(false);
+        txtNgayNhap.setEditable(false);
+        txtTriGia.setEditable(false);
         rdbTrong.setDisable(true);
         rdbDangMuon.setDisable(true);
 
@@ -159,6 +160,7 @@ public class SachController implements Initializable {
         else
             rdbDangMuon.setSelected(true);
 
+        System.out.println(temp.getImage());
         imgAnhBia.setImage(temp.getImage());
         imgAnhBia.setCache(true);
 
@@ -206,6 +208,13 @@ public class SachController implements Initializable {
                 e.printStackTrace();
             }
         }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn sách cần chỉnh sửa!");
+            alert.showAndWait();
+        }
     }
 
     public void btnXoaSach_Click(ActionEvent event) {
@@ -223,11 +232,19 @@ public class SachController implements Initializable {
 
             if (option.get() == null) {
             } else if (option.get() == ButtonType.OK) {
-                SachService.getInstance().deleteSach(temp.getMaSach());
+                int rs = SachService.getInstance().deleteSach(temp.getMaSach());
+                Util.showSuccess(rs, "Quản lý sách", "Xóa sách thành công!");
                 refreshTable();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {
             }
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn sách cần xóa!");
+            alert.showAndWait();
         }
 
     }

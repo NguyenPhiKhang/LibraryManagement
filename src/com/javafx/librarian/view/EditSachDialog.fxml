@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -27,6 +28,14 @@
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
+            <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="7.0" layoutY="7.0" onAction="#btnCloseAction" onMouseEntered="#btnCloseMouseEnter" onMouseExited="#btnCloseMouseExit" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
+               <font>
+                  <Font size="5.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fx:id="iconClose" glyphName="CLOSE" size="1.5em" />
+               </graphic>
+            </JFXButton>
             </children>
         </Pane>
         <GridPane layoutX="357.0" layoutY="46.0" prefHeight="195.0" prefWidth="356.0" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">

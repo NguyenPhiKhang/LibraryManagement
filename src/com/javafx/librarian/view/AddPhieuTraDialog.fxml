@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXMasonryPane?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -16,13 +17,21 @@
 
 <AnchorPane prefHeight="663.0" prefWidth="1071.0" style="-fx-background-radius: 5;" stylesheets="@css/textFieldTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.AddPhieuTraController">
     <children>
-        <Pane fx:id="panelThemSach" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane fx:id="panelThemPT" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <Label fx:id="labelThemSach" alignment="CENTER" layoutY="1.0" prefHeight="30.0" prefWidth="1071.0" text="THÊM PHIẾU TRẢ" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="20.0" />
                     </font>
                 </Label>
+            <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="9.0" layoutY="7.0" onAction="#btnCloseAction" onMouseEntered="#btnCloseMouseEnter" onMouseExited="#btnCloseMouseExit" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
+               <font>
+                  <Font size="5.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fx:id="iconClose" glyphName="CLOSE" size="1.5em" />
+               </graphic>
+            </JFXButton>
             </children>
         </Pane>
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -35,15 +44,14 @@
                 <TableView fx:id="tableSach" prefHeight="262.0" prefWidth="1051.0" style="-fx-background-radius: 5;" stylesheets="@css/tableTheme.css">
                     <columns>
                         <TableColumn fx:id="colMaSach" prefWidth="84.0" text="Mã sách" />
-                        <TableColumn fx:id="colTenSach" prefWidth="153.0" text="Tên sách" />
-                        <TableColumn fx:id="colMaTheLoai" prefWidth="103.0" text="Thể loại" />
-                        <TableColumn fx:id="colMaTacGia" prefWidth="124.0" text="Tác giả" />
-                        <TableColumn fx:id="colNamXB" prefWidth="79.0" text="Năm XB" />
-                        <TableColumn fx:id="colNXB" prefWidth="93.0" text="NXB" />
-                        <TableColumn fx:id="colNgayNhap" prefWidth="125.0" text="Ngày nhập" />
-                        <TableColumn fx:id="colTriGia" prefWidth="109.0" text="Trị giá" />
-                        <TableColumn fx:id="colTinhTrang" prefWidth="97.0" text="Tình trạng" />
-                        <TableColumn fx:id="colAnhBia" prefWidth="83.0" text="Ảnh bìa" />
+                        <TableColumn fx:id="colTenSach" prefWidth="172.0" text="Tên sách" />
+                        <TableColumn fx:id="colMaTheLoai" prefWidth="113.0" text="Thể loại" />
+                        <TableColumn fx:id="colMaTacGia" prefWidth="133.0" text="Tác giả" />
+                        <TableColumn fx:id="colNamXB" prefWidth="75.0" text="Năm XB" />
+                        <TableColumn fx:id="colNXB" prefWidth="105.0" text="NXB" />
+                        <TableColumn fx:id="colNgayNhap" prefWidth="133.0" text="Ngày nhập" />
+                        <TableColumn fx:id="colTriGia" prefWidth="121.0" text="Trị giá" />
+                        <TableColumn fx:id="colTinhTrang" prefWidth="114.0" text="Tình trạng" />
                     </columns>
                 </TableView>
             </center>

@@ -71,10 +71,10 @@ public class MuonController implements Initializable {
         setCell();
         loadData();
 
-        txtMaPM.setDisable(true);
-        cbMaDG.setDisable(true);
-        txtNgayMuon.setDisable(true);
-        txtHanTra.setDisable(true);
+        txtMaPM.setEditable(false);
+        cbMaDG.setEditable(false);
+        txtNgayMuon.setEditable(false);
+        txtHanTra.setEditable(false);
         rdbChuaTraDu.setDisable(true);
         rdbTraDu.setDisable(true);
         rdbChuaTraDu.setSelected(false);

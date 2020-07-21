@@ -9,17 +9,24 @@ import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.service.ThamSoService;
 import com.javafx.librarian.service.TheLoaiService;
 import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -32,6 +39,8 @@ import java.util.ResourceBundle;
 
 public class AddSachController implements Initializable {
     private SachController sachController;
+    @FXML
+    public Pane panelThemSach;
     @FXML
     public TextField txtMaSach;
     @FXML
@@ -60,6 +69,12 @@ public class AddSachController implements Initializable {
     public Button btnChonAnh;
     @FXML
     public ImageView imgPreview;
+    @FXML
+    public JFXButton btnClose;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
 
     private ObservableList<TheLoai> listTheLoai;
     private ObservableList<TacGia> listTacGia;
@@ -67,6 +82,16 @@ public class AddSachController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panelThemSach.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelThemSach.setOnMouseDragged(mouseEvent -> {
+            panelThemSach.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelThemSach.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
+
         rdbTrong.setSelected(true);
         txtMaSach.setText(Util.generateID(Util.PREFIX_CODE.S));
         txtMaSach.setDisable(true);
@@ -125,6 +150,20 @@ public class AddSachController implements Initializable {
         stage.close();
     }
 
+    public void btnCloseAction(ActionEvent actionEvent) {
+        ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
+    }
+
     public void btnThem_Click(ActionEvent event) throws FileNotFoundException {
         //
         ThamSo thamSo = ThamSoService.getInstance().getThamSo();
@@ -150,7 +189,7 @@ public class AddSachController implements Initializable {
 
             Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBiaBlob);
 
-            SachService.getInstance().addSach(sach);
+            int rs = SachService.getInstance().addSach(sach);
             sachController.refreshTable();
             txtMaSach.setText(Util.generateID(Util.PREFIX_CODE.S));
             txtTenSach.setText("");
@@ -162,6 +201,7 @@ public class AddSachController implements Initializable {
             rdbTrong.setSelected(true);
             rdbDangMuon.setSelected(false);
             txtTriGia.setText("");
+            Util.showSuccess(rs, "Quản lý sách", "Thêm sách thành công!");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("THÔNG BÁO");

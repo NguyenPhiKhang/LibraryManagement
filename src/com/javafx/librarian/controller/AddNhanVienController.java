@@ -1,28 +1,36 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.dao.QuyenDAO;
 import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.NhanVien;
+import com.javafx.librarian.model.Quyen;
 import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.service.NhanVienService;
 import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddNhanVienController implements Initializable {
     NhanVienController nhanVienController;
 
-    @FXML
-    public Button btnDong;
     @FXML
     public Button btnThem;
     @FXML
@@ -40,11 +48,45 @@ public class AddNhanVienController implements Initializable {
     @FXML
     public TextField txtUsername;
     @FXML
-    public TextField txtPassword;
+    public PasswordField txtPassword;
+    @FXML
+    public ComboBox<Quyen> cbLoai;
+    @FXML
+    public Pane panelThemNV;
+    @FXML
+    public JFXButton btnDong;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panelThemNV.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelThemNV.setOnMouseDragged(mouseEvent -> {
+            panelThemNV.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelThemNV.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
         txtMaNV.setText(Util.generateID(Util.PREFIX_CODE.NV));
+
+        txtSDT.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(!change.getControlNewText().matches("\\d+"))
+                    return null;
+            }
+
+            return change;
+        }));
+
+        List<Quyen> role = QuyenDAO.getInstance().getAllQuyen();
+        role.remove(0);
+        cbLoai.setItems(FXCollections.observableList(role));
+        cbLoai.getSelectionModel().selectFirst();
+
     }
 
     public void setNhanVienController(NhanVienController nv) {
@@ -65,15 +107,37 @@ public class AddNhanVienController implements Initializable {
         Date ngaySinh = Date.valueOf(dpNgaySinh.getValue());
         String userName = txtUsername.getText();
         String passWord = txtPassword.getText();
+        int role = cbLoai.getSelectionModel().getSelectedItem().getID();
 
+        //VALIDATE
+        int age = Period.between(dpNgaySinh.getValue(), LocalDate.now()).getYears();
+        if(!(age >= 20 && age <= 60)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(cbLoai.getScene().getWindow());
+            alert.setHeaderText("Lỗi");
+            alert.setContentText("Tuổi của nhân viên phải từ 20 đến 60!");
+            alert.show();
+        };
+        //
         //create account according to new NhanVien
-        Account acc = new Account(userName, passWord, 3, "", "");
+        Account acc = new Account(userName, passWord, role, "", "");
         AccountService.getInstance().addUser(acc);
 
         //
         NhanVien nv = new NhanVien(maNV, tenNV, diaChi, ngaySinh, email, sdt, acc.getUsername());
         //
-        int rest = NhanVienService.getInstance().addNV(nv);
+        int rs = NhanVienService.getInstance().addNV(nv);
+        Util.showSuccess(rs, "Quản lý nhân viên", "Thêm nhân viên thành công!");
         nhanVienController.refreshTable();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnDong.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnDong.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
     }
 }

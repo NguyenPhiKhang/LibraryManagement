@@ -59,8 +59,8 @@ public class TheLoaiController implements Initializable {
         setCell();
         loadData();
 
-        txtMaTheLoai.setDisable(true);
-        txtTenTheLoai.setDisable(true);
+        txtMaTheLoai.setEditable(false);
+        txtTenTheLoai.setEditable(false);
 
         textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
             listTheLoai.clear();
@@ -112,11 +112,18 @@ public class TheLoaiController implements Initializable {
 
             if (option.get() == null) {
             } else if (option.get() == ButtonType.OK) {
-                TheLoaiService.getInstance().deleteTheLoai(temp.getMaTheLoai());
+                int rs = TheLoaiService.getInstance().deleteTheLoai(temp.getMaTheLoai());
+                Util.showSuccess(rs, "Quản lý thể loại", "Xóa thể loại thành công!");
                 refreshTable();
             } else if (option.get() == ButtonType.CANCEL) {
             } else {
             }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn thể loại cần xóa!");
+            alert.showAndWait();
         }
 
     }
@@ -162,6 +169,12 @@ public class TheLoaiController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn thể loại cần chỉnh sửa!");
+            alert.showAndWait();
         }
     }
 }

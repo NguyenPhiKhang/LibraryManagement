@@ -5,6 +5,8 @@ import com.javafx.librarian.dao.SachDAO;
 import com.javafx.librarian.model.*;
 import com.javafx.librarian.service.*;
 import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -69,6 +72,14 @@ public class GiaHanPMController implements Initializable {
     public DatePicker dtHanTra;
     @FXML
     public TextField textTimKiem;
+    @FXML
+    public Pane panelGiaHanPM;
+    @FXML
+    public JFXButton btnClose;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
     //endregion
 
     //region controller
@@ -79,6 +90,15 @@ public class GiaHanPMController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panelGiaHanPM.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelGiaHanPM.setOnMouseDragged(mouseEvent -> {
+            panelGiaHanPM.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelGiaHanPM.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
         cbMaDG.setDisable(true);
         dtNgayMuon.setDisable(true);
         setCell();
@@ -86,6 +106,17 @@ public class GiaHanPMController implements Initializable {
         cbMaDG.setItems(listDG);
         listSach = FXCollections.observableArrayList(SachDAO.getInstance().getAllSach());
         tableSach.setItems(listSach);
+
+        dtHanTra.valueProperty().addListener((ov, oldValue, newValue) -> {
+            if(newValue.isBefore(oldValue))
+            {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("THÔNG BÁO");
+                alert.setHeaderText("Ngày gia hạn phải sau ngày trả hiện tại. Hãy chọn lại ngày trả phù hợp!");
+                alert.showAndWait();
+                dtHanTra.setValue(oldValue);
+            }
+        });
     }
     public void setMuonController(MuonController muon) {
         this.muonController = muon;
@@ -133,17 +164,28 @@ public class GiaHanPMController implements Initializable {
         stage.close();
     }
 
+    public void btnCloseAction(ActionEvent actionEvent) {
+        ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
+    }
+
     public void btnLuu_Click(ActionEvent event) {
         //
         String maPM = txtMaPM.getText();
         Date hanTra = java.sql.Date.valueOf(dtHanTra.getValue());
 
-        PhieuMuonService.getInstance().giaHanPhieuMuon(maPM, hanTra);
+        int rs = PhieuMuonService.getInstance().giaHanPhieuMuon(maPM, hanTra);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("THÔNG BÁO");
-        alert.setHeaderText("Gia hạn phiếu mượn thành công");
-        alert.showAndWait();
+        Util.showSuccess(rs, "Quản lý mượn", "Gia hạn phiếu mượn thành công!");
 
         muonController.refreshTable();
         txtMaPM.setText("");

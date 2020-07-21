@@ -9,6 +9,8 @@ import com.javafx.librarian.service.PhieuTraService;
 import com.javafx.librarian.service.SachService;
 import com.javafx.librarian.service.ThamSoService;
 import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -81,6 +84,14 @@ public class AddPhieuTraController implements Initializable {
     public DatePicker dtNgayTra;
     @FXML
     public TextField txtTienPhat;
+    @FXML
+    public Pane panelThemPT;
+    @FXML
+    public JFXButton btnClose;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
 
     private ObservableList<Sach> listSach;
     private List<Sach> listSelectionSach = new ArrayList<>();
@@ -90,6 +101,16 @@ public class AddPhieuTraController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panelThemPT.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelThemPT.setOnMouseDragged(mouseEvent -> {
+            panelThemPT.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelThemPT.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
+
         txtTienPhat.setText("0");
         txtTienPhat.setDisable(true);
         txtMaPT.setText(Util.generateID(Util.PREFIX_CODE.PT));
@@ -230,6 +251,20 @@ public class AddPhieuTraController implements Initializable {
         stage.close();
     }
 
+    public void btnCloseAction(ActionEvent actionEvent) {
+        ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
+    }
+
     public void setCbMaDGAction(ActionEvent event) {
         getListPMByDocGia();
     }
@@ -356,7 +391,7 @@ public class AddPhieuTraController implements Initializable {
         }
         else {
             PhieuTra phieuTra = new PhieuTra(txtMaPT.getText(),cbMaPM.getValue().toString(),(cbMaDG.getValue().toString().split(" - "))[0].trim(), java.sql.Date.valueOf(dtNgayTra.getValue()), Double.parseDouble(txtTienPhat.getText()));
-            PhieuTraService.getInstance().addPhieuTra(phieuTra);
+            int rs = PhieuTraService.getInstance().addPhieuTra(phieuTra);
             for(int i = 0; i < temp.size(); i++)
             {
                 PhieuTraService.getInstance().addCTPhieuTra(temp.get(i));
@@ -364,10 +399,7 @@ public class AddPhieuTraController implements Initializable {
                 PhieuMuonDAO.getInstance().deleteCTPhieuMuon(phieuTra.getMaPM(), temp.get(i).getMaSach());
             }
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Thêm phiếu trả thành công");
-            alert.showAndWait();
+            Util.showSuccess(rs, "Quản lý trả", "Thêm phiếu trả thành công!");
 
             //Check if user has return all books -> PM is inactive
             finishPM(phieuTra.getMaPM());

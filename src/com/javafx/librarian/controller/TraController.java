@@ -76,12 +76,12 @@ public class TraController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
-        txtMaPM.setDisable(true);
-        txtMaPT.setDisable(true);
-        cbMaDG.setDisable(true);
-        txtNgayTra.setDisable(true);
-        txtNgayMuon.setDisable(true);
-        txtTienPhatKyNay.setDisable(true);
+        txtMaPM.setEditable(false);
+        txtMaPT.setEditable(false);
+        cbMaDG.setEditable(false);
+        txtNgayTra.setEditable(false);
+        txtNgayMuon.setEditable(false);
+        txtTienPhatKyNay.setEditable(false);
 
         textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
             listPT.clear();

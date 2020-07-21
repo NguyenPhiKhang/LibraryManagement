@@ -173,9 +173,10 @@ public class AccountDao {
     public int editUser(Account user) {
         int res = 0;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
-            PreparedStatement ps = conn.prepareStatement("update tbaccount set password=? where idaccount=?");
+            PreparedStatement ps = conn.prepareStatement("update tbaccount set password=?, idper=? where idaccount=?");
             ps.setString(1, user.getPassword());
-            ps.setString(2, user.getUsername());
+            ps.setInt(2, user.getIdper());
+            ps.setString(3, user.getUsername());
             res = ps.executeUpdate();
 
         } catch (Exception e) {

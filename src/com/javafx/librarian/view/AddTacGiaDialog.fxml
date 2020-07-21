@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -14,13 +15,21 @@
 
 <AnchorPane prefHeight="220.0" prefWidth="315.0" style="-fx-background-radius: 5;" stylesheets="@css/textFieldTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.AddTacGiaController">
    <children>
-      <Pane fx:id="panelThemTheLoai" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="panelThemTacGia" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label fx:id="labelThemTheLoai" alignment="CENTER" layoutY="1.0" prefHeight="26.0" prefWidth="315.0" text="THÊM TÁC GIẢ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="7.0" layoutY="7.0" onAction="#btnCloseAction" onMouseEntered="#btnCloseMouseEnter" onMouseExited="#btnCloseMouseExit" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
+               <font>
+                  <Font size="5.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIcon fx:id="iconClose" glyphName="CLOSE" size="1.5em" />
+               </graphic>
+            </JFXButton>
          </children>
       </Pane>
       <GridPane layoutX="151.0" layoutY="46.0" prefHeight="104.0" prefWidth="315.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">

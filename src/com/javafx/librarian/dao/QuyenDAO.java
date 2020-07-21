@@ -42,4 +42,23 @@ public class QuyenDAO {
 
         return list;
     }
+
+    public Quyen getQuyenByIDAcc(String idAccount) {
+        try (Connection conn = JDBCConnection.getJDBCConnection()) {
+            PreparedStatement ps = conn.prepareStatement("select r.* from tbphanquyen r, tbaccount a where r.idper = a.idper and a.idaccount = ?");
+            ps.setString(1, idAccount);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                int ID = res.getInt(1);
+                String name = res.getString(2);
+                String code = res.getString(3);
+                String des = res.getString(4);
+                return new Quyen(ID, name, code, des);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

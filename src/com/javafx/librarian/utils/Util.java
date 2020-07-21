@@ -1,5 +1,10 @@
 package com.javafx.librarian.utils;
 
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
+
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -10,7 +15,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class Util {
-    public static final String URL_JDBC = "jdbc:mysql://localhost:3306/qlthuvien?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC";
+    public static final String URL_JDBC = "jdbc:mysql://localhost:3306/qltv?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC";
     public static final String USERNAME_JDBC = "root";
     public static final String PASSWORD_JDBC = "";
     public static final int MAX_CODE = 999999;
@@ -61,4 +66,15 @@ public class Util {
 
         return  prefix + "_" +formatter.format(key);
     };
+
+    public static void showSuccess(int i, String title ,String s) {
+        TrayNotification tray = new TrayNotification();
+        AnimationType type = AnimationType.POPUP;
+
+        tray.setAnimationType(type);
+        tray.setTitle(title);
+        tray.setMessage(s);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndDismiss(Duration.millis(2000));
+    }
 }

@@ -99,7 +99,7 @@ public class CULoaiDocGiaController {
         loaiDocGia.setTenLoaiDocGia(textTenLDG.getText());
 
         int rs = LoaiDocGiaService.getInstance().addLoaiDocGia(loaiDocGia);
-        System.out.println(rs);
+        Util.showSuccess(rs, "Quản lý loại đọc giả", "Thêm loại đọc giả thành công!");
         LoaiDocGia loaidg = LoaiDocGiaService.getInstance().getLoaiDocGia(loaiDocGia.getMaLoaiDocGia());
         this.listLDG.add(loaidg);
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();

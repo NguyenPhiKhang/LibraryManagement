@@ -109,7 +109,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản:">
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding></Label>
@@ -118,11 +118,11 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Mật khẩu:">
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Chức vụ">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding></Label>
-                                          <TextField fx:id="txtPassword" editable="false" prefWidth="190.0" />
+                                          <TextField fx:id="txtChucVu" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                  </children>

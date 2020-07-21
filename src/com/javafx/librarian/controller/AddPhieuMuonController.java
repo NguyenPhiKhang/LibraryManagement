@@ -6,6 +6,8 @@ import com.javafx.librarian.dao.SachDAO;
 import com.javafx.librarian.model.*;
 import com.javafx.librarian.service.*;
 import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
@@ -17,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -73,6 +76,14 @@ public class AddPhieuMuonController implements Initializable {
     public DatePicker dtHanTra;
     @FXML
     public TextField textTimKiem;
+    @FXML
+    public Pane panelThemPM;
+    @FXML
+    public JFXButton btnClose;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
     //endregion
 
     //region controller
@@ -84,6 +95,16 @@ public class AddPhieuMuonController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panelThemPM.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelThemPM.setOnMouseDragged(mouseEvent -> {
+            panelThemPM.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelThemPM.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
+
         dtHanTra.setDisable(true);
         dtHanTra.setEditable(false);
         txtMaPM.setText(Util.generateID(Util.PREFIX_CODE.PM));
@@ -110,6 +131,8 @@ public class AddPhieuMuonController implements Initializable {
             }
         });
         new AutoCompleteComboBoxListener<>(cbMaDG);
+
+
     }
     public void setMuonController(MuonController muon) {
         this.muonController = muon;
@@ -146,6 +169,20 @@ public class AddPhieuMuonController implements Initializable {
         stage.close();
     }
 
+    public void btnCloseAction(ActionEvent actionEvent) {
+        ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
+    }
+
     public void changeHanTra()
     {
         dtHanTra.setValue(dtNgayMuon.getValue().plusDays(7));
@@ -179,7 +216,7 @@ public class AddPhieuMuonController implements Initializable {
         else
         {
             PhieuMuon phieuMuon = new PhieuMuon(maPM, maDG, ngayMuon, hanTra, tinhTrang);
-            PhieuMuonService.getInstance().addPhieuMuon(phieuMuon);
+            int rs = PhieuMuonService.getInstance().addPhieuMuon(phieuMuon);
 
             for(int i = 0; i < temp.size(); i++)
             {
@@ -189,9 +226,7 @@ public class AddPhieuMuonController implements Initializable {
             }
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("THÔNG BÁO");
-            alert.setHeaderText("Thêm phiếu mượn thành công");
-            alert.showAndWait();
+            Util.showSuccess(rs, "Quản lý mượn", "Thêm phiếu mượn thành công!");
 
             muonController.refreshTable();
             txtMaPM.setText(Util.generateID(Util.PREFIX_CODE.PM));

@@ -4,12 +4,17 @@ import com.javafx.librarian.model.TacGia;
 import com.javafx.librarian.model.TheLoai;
 import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -27,10 +32,27 @@ public class EditTheLoaiController implements Initializable{
     public Button btnLuu;
     @FXML
     public Button btnHuy;
+    @FXML
+    public Pane panelSuaTheLoai;
+    @FXML
+    public JFXButton btnClose;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         txtMaTheLoai.setDisable(true);
+        panelSuaTheLoai.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelSuaTheLoai.setOnMouseDragged(mouseEvent -> {
+            panelSuaTheLoai.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelSuaTheLoai.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
     }
 
     public void setTheLoaiController(TheLoaiController theLoai) {
@@ -47,13 +69,28 @@ public class EditTheLoaiController implements Initializable{
         stage.close();
     }
 
+    public void btnCloseAction(ActionEvent actionEvent) {
+        ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
+    }
+
     public void btnLuu_Click(ActionEvent event) {
         //
         String maTheLoai = txtMaTheLoai.getText();
         String tenTheLoai = txtTenTheLoai.getText();
         TheLoai theloai = new TheLoai(maTheLoai, tenTheLoai);
         //
-        TheLoaiService.getInstance().editTheLoai(theloai);
+        int rs = TheLoaiService.getInstance().editTheLoai(theloai);
+        Util.showSuccess(rs, "Quản lý thể loại", "Sửa thể loại thành công!");
         theLoaiController.refreshTable();
         txtMaTheLoai.setText("");
         txtTenTheLoai.setText("");

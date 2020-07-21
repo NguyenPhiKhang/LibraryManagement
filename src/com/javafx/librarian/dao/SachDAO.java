@@ -4,7 +4,6 @@ import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TheLoai;
 import javafx.collections.ObservableList;
 import com.javafx.librarian.utils.*;
-import org.apache.logging.log4j.core.util.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;

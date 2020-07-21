@@ -86,6 +86,7 @@ public class BaoCaoMuonTLController implements Initializable {
         dataThang.add(11);
         dataThang.add(12);
         cbThang.setItems(FXCollections.observableList(dataThang));
+        cbThang.getSelectionModel().selectFirst();
         txtNam.setTextFormatter(new TextFormatter<Integer>(change -> {
             if (!change.getControlNewText().isEmpty()) {
                 if(change.getControlNewText().matches("^0\\d?+"))
@@ -99,31 +100,50 @@ public class BaoCaoMuonTLController implements Initializable {
 
     public void btnThongKe_Click()
     {
-        int thang = cbThang.getValue();
-        int nam = Integer.parseInt(txtNam.getText());
-        BaoCaoTheoTheLoaiService.getInstance().deleteBaoCaoTheoTheLoai(thang, nam);
-        int tongluotmuon = BaoCaoTheoTheLoaiService.getInstance().getTongLuotMuon(thang, nam);
-        listBCTTL = FXCollections.observableArrayList(BaoCaoTheoTheLoaiService.getInstance().getAllCTBCTheoTL(thang, nam));
-        tbCTBCTheLoai.setItems(listBCTTL);
-        BaoCaoTheoTheLoai bc = new BaoCaoTheoTheLoai(mabc, thang, nam, tongluotmuon);
-        BaoCaoTheoTheLoaiService.getInstance().addBaoCaoTheoTheLoai(bc);
-        for(int i = 0; i < listBCTTL.size(); i++)
+        if(txtNam.getText().equals(""))
         {
-            CTBaoCaoTheoTheLoai ctbc = new CTBaoCaoTheoTheLoai(mabc, listBCTTL.get(i).getMaTheLoai(), listBCTTL.get(i).getTenTheLoai(), listBCTTL.get(i).getSoLuotMuon(), listBCTTL.get(i).getTiLe());
-            BaoCaoTheoTheLoaiService.getInstance().addCTBaoCaoTheoTheLoai(ctbc);
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập năm!");
+            alert.showAndWait();
+        }
+        else
+        {
+            int thang = cbThang.getValue();
+            int nam = Integer.parseInt(txtNam.getText());
+            BaoCaoTheoTheLoaiService.getInstance().deleteBaoCaoTheoTheLoai(thang, nam);
+            int tongluotmuon = BaoCaoTheoTheLoaiService.getInstance().getTongLuotMuon(thang, nam);
+            listBCTTL = FXCollections.observableArrayList(BaoCaoTheoTheLoaiService.getInstance().getAllCTBCTheoTL(thang, nam));
+            tbCTBCTheLoai.setItems(listBCTTL);
+            BaoCaoTheoTheLoai bc = new BaoCaoTheoTheLoai(mabc, thang, nam, tongluotmuon);
+            BaoCaoTheoTheLoaiService.getInstance().addBaoCaoTheoTheLoai(bc);
+            for(int i = 0; i < listBCTTL.size(); i++)
+            {
+                CTBaoCaoTheoTheLoai ctbc = new CTBaoCaoTheoTheLoai(mabc, listBCTTL.get(i).getMaTheLoai(), listBCTTL.get(i).getTenTheLoai(), listBCTTL.get(i).getSoLuotMuon(), listBCTTL.get(i).getTiLe());
+                BaoCaoTheoTheLoaiService.getInstance().addCTBaoCaoTheoTheLoai(ctbc);
+            }
         }
     }
 
     public void btnlapBaoCao_Click() throws JRException {
-        int thang = cbThang.getValue();
-        int nam = Integer.parseInt(txtNam.getText());
-        int tongluotmuon = BaoCaoTheoTheLoaiService.getInstance().getTongLuotMuon(thang, nam);
-        String reportSrcFile = "../view/report/ReportSachTheoTheLoai.jrxml";
-        try {
-            // --- Show Jasper Report on click-----
-            new PrintReport().showReport(reportSrcFile, thang, nam, mabc, tongluotmuon);
-        } catch (ClassNotFoundException | JRException | SQLException e1) {
-            e1.printStackTrace();
+        if(txtNam.getText().equals(""))
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập năm!");
+            alert.showAndWait();
+        }
+        else {
+            int thang = cbThang.getValue();
+            int nam = Integer.parseInt(txtNam.getText());
+            int tongluotmuon = BaoCaoTheoTheLoaiService.getInstance().getTongLuotMuon(thang, nam);
+            String reportSrcFile = "../view/report/ReportSachTheoTheLoai.jrxml";
+            try {
+                // --- Show Jasper Report on click-----
+                new PrintReport().showReport(reportSrcFile, thang, nam, mabc, tongluotmuon);
+            } catch (ClassNotFoundException | JRException | SQLException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 }

@@ -28,6 +28,8 @@ public class Sach {
     }
 
     public Image getImage() {
+        if(AnhBia == null)
+            return null;
        if(showAnh == null)
        {
            showAnh = new Image(AnhBia);

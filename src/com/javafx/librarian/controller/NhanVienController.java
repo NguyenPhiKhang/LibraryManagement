@@ -1,5 +1,6 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.dao.QuyenDAO;
 import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.NhanVien;
 import com.javafx.librarian.model.TacGia;
@@ -7,6 +8,7 @@ import com.javafx.librarian.service.AccountService;
 import com.javafx.librarian.service.NhanVienService;
 import com.javafx.librarian.service.PhieuTraService;
 import com.javafx.librarian.service.TacGiaService;
+import com.javafx.librarian.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,7 +60,7 @@ public class NhanVienController implements Initializable {
     @FXML
     public TextField txtUsername;
     @FXML
-    public TextField txtPassword;
+    public TextField txtChucVu;
     @FXML
     public TextField textTimKiem;
 
@@ -101,7 +103,7 @@ public class NhanVienController implements Initializable {
         txtEmail.setText(temp.getEmail());
         txtSDT.setText(temp.getSDT());
         txtUsername.setText(acc.getUsername());
-        txtPassword.setText(acc.getPassword());
+        txtChucVu.setText(QuyenDAO.getInstance().getQuyenByIDAcc(temp.getIdAccount()).getName());
     }
 
     public void refreshTable() {
@@ -139,7 +141,6 @@ public class NhanVienController implements Initializable {
     }
 
     public void btnSua_Click(ActionEvent event) {
-        System.out.println("KAKA");
         if (tbhienthi.getSelectionModel().getSelectedIndex() >= 0) {
             NhanVien temp = tbhienthi.getSelectionModel().getSelectedItem();
             //
@@ -163,6 +164,13 @@ public class NhanVienController implements Initializable {
                 e.printStackTrace();
             }
         }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn nhân viên cần chỉnh sửa!");
+            alert.showAndWait();
+        }
     }
 
     public void btnXoa_Click(ActionEvent event) {
@@ -179,10 +187,18 @@ public class NhanVienController implements Initializable {
             Optional<ButtonType> option = alert.showAndWait();
 
              if (option.get() == ButtonType.OK) {
-                NhanVienService.getInstance().deleteNV(temp.getMaNV());
+                int rs = NhanVienService.getInstance().deleteNV(temp.getMaNV());
+                Util.showSuccess(rs, "Quản lý nhân viên", "Xóa nhân viên thành công!");
                 refreshTable();
                 clearInput();
             }
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn nhân viên cần chỉnh sửa!");
+            alert.showAndWait();
         }
 
     }

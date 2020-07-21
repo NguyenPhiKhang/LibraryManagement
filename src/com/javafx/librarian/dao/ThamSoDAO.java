@@ -2,7 +2,6 @@ package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.ThamSo;
-import groovy.grape.GrapeIvy;
 
 import java.io.File;
 import java.io.FileInputStream;

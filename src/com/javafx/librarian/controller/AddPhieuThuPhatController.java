@@ -111,7 +111,7 @@ public class AddPhieuThuPhatController {
         pt.setSoTienThu(Double.parseDouble(spnSoTienThu.getValue().toString()));
 
         int rs = PhieuThuService.getInstance().addPhieuThuPhat(pt);
-        System.out.println(rs);
+        Util.showSuccess(rs, "Quản lý phạt", "Thêm phiếu phạt thành công!");
         listPhieuThus.add(PhieuThuService.getInstance().getPhieuPhatById(pt.getMaPhieuThu()));
 
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();

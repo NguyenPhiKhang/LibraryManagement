@@ -7,6 +7,8 @@ import com.javafx.librarian.service.SachService;
 import com.javafx.librarian.service.TacGiaService;
 import com.javafx.librarian.service.TheLoaiService;
 import com.javafx.librarian.utils.Util;
+import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.property.ObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +18,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -31,6 +35,8 @@ import java.util.ResourceBundle;
 public class EditSachController implements Initializable {
     private SachController sachController;
     private Sach sach;
+    @FXML
+    public Pane panelThemSach;
     @FXML
     public TextField txtMaSach;
     @FXML
@@ -57,12 +63,28 @@ public class EditSachController implements Initializable {
     public Button btnHuy;
     @FXML
     public ImageView imgPreview;
+    @FXML
+    public JFXButton btnClose;
+    @FXML
+    public FontAwesomeIcon iconClose;
+    private double mousepX = 0;
+    private double mousepY = 0;
 
     private ObservableList<TheLoai> listTheLoai;
     private ObservableList<TacGia> listTacGia;
     File anhBia;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        panelThemSach.setOnMousePressed(mouseEvent -> {
+            mousepX = mouseEvent.getSceneX();
+            mousepY = mouseEvent.getSceneY();
+        });
+
+        panelThemSach.setOnMouseDragged(mouseEvent -> {
+            panelThemSach.getScene().getWindow().setX(mouseEvent.getScreenX() - mousepX);
+            panelThemSach.getScene().getWindow().setY(mouseEvent.getScreenY() - mousepY);
+        });
+
         txtMaSach.setDisable(true);
         listTheLoai = FXCollections.observableArrayList(TheLoaiService.getInstance().getAllTheLoai());
         cbTheLoai.setTooltip(new Tooltip());
@@ -147,6 +169,20 @@ public class EditSachController implements Initializable {
         stage.close();
     }
 
+    public void btnCloseAction(ActionEvent actionEvent) {
+        ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+    }
+
+    public void btnCloseMouseEnter(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: red; -fx-background-radius: 15");
+        iconClose.setVisible(true);
+    }
+
+    public void btnCloseMouseExit(MouseEvent mouseEvent) {
+        btnClose.setStyle("-fx-background-color: #a6a6a6; -fx-background-radius: 15");
+        iconClose.setVisible(false);
+    }
+
     public void btnLuu_Click(ActionEvent event) throws FileNotFoundException {
         //
         String maSach = txtMaSach.getText();
@@ -158,11 +194,16 @@ public class EditSachController implements Initializable {
         String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
         String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
         int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
-        FileInputStream anhBiaBlob = new FileInputStream(anhBia);
+        FileInputStream anhBiaBlob = null;
+        if(anhBia == null)
+            anhBiaBlob = sach.getAnhBia();
+        else
+            anhBiaBlob = new FileInputStream(anhBia);
 
         Sach sach = new Sach(maSach, tenSach, maTheLoai, maTacGia, namXB, NXB, ngayNhap, triGia, tinhTrang, anhBiaBlob);
 
-        SachService.getInstance().editSach(sach);
+        int rs = SachService.getInstance().editSach(sach);
+        Util.showSuccess(rs, "Quản lý sách", "Sửa sách thành công!");
         sachController.refreshTable();
         txtTenSach.setText("");
         cbTheLoai.getSelectionModel().selectFirst();
@@ -186,4 +227,5 @@ public class EditSachController implements Initializable {
         imgPreview.setImage(new Image(new FileInputStream(anhBia.getAbsolutePath())));
         //
     }
+
 }

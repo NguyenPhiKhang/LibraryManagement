@@ -114,7 +114,7 @@ public class AddDocGiaController {
         dg.setSoDienThoai(textSoDienThoai.getText());
 
         int rs = DocGiaService.getInstance().addDocGia(dg);
-        System.out.println(rs);
+        Util.showSuccess(rs, "Quản lý đọc giả", "Thêm đọc giả thành công!");
         listDocGia.add(DocGiaService.getInstance().getDocGia(dg.getIdAccount(), dg.getMaDocGia()));
 
 //        boolean rs = DocGiaService.getInstance().updatecodedg();

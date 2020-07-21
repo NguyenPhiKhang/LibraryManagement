@@ -65,4 +65,9 @@ public class Quyen {
     public void setDescription(String description) {
         this.Description.set(description);
     }
+
+    @Override
+    public String toString() {
+        return this.getID() + " - " + this.getName();
+    }
 }

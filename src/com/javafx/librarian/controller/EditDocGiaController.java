@@ -118,7 +118,7 @@ public class EditDocGiaController{
         this.dg.setMaLoaiDocGia(listLDG.stream().filter(ldg-> Objects.equals(ldg.getTenLoaiDocGia(), cbbLoaiDG.getValue())).collect(Collectors.toList()).get(0).getMaLoaiDocGia());
 
         int rs = DocGiaService.getInstance().updateDocGia(dg);
-        System.out.println(rs);
+        Util.showSuccess(rs, "Quản lý đọc giả", "Sửa đọc giả thành công!");
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
     }
 
