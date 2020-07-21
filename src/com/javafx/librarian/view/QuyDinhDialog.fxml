@@ -15,88 +15,139 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Tuổi tối đa">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Tuổi tối đa">
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtMaxTuoi" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtMaxTuoi" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Tuổi tối thiểu">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Tuổi tối thiểu">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtMinTuoi" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtMinTuoi" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Thời hạn thẻ">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Thời hạn thẻ">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtHanThe" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtHanThe" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Khoảng cách XB">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Khoảng cách XB">
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtXB" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtXB" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Số sách mượn tối đa">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Số sách mượn tối đa">
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtMaxMuon" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtMaxMuon" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Thời gian mượn tối đa">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Thời gian mượn tối đa">
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtTimeMuon" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtTimeMuon" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Tiền phạt khi trả trễ/ngày">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Tiền phạt khi trả trễ/ngày">
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtTienPhat" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtTienPhat" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="370.0">
                <children>
-                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="206.0" style="-fx-label-padding: 0 0 0 10;" text="Tiền phạt làm hỏng sách">
+                  <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="220.0" style="-fx-label-padding: 0 0 0 10;" text="Tiền phạt làm hỏng sách">
                      <padding>
                         <Insets left="20.0" />
-                     </padding></Label>
-                  <TextField fx:id="txtTienHu" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="txtTienHu" prefHeight="27.0" prefWidth="190.0" stylesheets="@css/textFieldTheme.css">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                </children>
             </HBox>
          </children>
       </JFXMasonryPane>
-      <JFXButton fx:id="btnCapNhat" layoutX="545.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btnCapNhat_Click" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #4BADF8;" text="CẬP NHẬT" AnchorPane.rightAnchor="28.0" />
+      <JFXButton fx:id="btnCapNhat" layoutX="545.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#btnCapNhat_Click" prefHeight="39.0" prefWidth="140.0" style="-fx-background-color: #4BADF8;" text="CẬP NHẬT" AnchorPane.rightAnchor="28.0">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font></JFXButton>
       <Label contentDisplay="CENTER" layoutY="10.0" prefHeight="17.0" prefWidth="216.0" style="-fx-label-padding: 0 0 0 10;" text="QUY ĐỊNH">
          <font>
-            <Font name="System Bold" size="19.0" />
+            <Font name="Verdana Bold" size="18.0" />
          </font></Label>
    </children>
 </AnchorPane>

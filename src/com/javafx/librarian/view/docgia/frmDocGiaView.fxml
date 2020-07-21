@@ -13,7 +13,7 @@
     <children>
       <AnchorPane fx:id="paneHeaderQLDG" layoutY="4.0" prefHeight="49.0" prefWidth="730.0" style="-fx-background-color: #f2f2f2;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
-              <Label layoutX="64.0" layoutY="5.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="Quan Li Doc Gia" textFill="#3d4056">
+              <Label layoutX="64.0" layoutY="5.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="QUẢN LÝ ĐỌC GIẢ" textFill="#3d4056">
                   <font>
                       <Font name="Verdana" size="22.0" />
                   </font>
@@ -23,7 +23,7 @@
       </AnchorPane>
         <TabPane layoutX="10.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" stylesheets="@../css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
             <tabs>
-                <Tab text="Doc gia">
+                <Tab text="ĐỌC GIẢ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-radius: 5;">
                             <children>
@@ -35,7 +35,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Loai doc gia">
+                <Tab text="LOẠI ĐỌC GIẢ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                             <children>
@@ -44,7 +44,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-            <Tab text="Thu Tien Phat">
+            <Tab text="THU TIỀN PHẠT">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

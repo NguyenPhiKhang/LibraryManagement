@@ -29,7 +29,7 @@ public class DocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select a.*, b.* from tbdocgia as a inner join tbloaidocgia  as b on a.maloaidocgia = b.maloaidocgia where a.record_status = 1";
+        String sql = "select a.*, b.* from tbdocgia as a inner join tbloaidocgia  as b on a.maloaidocgia = b.maloaidocgia where a.record_status = 1 order by a.ngaylapthe desc";
 
         try {
             assert connection != null;

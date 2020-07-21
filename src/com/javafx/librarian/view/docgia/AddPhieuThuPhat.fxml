@@ -19,9 +19,9 @@
     <children>
         <Pane fx:id="panelAddPhieuThu" layoutY="-1.0" prefHeight="27.0" prefWidth="631.0" style="-fx-background-color: #5a5a5a; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="212.0" layoutY="1.0" text="Them phieu thu tien phat" textFill="WHITE">
+                <Label layoutX="169.0" layoutY="2.0" text="THÊM PHIẾU THU TIỀN PHẠT" textFill="WHITE">
                     <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font name="Verdana Bold" size="18.0" />
                     </font>
                 </Label>
             </children>
@@ -39,64 +39,100 @@
             <children>
                 <HBox alignment="CENTER_LEFT" prefHeight="23.0" prefWidth="316.0">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="ma phieu thu:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Mã phiếu thu:">
                             <padding>
                                 <Insets left="10.0" />
-                            </padding></Label>
-                        <TextField fx:id="textMaPhieuThu" editable="false" prefHeight="27.0" prefWidth="190.0" />
+                            </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                        <TextField fx:id="textMaPhieuThu" editable="false" prefHeight="27.0" prefWidth="190.0">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="ngay thu:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Ngày thu:">
                             <padding>
                                 <Insets left="10.0" />
-                            </padding></Label>
-                  <TextField fx:id="textNgayThu" disable="true" prefHeight="27.0" prefWidth="197.0" />
+                            </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                  <TextField fx:id="textNgayThu" disable="true" prefHeight="27.0" prefWidth="197.0">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="297.0" GridPane.rowIndex="1">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="ten doc gia:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Tên đọc giả:">
                             <padding>
                                 <Insets left="10.0" />
-                            </padding></Label>
+                            </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
                         <JFXComboBox fx:id="cbbDocGia" focusColor="#039ed3" onAction="#cbbDocGiaAction" prefHeight="27.0" prefWidth="190.0" unFocusColor="#cfcfcf" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="315.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="tong no:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Tổng nợ:">
                             <padding>
                                 <Insets left="10.0" />
-                            </padding></Label>
-                        <TextField fx:id="textTongNo" disable="true" prefWidth="190.0" />
+                            </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                        <TextField fx:id="textTongNo" disable="true" prefWidth="190.0">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.rowIndex="2">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="so tien thu:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Số tiền thu:">
                             <padding>
                                 <Insets left="10.0" />
-                            </padding></Label>
+                            </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
                   <Spinner fx:id="spnSoTienThu" disable="true" editable="true" prefHeight="27.0" prefWidth="194.0" />
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
-                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="102.0" text="con lai:">
+                        <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Còn lại:">
                             <padding>
                                 <Insets left="10.0" />
-                            </padding></Label>
-                        <TextField fx:id="textConLai" disable="true" prefWidth="190.0" />
+                            </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></Label>
+                        <TextField fx:id="textConLai" disable="true" prefWidth="190.0">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font></TextField>
                     </children>
                 </HBox>
             </children>
         </GridPane>
         <Pane layoutY="312.0" prefHeight="40.0" prefWidth="631.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton fx:id="btnThem" layoutX="239.0" layoutY="6.0" onAction="#btnThemClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="Them" />
-                <JFXButton fx:id="btnHuy" layoutX="325.0" layoutY="6.0" onAction="#btnHuyClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #d1e4f9;" text="Huy" />
+                <JFXButton fx:id="btnThem" layoutX="239.0" layoutY="6.0" onAction="#btnThemClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #6DBCF5;" text="LƯU">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></JFXButton>
+                <JFXButton fx:id="btnHuy" layoutX="325.0" layoutY="6.0" onAction="#btnHuyClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #d1e4f9;" text="HỦY">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></JFXButton>
             </children></Pane>
         <JFXButton fx:id="btnClose" contentDisplay="GRAPHIC_ONLY" layoutX="6.0" layoutY="6.0" onAction="#btnCloseAction" onMouseEntered="#btnCloseMouseEnter" onMouseExited="#btnCloseMouseExit" prefHeight="14.0" prefWidth="13.0" style="-fx-background-radius: 300; -fx-background-color: #a6a6a6;">
             <font>

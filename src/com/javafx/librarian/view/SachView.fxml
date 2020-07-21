@@ -45,7 +45,10 @@
                                 <JFXButton fx:id="btnThemSach" layoutX="7.0" layoutY="33.0" onAction="#btnThemSach_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" />
                                 <JFXButton fx:id="btnXoaSach" layoutX="164.0" layoutY="33.0" onAction="#btnXoaSach_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="XÓA" />
                                 <JFXButton fx:id="btnSuaSach" layoutX="85.0" layoutY="33.0" onAction="#btnSuaSach_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="SỬA" />
-                                <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="31.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="31.0" />
+                                <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="31.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="31.0">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></TextField>
                                 <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="6.0" layoutY="69.0" prefHeight="217.0" prefWidth="1011.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" stylesheets="@css/themes.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="69.0">
                                     <children>
                                         <HBox prefHeight="182.0" prefWidth="201.0">
@@ -59,65 +62,125 @@
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" style="-fx-label-padding: 0 0 0 10;" text="Mã sách" />
-                                                <TextField fx:id="txtMaSach" editable="false" prefHeight="27.0" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" style="-fx-label-padding: 0 0 0 10;" text="Mã sách">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtMaSach" editable="false" prefHeight="27.0" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="NXB" />
-                                                <TextField fx:id="txtNXB" editable="false" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="NXB">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtNXB" editable="false" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Tên sách" />
-                                                <TextField fx:id="txtTenSach" editable="false" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Tên sách">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtTenSach" editable="false" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Năm XB" />
-                                                <TextField fx:id="txtNamXB" editable="false" prefHeight="27.0" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Năm XB">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtNamXB" editable="false" prefHeight="27.0" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Thể loại" />
-                                                <TextField fx:id="txtMaTheLoai" editable="false" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Thể loại">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtMaTheLoai" editable="false" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Ngày nhập" />
-                                                <TextField fx:id="txtNgayNhap" editable="false" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Ngày nhập">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtNgayNhap" editable="false" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tác giả" />
-                                                <TextField fx:id="txtMaTacGia" editable="false" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tác giả">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtMaTacGia" editable="false" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Trị giá" />
-                                                <TextField fx:id="txtTriGia" editable="false" prefWidth="190.0" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Trị giá">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <TextField fx:id="txtTriGia" editable="false" prefWidth="190.0">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></TextField>
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="101.0" text="Tình trạng" />
-                                                <RadioButton fx:id="rdbTrong" mnemonicParsing="false" prefHeight="17.0" prefWidth="94.0" text="Trống" />
-                                                <RadioButton fx:id="rdbDangMuon" mnemonicParsing="false" prefHeight="17.0" prefWidth="96.0" text="Đang mượn" />
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="101.0" text="Tình trạng">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></Label>
+                                                <RadioButton fx:id="rdbTrong" mnemonicParsing="false" prefHeight="17.0" prefWidth="94.0" text="Trống">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></RadioButton>
+                                                <RadioButton fx:id="rdbDangMuon" mnemonicParsing="false" prefHeight="18.0" prefWidth="111.0" text="Đang mượn">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font></RadioButton>
                                             </children>
                                         </HBox>
                                     </children>
                                 </JFXMasonryPane>
-                                <Label layoutX="721.0" layoutY="38.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="38.0" />
+                                <Label layoutX="721.0" layoutY="38.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="38.0">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></Label>
                                 <HBox layoutX="-226.0" layoutY="2.0" prefHeight="28.0" prefWidth="1023.0" style="-fx-background-color: #fff; -fx-background-radius: 5 5 0 0; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="Thong tin chi tiet">
+                                        <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="THÔNG TIN CHI TIẾT">
                                             <font>
                                                 <Font name="Verdana Bold" size="16.0" />
                                             </font>

@@ -39,10 +39,22 @@
                      <center>
                         <AnchorPane prefHeight="259.0" prefWidth="1035.0" style="-fx-background-color: #fff; -fx-background-radius: 5; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                            <children>
-                              <JFXButton fx:id="btnThem" layoutX="8.0" layoutY="38.0" onAction="#btnThem_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="38.0" />
-                              <JFXButton fx:id="btnXoa" layoutX="162.0" layoutY="38.0" onAction="#btnXoa_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="XÓA" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="38.0" />
-                              <JFXButton fx:id="btnCapNhat" layoutX="84.0" layoutY="38.0" onAction="#btnSua_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="SỬA" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="38.0" />
-                              <TextField fx:id="textTimKiem" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/textFieldTheme.css" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0" />
+                              <JFXButton fx:id="btnThem" layoutX="8.0" layoutY="38.0" onAction="#btnThem_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="38.0">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnXoa" layoutX="162.0" layoutY="38.0" onAction="#btnXoa_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="XÓA" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="38.0">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></JFXButton>
+                              <JFXButton fx:id="btnCapNhat" layoutX="84.0" layoutY="38.0" onAction="#btnSua_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #4BADF8;" text="SỬA" AnchorPane.leftAnchor="84.0" AnchorPane.topAnchor="38.0">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></JFXButton>
+                              <TextField fx:id="textTimKiem" layoutX="539.0" layoutY="36.0" prefHeight="31.0" prefWidth="168.0" promptText="Tim kiem..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/textFieldTheme.css" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="36.0">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></TextField>
                               <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="8.0" layoutY="77.0" prefHeight="181.0" prefWidth="702.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" styleClass="css/themes.css" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="77.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
@@ -53,7 +65,10 @@
                                              </HBox.margin>
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtMaNV" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -62,7 +77,10 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Ngày sinh">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtNgaySinh" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -71,7 +89,10 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Email">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtEmail" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -80,7 +101,10 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tên NV">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtTenNV" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -89,7 +113,10 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Địa chỉ">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtDiaChi" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -98,7 +125,10 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="SĐT">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtSDT" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -107,7 +137,10 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tài khoản">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtUsername" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -116,16 +149,22 @@
                                           <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Chức vụ">
                                              <padding>
                                                 <Insets left="10.0" />
-                                             </padding></Label>
+                                             </padding>
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtChucVu" editable="false" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                  </children>
                               </JFXMasonryPane>
-                              <Label layoutX="432.0" layoutY="45.0" text="Tìm kiếm theo tên" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="45.0" />
+                              <Label layoutX="432.0" layoutY="45.0" text="Tìm kiếm theo tên" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="45.0">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></Label>
                               <HBox prefHeight="32.0" prefWidth="1031.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5 5 0 0; -fx-border-color: #cccccc; -fx-border-width: 0 0  1 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="Thong tin chi tiet">
+                                    <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="THÔNG TIN CHI TIẾT">
                                        <font>
                                           <Font name="Verdana Bold" size="16.0" />
                                        </font>
@@ -163,7 +202,7 @@
       </AnchorPane>
       <AnchorPane fx:id="paneHeaderQLDG" layoutX="10.0" layoutY="5.0" prefHeight="45.0" prefWidth="730.0" style="-fx-background-color: #f2f2f2;">
          <children>
-            <Label layoutX="64.0" layoutY="4.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="Quan Li Nhan Vien" textFill="#3d4056">
+            <Label layoutX="64.0" layoutY="4.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="QUẢN LÝ NHÂN VIÊN" textFill="#3d4056">
                <font>
                   <Font name="Verdana" size="22.0" />
                </font>

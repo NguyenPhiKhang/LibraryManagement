@@ -1,5 +1,6 @@
 package com.javafx.librarian.dao;
 
+import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TheLoai;
 import javafx.collections.ObservableList;
@@ -31,7 +32,12 @@ public class SachDAO {
         List<Sach> ListSach = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbsach where record_status = 1");
+            String query = null;
+            if(Account.currentUser.getIdper() == 1)
+                query = "select * from tbsach where record_status = 1 and tinhtrang = 0 order by ngaynhap desc";
+            else
+                query = "select * from tbsach where record_status = 1 order by ngaynhap desc";
+            PreparedStatement ps = conn.prepareStatement(query);
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 String maSach = res.getString(1);

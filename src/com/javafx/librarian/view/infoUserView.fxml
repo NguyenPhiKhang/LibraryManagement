@@ -18,92 +18,131 @@
    <children>
       <Label layoutX="12.0" layoutY="180.0" text="Thong tin chung">
          <font>
-            <Font size="16.0" />
+            <Font name="Verdana" size="15.0" />
          </font></Label>
        <ImageView fx:id="imgQLDG" fitHeight="170.0" fitWidth="222.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;file:resources/images/reader.png&quot;);" />
       <HBox layoutX="13.0" layoutY="215.0" prefHeight="31.0" prefWidth="243.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Ma" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Ma">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textMa" editable="false" prefHeight="27.0" prefWidth="195.0" />
          </children>
       </HBox>
       <HBox layoutX="13.0" layoutY="259.0" prefHeight="31.0" prefWidth="243.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Ngay Sinh" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Ngay Sinh">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <DatePicker fx:id="dateNgaySinh" disable="true" prefHeight="27.0" prefWidth="195.0" />
          </children>
       </HBox>
       <HBox layoutX="13.0" layoutY="297.0" prefHeight="31.0" prefWidth="243.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Dia chi" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Dia chi">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textDiaChi" editable="false" prefHeight="27.0" prefWidth="196.0" />
          </children>
       </HBox>
       <HBox layoutX="13.0" layoutY="339.0" prefHeight="31.0" prefWidth="243.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="77.0" text="Email" />
+            <Label prefHeight="17.0" prefWidth="77.0" text="Email">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textEmail" editable="false" prefHeight="27.0" prefWidth="166.0" />
          </children>
       </HBox>
       <HBox layoutX="13.0" layoutY="384.0" prefHeight="31.0" prefWidth="243.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="77.0" text="So dien thoai" />
+            <Label prefHeight="17.0" prefWidth="77.0" text="So dien thoai">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textSDT" editable="false" prefHeight="27.0" prefWidth="164.0" />
          </children>
       </HBox>
       <Separator layoutX="267.0" orientation="VERTICAL" prefHeight="549.0" prefWidth="13.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Separator layoutX="283.0" layoutY="60.0" prefHeight="17.0" prefWidth="231.0" />
-      <Label layoutX="284.0" layoutY="46.0" text="Doc Gia" />
-      <Label layoutX="282.0" layoutY="78.0" text="Tai khoan">
+      <Label layoutX="284.0" layoutY="46.0" text="Doc Gia">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font></Label>
+      <Label layoutX="282.0" layoutY="78.0" text="Tài khoản">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <HBox layoutX="304.0" layoutY="115.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Username:" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Username:">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textUsername" editable="false" prefHeight="27.0" prefWidth="174.0" />
          </children>
       </HBox>
       <HBox layoutX="304.0" layoutY="149.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Password:" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Password:">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <PasswordField fx:id="textPassword" editable="false" prefHeight="27.0" prefWidth="174.0" />
          </children>
       </HBox>
       <Separator layoutX="287.0" layoutY="215.0" prefHeight="2.0" prefWidth="243.0" />
       <HBox layoutX="304.0" layoutY="231.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Loai doc gia:" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Loại đọc giả">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textLDG" editable="false" prefHeight="27.0" prefWidth="172.0" />
          </children>
       </HBox>
       <HBox layoutX="304.0" layoutY="264.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Ngay lap the:" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Ngày lập thẻ">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textNgaylap" editable="false" prefHeight="27.0" prefWidth="174.0" />
          </children>
       </HBox>
       <HBox layoutX="304.0" layoutY="297.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Ngay het han:" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Ngày hết hạn">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textNgayhet" editable="false" prefHeight="27.0" prefWidth="174.0" />
          </children>
       </HBox>
       <HBox layoutX="304.0" layoutY="328.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Tong No:" />
+            <Label prefHeight="17.0" prefWidth="103.0" text="Tong No:">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></Label>
             <TextField fx:id="textTongNo" editable="false" prefHeight="27.0" prefWidth="174.0" />
          </children>
       </HBox>
       <Separator layoutX="287.0" layoutY="365.0" prefHeight="9.0" prefWidth="243.0" />
       <Label layoutX="286.0" layoutY="375.0" text="Gioi thieu ban than">
          <font>
-            <Font size="15.0" />
+            <Font name="Verdana" size="15.0" />
          </font>
       </Label>
       <TextArea fx:id="textAGioiThieu" editable="false" layoutX="300.0" layoutY="400.0" prefHeight="147.0" prefWidth="311.0" AnchorPane.leftAnchor="286.0" AnchorPane.topAnchor="400.0" />
-      <Label layoutX="603.0" layoutY="43.0" text="Lich su muon sach" AnchorPane.leftAnchor="603.0" AnchorPane.rightAnchor="163.5" AnchorPane.topAnchor="43.0" />
+      <Label layoutX="603.0" layoutY="43.0" text="Lich su muon sach" AnchorPane.leftAnchor="603.0" AnchorPane.rightAnchor="163.5" AnchorPane.topAnchor="43.0">
+         <font>
+            <Font name="Verdana" size="15.0" />
+         </font></Label>
       <Separator layoutX="603.0" layoutY="60.0" prefHeight="17.0" prefWidth="231.0" AnchorPane.leftAnchor="603.0" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="60.0" />
       <TableView fx:id="tableLSMuon" layoutX="597.0" layoutY="88.0" prefHeight="163.0" prefWidth="255.0" AnchorPane.leftAnchor="603.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="88.0">
         <columns>

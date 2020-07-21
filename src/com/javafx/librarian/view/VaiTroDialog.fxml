@@ -8,9 +8,9 @@
 
 <AnchorPane fx:id="panelMuon" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="713.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.QuyenController">
     <children>
-        <Label contentDisplay="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="28.0" prefWidth="423.0" style="-fx-label-padding: 0 0 0 10;" text="Thông tin các quyền hạn sử dụng phần mềm" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="14.0">
+        <Label contentDisplay="CENTER" layoutX="7.0" layoutY="14.0" prefHeight="28.0" prefWidth="471.0" style="-fx-label-padding: 0 0 0 10;" text="Thông tin các quyền hạn sử dụng phần mềm" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="14.0">
             <font>
-                <Font name="System Bold" size="19.0" />
+                <Font name="Verdana Bold" size="18.0" />
             </font></Label>
       <TableView fx:id="tbQuyen" layoutX="29.0" layoutY="59.0" prefHeight="200.0" prefWidth="656.0" stylesheets="@css/tableTheme.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="59.0">
         <columns>

@@ -26,7 +26,7 @@ public class PhieuMuonDAO {
         List<PhieuMuon> ListPM = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbphieumuon where record_status = 1");
+            PreparedStatement ps = conn.prepareStatement("select * from tbphieumuon where record_status = 1 order by ngaymuon desc");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 String maPM = res.getString(1);
