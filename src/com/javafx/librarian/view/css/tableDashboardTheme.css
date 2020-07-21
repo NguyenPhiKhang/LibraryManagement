@@ -24,15 +24,15 @@ table-view .table-cell{
     -fx-alignment: center-left;
 }
 
-.table-row-cell:odd{
-    -fx-background-color: #fff;
-    /*-fx-background-insets: 0, 0 0 1 0;*/
-    /*-fx-padding: 0.0em; !* 0 *!*/
-}
+/*.table-row-cell:odd{*/
+/*    -fx-background-color: #fff;*/
+/*    !*-fx-background-insets: 0, 0 0 1 0;*!*/
+/*    !*-fx-padding: 0.0em; !* 0 *!*!*/
+/*}*/
 
 .table-row-cell:selected {
-    -fx-background-color: #fff;
-    /*-fx-background-color: #005797;*/
-    /*-fx-background-insets: 0;*/
-    /*-fx-background-radius: 1;*/
+    /*-fx-background-color: #fff;*/
+    /*-fx-background-color: rgba(255,255,255,0.2);*/
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
 }

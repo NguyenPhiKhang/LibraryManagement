@@ -47,7 +47,7 @@ public class TrangChuController implements Initializable {
 
     ObservableList<SachDashboard> new10Sach = FXCollections.observableArrayList();
 
-    String style = "-fx-background-color: yellow; -fx-background-radius: 30;" +
+    String style = "-fx-background-color: #d2d2d2; -fx-background-radius: 30;" +
             " -fx-alignment: center; -fx-pref-height: 50; -fx-wrap-text: true;" +
             "-fx-padding: 0 10";
 
