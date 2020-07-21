@@ -28,9 +28,9 @@
                 </TableView>
             </center>
             <top>
-                <Pane prefHeight="80.0" prefWidth="1043.0" BorderPane.alignment="CENTER">
-                    <children>
-                        <AnchorPane prefHeight="82.0" prefWidth="1043.0">
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                        <AnchorPane prefHeight="82.0" prefWidth="1043.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <HBox alignment="CENTER_LEFT" layoutX="21.0" layoutY="23.0" prefHeight="40.0" prefWidth="305.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="23.0">
                                     <children>
@@ -42,7 +42,8 @@
                                 <JFXButton fx:id="btnLapBaoCao" layoutX="908.0" layoutY="29.0" onAction="#btnlapBaoCao_Click" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: #4BADF8;" text="LẬP BÁO CÁO" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
                             </children>
                         </AnchorPane>
-                    </children></Pane>
+               </children>
+            </AnchorPane>
             </top>
             <left>
                 <Pane prefHeight="509.0" prefWidth="10.0" BorderPane.alignment="CENTER" />

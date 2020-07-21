@@ -21,12 +21,15 @@ public class frmDocGiaController implements Initializable {
     @FXML
     public BorderPane borderPaneLDG;
     public BorderPane borderPaneThuTienPhat;
+    public AnchorPane paneHeaderQLDG;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         borderPaneDocGia.setCenter(getPage("../view/docgia/DocGiaView.fxml"));
         borderPaneLDG.setCenter(getPage("../view/docgia/LoaiDocGiaView.fxml"));
         borderPaneThuTienPhat.setCenter(getPage("../view/docgia/ThuTienPhatView.fxml"));
+
+//        paneHeaderQLDG.setStyle("-fx-bac");
     }
 
     private <T> T getPage(String url){
