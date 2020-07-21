@@ -58,6 +58,8 @@ public class MuonController implements Initializable {
     public RadioButton rdbTraDu;
     @FXML
     public TextField textTimKiem;
+    @FXML
+    public Button btnLamMoi;
     //endregion
 
     //region controller
@@ -212,5 +214,11 @@ public class MuonController implements Initializable {
             alert.setHeaderText("Chưa chọn phiếu mượn cần gia hạn!");
             alert.showAndWait();
         }
+    }
+
+    public void btnLamMoiClick(ActionEvent actionEvent) {
+//        if (textTimKiemDG.getText() == null || textTimKiemDG.getText().isEmpty())
+//            return;
+        refreshTable();
     }
 }
