@@ -59,7 +59,7 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="91.0" text="Mã NV">
+                                          <Label prefHeight="17.0" prefWidth="90.0" text="Mã NV">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
@@ -86,7 +86,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Email">
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Email">
                                              <padding>
                                                 <Insets left="10.0" />
                                              </padding>

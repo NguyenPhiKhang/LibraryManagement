@@ -71,6 +71,10 @@ public class SachController implements Initializable {
     @FXML
     public RadioButton rdbDangMuon;
     @FXML
+    public RadioButton rdbMat;
+    @FXML
+    public RadioButton rdbHuHong;
+    @FXML
     public Button btnThemSach;
     @FXML
     public Button btnXoaSach;
@@ -110,6 +114,8 @@ public class SachController implements Initializable {
         txtTriGia.setEditable(false);
         rdbTrong.setDisable(true);
         rdbDangMuon.setDisable(true);
+        rdbMat.setDisable(true);
+        rdbHuHong.setDisable(true);
 
         textTimKiem.textProperty().addListener((observableValue, s, t1) -> {
             listSach.clear();
@@ -164,9 +170,33 @@ public class SachController implements Initializable {
         txtNgayNhap.setText((String.valueOf(temp.getNgayNhap())));
         txtTriGia.setText((String.valueOf(temp.getTriGia())));
         if (String.valueOf(temp.getTinhTrang()).equals("Trống"))
+        {
             rdbTrong.setSelected(true);
-        else
+            rdbDangMuon.setSelected(false);
+            rdbMat.setSelected(false);
+            rdbHuHong.setSelected(false);
+        }
+        else if(String.valueOf(temp.getTinhTrang()).equals("Đang mượn"))
+        {
             rdbDangMuon.setSelected(true);
+            rdbTrong.setSelected(false);
+            rdbMat.setSelected(false);
+            rdbHuHong.setSelected(false);
+        }
+        else if(String.valueOf(temp.getTinhTrang()).equals("Mất"))
+        {
+            rdbMat.setSelected(true);
+            rdbTrong.setSelected(false);
+            rdbDangMuon.setSelected(false);
+            rdbHuHong.setSelected(false);
+        }
+        else
+        {
+            rdbHuHong.setSelected(true);
+            rdbTrong.setSelected(false);
+            rdbDangMuon.setSelected(false);
+            rdbMat.setSelected(false);
+        }
 
         System.out.println(temp.getImage());
         imgAnhBia.setImage(temp.getImage());

@@ -10,6 +10,8 @@ import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -58,7 +60,11 @@ public class EditSachController implements Initializable {
     @FXML
     public RadioButton rdbDangMuon;
     @FXML
-    public Button btnThem;
+    public RadioButton rdbMat;
+    @FXML
+    public RadioButton rdbHuHong;
+    @FXML
+    public Button btnLuu;
     @FXML
     public Button btnHuy;
     @FXML
@@ -108,9 +114,8 @@ public class EditSachController implements Initializable {
 
         txtTriGia.setTextFormatter(new TextFormatter<Integer>(change -> {
             if (!change.getControlNewText().isEmpty()) {
-                if(change.getControlNewText().matches("^0\\d?+"))
+                if(!change.getControlNewText().matches("\\d+"))
                     return null;
-                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
             }
 
             return change;
@@ -118,6 +123,50 @@ public class EditSachController implements Initializable {
 
         new AutoCompleteComboBoxListener<>(cbTheLoai);
         new AutoCompleteComboBoxListener<>(cbTacGia);
+
+        rdbTrong.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    rdbDangMuon.setSelected(false);
+                    rdbHuHong.setSelected(false);
+                    rdbMat.setSelected(false);
+                }
+            }
+        });
+
+        rdbDangMuon.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    rdbTrong.setSelected(false);
+                    rdbHuHong.setSelected(false);
+                    rdbMat.setSelected(false);
+                }
+            }
+        });
+
+        rdbHuHong.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    rdbDangMuon.setSelected(false);
+                    rdbTrong.setSelected(false);
+                    rdbMat.setSelected(false);
+                }
+            }
+        });
+
+        rdbMat.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> obs, Boolean wasPreviouslySelected, Boolean isNowSelected) {
+                if (isNowSelected) {
+                    rdbDangMuon.setSelected(false);
+                    rdbHuHong.setSelected(false);
+                    rdbTrong.setSelected(false);
+                }
+            }
+        });
     }
 
     public void setSachController(SachController sach) {
@@ -135,8 +184,12 @@ public class EditSachController implements Initializable {
         txtNamXB.setText(String.valueOf(sach.getNamXB()));
         if (sach.getTinhTrang() == "Trống")
             rdbTrong.setSelected(true);
-        else
+        else if(sach.getTinhTrang().equals("Đang mượn"))
             rdbDangMuon.setSelected(true);
+        else if(sach.getTinhTrang().equals("Mất"))
+            rdbMat.setSelected(true);
+        else
+            rdbHuHong.setSelected(true);
         dtNgayNhap.setValue(Util.convertDateToLocalDateUI(sach.getNgayNhap()));
         txtTriGia.setText(String.valueOf(sach.getTriGia()));
         TheLoai theLoai = TheLoaiService.getInstance().getTheLoaiByID(sach.getMaTheLoai());
@@ -206,7 +259,13 @@ public class EditSachController implements Initializable {
         int triGia = Integer.parseInt(txtTriGia.getText());
         String maTheLoai = (cbTheLoai.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
         String maTacGia = (cbTacGia.getSelectionModel().getSelectedItem().toString().split(" - "))[0].trim();
-        int tinhTrang = rdbTrong.isSelected() ? 0 : 1;
+        int tinhTrang = 0;
+        if(rdbHuHong.isSelected())
+            tinhTrang = 2;
+        else if(rdbDangMuon.isSelected())
+            tinhTrang = 1;
+        else if(rdbMat.isSelected())
+            tinhTrang = 3;
         FileInputStream anhBiaBlob = null;
         if(anhBia == null)
             anhBiaBlob = sach.getAnhBia();

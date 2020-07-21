@@ -86,7 +86,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                             <children>
-                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="94.0" text="Tên sách">
+                                                <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="90.0" text="Tên sách">
                                        <font>
                                           <Font name="Verdana" size="13.0" />
                                        </font></Label>
@@ -172,6 +172,20 @@
                                        </font></RadioButton>
                                             </children>
                                         </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
+                                 <children>
+                                    <RadioButton fx:id="rdbHuHong" mnemonicParsing="false" prefHeight="17.0" prefWidth="94.0" text="Hư hỏng">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="rdbMat" mnemonicParsing="false" prefHeight="18.0" prefWidth="111.0" text="Mất">
+                                       <font>
+                                          <Font name="Verdana" size="13.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
                                     </children>
                                 </JFXMasonryPane>
                                 <Label layoutX="721.0" layoutY="38.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="38.0">

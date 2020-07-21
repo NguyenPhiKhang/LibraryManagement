@@ -94,6 +94,15 @@ public class SachDAO {
 
     public int editSach(Sach sach) {
         int res = 0;
+        int tinhTrang = 0;
+        if(sach.getTinhTrang() == "Trống")
+            tinhTrang = 0;
+        else if(sach.getTinhTrang() == "Đang mượn")
+            tinhTrang = 1;
+        else if(sach.getTinhTrang() == "Hư hỏng")
+            tinhTrang = 2;
+        else
+            tinhTrang = 3;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbsach set tensach=?, matheloai=?, matacgia=?, namxb=?, nxb=?, ngaynhap=?, trigia=?, tinhtrang=?, anhbia=? where masach=?");
             ps.setString(1, sach.getTenSach());
@@ -103,7 +112,7 @@ public class SachDAO {
             ps.setString(5, sach.getNXB());
             ps.setDate(6, Date.valueOf(Util.convertDateToLocalDate(sach.getNgayNhap())));
             ps.setInt(7, sach.getTriGia());
-            ps.setInt(8, sach.getTinhTrang() == "Trống" ? 0 : 1);
+            ps.setInt(8, tinhTrang);
             ps.setBinaryStream(9, sach.getAnhBia());
             ps.setString(10, sach.getMaSach());
             res = ps.executeUpdate();

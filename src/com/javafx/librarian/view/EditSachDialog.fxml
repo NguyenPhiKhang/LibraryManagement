@@ -232,6 +232,34 @@
                         </RadioButton>
                     </children>
                 </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="266.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="17.0" prefWidth="107.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="rdbMat" mnemonicParsing="false" prefHeight="17.0" prefWidth="82.0" text="Mất">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="rdbToggleGroup1" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="rdbHuHong" mnemonicParsing="false" text="Hư hỏng">
+                     <toggleGroup>
+                        <fx:reference source="rdbToggleGroup1" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </HBox>
             </children>
         </GridPane>
     </children>

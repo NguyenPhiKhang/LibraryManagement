@@ -68,7 +68,7 @@
       </HBox>
       <Separator layoutX="267.0" orientation="VERTICAL" prefHeight="549.0" prefWidth="13.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Separator layoutX="283.0" layoutY="60.0" prefHeight="17.0" prefWidth="231.0" />
-      <Label layoutX="284.0" layoutY="46.0" text="Doc Gia">
+      <Label layoutX="284.0" layoutY="46.0" text="Đọc giả">
          <font>
             <Font name="Verdana" size="13.0" />
          </font></Label>
@@ -79,20 +79,26 @@
       </Label>
       <HBox layoutX="304.0" layoutY="115.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Username:">
+            <Label prefHeight="17.0" prefWidth="103.0" text="Tài khoản:">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font></Label>
-            <TextField fx:id="textUsername" editable="false" prefHeight="27.0" prefWidth="174.0" />
+            <TextField fx:id="textUsername" editable="false" prefHeight="27.0" prefWidth="174.0">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></TextField>
          </children>
       </HBox>
       <HBox layoutX="304.0" layoutY="149.0" prefHeight="31.0" prefWidth="225.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="103.0" text="Password:">
+            <Label prefHeight="17.0" prefWidth="103.0" text="Mật khẩu:">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font></Label>
-            <PasswordField fx:id="textPassword" editable="false" prefHeight="27.0" prefWidth="174.0" />
+            <PasswordField fx:id="textPassword" editable="false" prefHeight="27.0" prefWidth="174.0">
+               <font>
+                  <Font name="Verdana" size="13.0" />
+               </font></PasswordField>
          </children>
       </HBox>
       <Separator layoutX="287.0" layoutY="215.0" prefHeight="2.0" prefWidth="243.0" />

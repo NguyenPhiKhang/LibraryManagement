@@ -44,7 +44,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-            <Tab text="THU TIỀN PHẠT">
+            <Tab text="PHIẾU PHẠT">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
