@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="panelMuon" prefHeight="692.0" prefWidth="1035.0" stylesheets="@css/tableTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.TraController">
+<AnchorPane fx:id="panelMuon" prefHeight="692.0" prefWidth="1035.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/tableTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.TraController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d2d2d2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView fx:id="tableTra" onMouseClicked="#bindingData" prefHeight="276.0" prefWidth="1023.0" style="-fx-background-radius: 5;">
+            <TableView fx:id="tableTra" onMouseClicked="#bindingData" prefHeight="276.0" prefWidth="1023.0" style="-fx-background-radius: 5; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                <columns>
                   <TableColumn fx:id="colMaPT" prefWidth="100.0" text="Mã phiếu trả" />
                   <TableColumn fx:id="colMaPM" prefWidth="37.0" text="Mã phiếu mượn" />
@@ -31,23 +31,14 @@
             </TableView>
          </center>
          <bottom>
-            <BorderPane prefHeight="354.0" prefWidth="1043.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="379.0" prefWidth="1035.0" BorderPane.alignment="CENTER">
                <center>
-                  <AnchorPane prefHeight="354.0" prefWidth="1023.0" style="-fx-background-color: grey; -fx-background-radius: 5;">
+                  <AnchorPane prefHeight="354.0" prefWidth="1023.0" style="-fx-background-color: #fff; -fx-background-radius: 5; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                      <children>
-                        <JFXButton fx:id="btnThemPM" layoutX="7.0" layoutY="31.0" onAction="#btnThemPT_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" />
-                        <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="29.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="29.0" />
-                        <HBox layoutY="-32.0" prefHeight="26.0" prefWidth="1023.0" style="-fx-background-color: #e4e4e4; -fx-background-radius: 5 5 0 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Label alignment="TOP_LEFT" style="-fx-label-padding: 5 0 0 10;" text="THÔNG TIN CHI TIẾT">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Label layoutX="721.0" layoutY="36.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="36.0" />
-                        <AnchorPane layoutX="7.0" layoutY="65.0" prefHeight="267.0" prefWidth="1001.0" style="-fx-background-color: #cccccc;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="65.0">
+                        <JFXButton fx:id="btnThemPM" layoutX="7.0" layoutY="37.0" onAction="#btnThemPT_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" />
+                        <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="35.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="35.0" />
+                        <Label layoutX="721.0" layoutY="42.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="42.0" />
+                        <AnchorPane layoutX="7.0" layoutY="74.0" prefHeight="273.0" prefWidth="1009.0" style="-fx-background-color: #cccccc;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="74.0">
                            <children>
                               <TableView fx:id="tableSachTra" layoutX="491.0" layoutY="14.0" prefHeight="248.0" prefWidth="660.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
                                  <columns>
@@ -58,7 +49,7 @@
                                     <TableColumn fx:id="colTienPhat" prefWidth="128.0" text="Tiền phạt" />
                                  </columns>
                               </TableView>
-                              <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="14.0" layoutY="2.0" prefHeight="264.0" prefWidth="312.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" stylesheets="@css/themes.css" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="675.0" AnchorPane.topAnchor="2.0">
+                              <JFXMasonryPane cellHeight="40.0" cellWidth="305.0" layoutX="14.0" layoutY="7.0" prefHeight="272.0" prefWidth="320.0" scaleShape="false" style="-fx-background-color: #cccccc; -fx-background-radius: 5;" stylesheets="@css/themes.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="675.0" AnchorPane.topAnchor="7.0">
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
@@ -100,6 +91,15 @@
                               </JFXMasonryPane>
                            </children>
                         </AnchorPane>
+                        <HBox prefHeight="29.0" prefWidth="1023.0" style="-fx-background-color: #fff; -fx-background-radius: 5 5 0 0; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="Thong tin chi tiet">
+                                 <font>
+                                    <Font name="Verdana Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </center>
@@ -107,24 +107,24 @@
                   <Pane prefHeight="15.0" prefWidth="1043.0" BorderPane.alignment="CENTER" />
                </top>
                <left>
-                  <Pane prefHeight="200.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+                  <Pane prefHeight="200.0" prefWidth="6.0" BorderPane.alignment="CENTER" />
                </left>
                <right>
-                  <Pane prefHeight="200.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+                  <Pane prefHeight="200.0" prefWidth="6.0" BorderPane.alignment="CENTER" />
                </right>
                <bottom>
-                  <Pane prefHeight="0.0" prefWidth="1043.0" BorderPane.alignment="CENTER" />
+                  <Pane prefHeight="10.0" prefWidth="1043.0" BorderPane.alignment="CENTER" />
                </bottom>
             </BorderPane>
          </bottom>
          <top>
-            <Pane prefHeight="10.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="6.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
          </top>
          <left>
-            <Pane prefHeight="509.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="509.0" prefWidth="6.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <Pane prefHeight="200.0" prefWidth="10.0" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="200.0" prefWidth="6.0" BorderPane.alignment="CENTER" />
          </right>
       </BorderPane>
    </children>

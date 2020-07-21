@@ -7,14 +7,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="layoutDocGia" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #7b6fe1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.MenuSachController">
+<AnchorPane fx:id="layoutDocGia" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #f2f2f2;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.MenuSachController">
    <children>
-      <Label layoutX="71.0" layoutY="15.0" prefHeight="37.0" prefWidth="274.0" text="QUẢN LÝ SÁCH" textFill="#300d30">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="25.0" />
-         </font>
-      </Label>
-      <TabPane layoutX="-3.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <AnchorPane fx:id="paneHeaderQLDG" layoutX="10.0" layoutY="14.0" prefHeight="49.0" prefWidth="730.0" style="-fx-background-color: #f2f2f2;">
+         <children>
+            <Label layoutX="64.0" layoutY="5.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="Quan Li Sach" textFill="#3d4056">
+               <font>
+                  <Font name="Verdana" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imgQLDG" fitHeight="37.0" fitWidth="48.0" layoutX="9.0" layoutY="4.0" opacity="0.69" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;file:resources/images/books_icon.png&quot;);" />
+         </children>
+      </AnchorPane>
+      <TabPane layoutX="-3.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" stylesheets="@css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
          <tabs>
             <Tab text="SÁCH">
                <content>
