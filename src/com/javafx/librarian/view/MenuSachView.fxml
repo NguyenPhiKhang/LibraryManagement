@@ -31,7 +31,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="THỂ LOẠI">
+            <Tab fx:id="tbTheLoai" text="THỂ LOẠI">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -40,7 +40,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="TÁC GIẢ">
+            <Tab fx:id="tbTacGia" text="TÁC GIẢ">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                      <children>
