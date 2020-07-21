@@ -2,6 +2,7 @@ package com.javafx.librarian.service;
 
 import com.javafx.librarian.dao.TrangChuDAO;
 import com.javafx.librarian.model.Sach;
+import com.javafx.librarian.model.SachDashboard;
 
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class TrangChuService {
         return TrangChuDAO.getInstance().getAllFeature();
     }
 
-    public List<Sach> getNewSach() {
+    public List<SachDashboard> getNewSach() {
         return TrangChuDAO.getInstance().getNewSach();
     }
 

@@ -21,39 +21,44 @@
               <ImageView fx:id="imgQLDG" fitHeight="37.0" fitWidth="48.0" layoutX="9.0" layoutY="4.0" opacity="0.69" pickOnBounds="true" preserveRatio="true" style="-fx-image: url(&quot;file:resources/images/reader.png&quot;);" />
          </children>
       </AnchorPane>
-        <TabPane layoutX="10.0" layoutY="70.0" prefHeight="470.0" prefWidth="750.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" stylesheets="@../css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
-            <tabs>
-                <Tab text="Doc gia">
+      <AnchorPane layoutX="10.0" layoutY="70.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+         <children>
+              <TabPane prefHeight="470.0" prefWidth="750.0" stylesheets="@../css/themes.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <tabs>
+                      <Tab text="Doc gia">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-radius: 5;">
+                                  <children>
+                                      <BorderPane fx:id="borderPaneDocGia" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <bottom>
+                                    <Pane prefHeight="8.0" prefWidth="730.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0  0 5 5;" BorderPane.alignment="CENTER" />
+                                 </bottom>
+                              </BorderPane>
+                                  </children>
+                              </AnchorPane>
+                          </content>
+                      </Tab>
+                      <Tab text="Loai doc gia">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
+                                  <children>
+                                      <BorderPane fx:id="borderPaneLDG" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                  </children>
+                              </AnchorPane>
+                          </content>
+                      </Tab>
+                  <Tab text="Thu Tien Phat">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-radius: 5;">
-                            <children>
-                                <BorderPane fx:id="borderPaneDocGia" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb; -fx-background-radius: 0 0 5 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <bottom>
-                              <Pane prefHeight="8.0" prefWidth="730.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0  0 5 5;" BorderPane.alignment="CENTER" />
-                           </bottom></BorderPane>
-                            </children>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <BorderPane fx:id="borderPaneThuTienPhat" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
                         </AnchorPane>
                     </content>
-                </Tab>
-                <Tab text="Loai doc gia">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
-                            <children>
-                                <BorderPane fx:id="borderPaneLDG" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-            <Tab text="Thu Tien Phat">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <BorderPane fx:id="borderPaneThuTienPhat" prefHeight="424.0" prefWidth="750.0" style="-fx-background-color: #dbdbdb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-            </tabs>
-        </TabPane>
+                  </Tab>
+                  </tabs>
+              </TabPane>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

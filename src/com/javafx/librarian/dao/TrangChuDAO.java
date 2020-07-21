@@ -2,6 +2,7 @@ package com.javafx.librarian.dao;
 
 import com.javafx.librarian.model.DocGia;
 import com.javafx.librarian.model.Sach;
+import com.javafx.librarian.model.SachDashboard;
 import com.javafx.librarian.model.TheLoai;
 import com.javafx.librarian.service.SachService;
 
@@ -37,32 +38,19 @@ public class TrangChuDAO {
          return rets;
     }
 
-    public List<Sach> getNewSach() {
-        List<Sach> ListSach = new ArrayList<>();
+    public List<SachDashboard> getNewSach() {
+        List<SachDashboard> ListSach = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbsach where record_status = 1 ORDER BY ngaynhap DESC LIMIT 10");
+            PreparedStatement ps = conn.prepareStatement("select a.masach, a.tensach, b.tentheloai, c.tentacgia from tbsach as a join tbtheloai as b on a.matheloai = b.matheloai join tbtacgia as c on a.matacgia = c.matacgia  where a.record_status = 1 ORDER BY a.ngaynhap DESC LIMIT 10;");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                String maSach = res.getString(1);
-                String tenSach = res.getString(2);
-                String maTheLoai = res.getString(3);
-                String maTacGia = res.getString(4);
-                int namXb = res.getInt(5);
-                String nxb = res.getString(6);
-                Date ngayNhap = res.getDate(7);
-                int triGia = res.getInt(8);
-                int tinhTrang = res.getInt(9);
-                Blob anhBiaBlob = res.getBlob(10);
-                if (anhBiaBlob != null) {
-                    InputStream anhBiaStream = anhBiaBlob.getBinaryStream();
-                    File anhBia = File.createTempFile("temp", null);
-                    org.apache.commons.io.FileUtils.copyInputStreamToFile(anhBiaStream, anhBia);
-                    FileInputStream anhBiaDTO = new FileInputStream(anhBia);
+                String maSach = res.getString("masach");
+                String tenSach = res.getString("tensach");
+                String tenTheLoai = res.getString("tentheloai");
+                String temTacgia = res.getString("tentacgia");
 
-                    ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, anhBiaDTO));
-                } else
-                    ListSach.add(new Sach(maSach, tenSach, maTheLoai, maTacGia, namXb, nxb, ngayNhap, triGia, tinhTrang, null));
+                ListSach.add(new SachDashboard(maSach, tenSach, tenTheLoai, temTacgia));
 
             }
         } catch (Exception e) {

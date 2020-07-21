@@ -17,7 +17,7 @@
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #d2d2d2; -fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView fx:id="tableDocGia" prefHeight="443.0" prefWidth="1035.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" stylesheets="@../css/tableTheme.css">
+            <TableView fx:id="tableDocGia" prefHeight="443.0" prefWidth="1035.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);" stylesheets="@../css/tableTheme.css">
                <columns>
                   <TableColumn fx:id="colMaDocGia" prefWidth="100.0" text="ma doc gia" />
                   <TableColumn fx:id="colTenDocGia" prefWidth="37.0" text="ten doc gia" />
@@ -40,7 +40,7 @@
          <bottom>
             <BorderPane prefHeight="277.0" prefWidth="1055.0" style="-fx-background-radius: 5;" BorderPane.alignment="CENTER">
                <center>
-                  <AnchorPane prefHeight="259.0" prefWidth="1035.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                  <AnchorPane prefHeight="259.0" prefWidth="1035.0" style="-fx-background-color: #ffffff; -fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);">
                      <children>
                         <JFXButton fx:id="btnThemDG" layoutX="8.0" layoutY="38.0" onAction="#btnThemDGClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="Them" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="38.0" />
                         <JFXButton fx:id="tbnXoaDG" layoutX="162.0" layoutY="38.0" onAction="#btnXoaDGClicked" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: red;" text="Xoa" AnchorPane.leftAnchor="162.0" AnchorPane.topAnchor="38.0" />
