@@ -10,6 +10,7 @@ import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -60,6 +61,17 @@ public class CULoaiDocGiaController {
     }
 
     public void btnCapNhatClicked(ActionEvent actionEvent) {
+        //VALIDATE
+        if(textTenLDG.getText().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        //
+
         this.ldg.setMaLoaiDocGia(textMaLDG.getText());
         this.ldg.setTenLoaiDocGia(textTenLDG.getText());
 
@@ -94,6 +106,16 @@ public class CULoaiDocGiaController {
     }
 
     public void btnThemClicked(ActionEvent actionEvent) {
+        //VALIDATE
+        if(textTenLDG.getText().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        //
         LoaiDocGia loaiDocGia = new LoaiDocGia();
         loaiDocGia.setMaLoaiDocGia(textMaLDG.getText());
         loaiDocGia.setTenLoaiDocGia(textTenLDG.getText());

@@ -4,6 +4,7 @@ import com.javafx.librarian.model.DocGia;
 import com.javafx.librarian.model.LoaiDocGia;
 import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.LoaiDocGiaService;
+import com.javafx.librarian.service.ThamSoService;
 import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -12,15 +13,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -74,6 +74,38 @@ public class EditDocGiaController{
         });
 
         listLDG.addAll(LoaiDocGiaService.getInstance().getListLoaiDocGia());
+
+        textTongNo.setDisable(true);
+
+        var ts = ThamSoService.getInstance().getThamSo();
+        int tuoimax = ts.getMaxTuoi();
+        int tuoimin = ts.getMinTuoi();
+        int hanthe = ts.getHanThe();
+
+        dateNgaySinh.valueProperty().addListener((observableValue, localDate, t1) -> {
+            int a = Period.between(t1, LocalDate.now()).getYears();
+            if(!(a>=tuoimin&&a<=tuoimax)){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(textTongNo.getScene().getWindow());
+                alert.setTitle("Lỗi");
+                alert.setContentText("Tuổi không thoả lớn hơn 18 và nhỏ hơn 55");
+                ButtonType btnYes = new ButtonType("OK", ButtonBar.ButtonData.YES);
+                alert.getButtonTypes().setAll(btnYes);
+                alert.showAndWait();
+
+                LocalDate dateDefault = LocalDate.now().minusYears(20);
+                dateNgaySinh.setValue(dateDefault);
+            }
+        });
+
+        textSoDienThoai.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(!change.getControlNewText().matches("\\d+"))
+                    return null;
+            }
+
+            return change;
+        }));
     }
 
     public void setDocGia(DocGia dg){
@@ -108,6 +140,18 @@ public class EditDocGiaController{
     }
 
     public void btnCapNhatClicked(ActionEvent actionEvent) {
+        //VALIDATE
+        if(textTenDocGia.getText().trim().equals("") ||
+                dateNgaySinh.getValue().toString().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        //
+
         this.dg.setTenDocGia(textTenDocGia.getText());
         this.dg.setTinhTrangThe(Byte.valueOf(textTinhTrangThe.getText()));
         this.dg.setTongNo(Double.parseDouble(textTongNo.getText()));

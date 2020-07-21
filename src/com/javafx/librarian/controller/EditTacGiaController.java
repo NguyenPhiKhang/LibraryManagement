@@ -8,6 +8,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -80,6 +81,17 @@ public class EditTacGiaController implements Initializable {
     }
 
     public void btnEditThem_Click(ActionEvent event) {
+        //VALIDATE
+        if(txtEditTenTacGia.getText().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        //
+
         //
         String tenTacGiaMoi = txtEditTenTacGia.getText();
         //

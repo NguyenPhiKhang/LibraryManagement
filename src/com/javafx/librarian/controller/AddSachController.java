@@ -120,7 +120,7 @@ public class AddSachController implements Initializable {
             if (!change.getControlNewText().isEmpty()) {
                 if(change.getControlNewText().matches("^0\\d?+"))
                     return null;
-                return change.getControlNewText().matches("\\d+") && change.getControlNewText().length() <= 4 ? change : null;
+                return change.getControlNewText().matches("\\d+") ? change : null;
             }
 
             return change;
@@ -132,13 +132,6 @@ public class AddSachController implements Initializable {
         ThamSo ts = ThamSoService.getInstance().getThamSo();
         imgPreview.setImage(new Image(ts.getAnhMacDinh()));
 
-        try {
-            anhBia =  File.createTempFile("temp", null);
-            org.apache.commons.io.FileUtils.copyInputStreamToFile(ts.getAnhMacDinh(), anhBia);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(ts.getAnhMacDinh());
     }
 
     public void setSachController(SachController sach) {
@@ -165,7 +158,20 @@ public class AddSachController implements Initializable {
     }
 
     public void btnThem_Click(ActionEvent event) throws FileNotFoundException {
+        //VALIDATE
+        if(txtTenSach.getText().trim().equals("") ||
+                txtNamXB.getText().trim().equals("") ||
+                txtNXB.getText().toString().trim().equals("") ||
+                txtTriGia.getText().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
         //
+
         ThamSo thamSo = ThamSoService.getInstance().getThamSo();
         int namXB = Integer.parseInt(txtNamXB.getText());
         if (LocalDate.now().getYear() - namXB <= thamSo.getKhoangCachXB()) {

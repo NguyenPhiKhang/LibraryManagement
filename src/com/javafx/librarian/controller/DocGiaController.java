@@ -182,12 +182,10 @@ public class DocGiaController implements Initializable {
                 }
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(paneDocGia.getScene().getWindow());
-            //alert.setTitle("");
-            alert.setHeaderText("Lỗi");
-            alert.setContentText("Vui lòng chọn độc giả muốn xoá!");
-            alert.show();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn đọc giả cần xóa!");
+            alert.showAndWait();
         }
     }
 
@@ -218,12 +216,10 @@ public class DocGiaController implements Initializable {
                 e.printStackTrace();
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(paneDocGia.getScene().getWindow());
-            //alert.setTitle("");
-            alert.setHeaderText("Lỗi");
-            alert.setContentText("Vui lòng chọn độc giả muốn sửa!");
-            alert.show();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Chưa chọn đọc giả cần chỉnh sửa!");
+            alert.showAndWait();
         }
     }
 }

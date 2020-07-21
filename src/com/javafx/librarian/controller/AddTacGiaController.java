@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -77,6 +78,17 @@ public class AddTacGiaController implements Initializable {
     }
 
     public void btnAddThem_Click(ActionEvent event) {
+        //VALIDATE
+        if(txtAddTenTacGia.getText().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        //
+
         //
         String maTacGia = txtAddMaTacGia.getText();
         String tenTacGia = txtAddTenTacGia.getText();

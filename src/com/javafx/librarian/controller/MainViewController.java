@@ -1,9 +1,10 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.dao.QuyenDAO;
 import com.javafx.librarian.model.Account;
 import com.javafx.librarian.service.AccountService;
 import com.jfoenix.controls.JFXButton;
-import com.lowagie.text.Anchor;
+//import com.lowagie.text.Anchor;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.animation.Animation;
 import javafx.animation.Transition;
@@ -109,6 +110,8 @@ public class MainViewController implements Initializable {
             stage.setX(mouseEvent.getScreenX() - mousepX);
             stage.setY(mouseEvent.getScreenY() - mousepY);
         });
+
+        //QuyenDAO.QUYEN currentRole = QuyenDAO.getInstance().getQuyenOfUser(User.getUsername());
 
         indexButton.addListener((observableValue, number, t1) -> {
             switch ((int)t1){
@@ -230,12 +233,23 @@ public class MainViewController implements Initializable {
     public void setMainStage(Stage stage, Account user) {
         this.stage = stage;
         this.User = new Account(user.getUsername(), user.getPassword(), user.getIdper(), user.getName(), user.getEmail());
+        Account.currentUser = this.User;
         lbNameAccount.setText(this.User.getName());
         lbUsername.setText(this.User.getUsername());
         if(user.getIdper()==1){
             menuItemInfo.setVisible(true);
             menuItemDMK.setVisible(false);
+            //DocGia
+            btnQLDG.setDisable(true);
+            btnQLMT.setDisable(true);
+            btnQLNV.setDisable(true);
+            btnBCTK.setDisable(true);
+            btnHT.setDisable(true);
         }else{
+            if(user.getIdper() == 3) {
+                //ThuThu
+                btnQLNV.setDisable(true);
+            }
             menuItemInfo.setVisible(false);
             menuItemDMK.setVisible(true);
         }

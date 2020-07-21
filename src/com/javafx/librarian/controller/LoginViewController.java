@@ -104,6 +104,7 @@ public class LoginViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        btnSignupMove.setVisible(false);
         lbCreateAccount.setVisible(false);
         textUserCreate.setVisible(false);
         textEmail.setVisible(false);

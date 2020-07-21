@@ -12,6 +12,8 @@ public class Account {
     private StringProperty name;
     private StringProperty email;
 
+    public static Account currentUser;
+
     public String getName() {
         return name.get();
     }

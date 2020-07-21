@@ -118,6 +118,17 @@ public class AddDocGiaController {
                 dateNgaySinh.setValue(dateDefault);
             }
         });
+
+        textSoDienThoai.setTextFormatter(new TextFormatter<Integer>(change -> {
+            if (!change.getControlNewText().isEmpty()) {
+                if(!change.getControlNewText().matches("\\d+"))
+                    return null;
+            }
+
+            return change;
+        }));
+
+        cbbLoaiDG.getSelectionModel().selectFirst();
     }
 
     public void setListDG(ObservableList<DocGia> listDG){
@@ -125,6 +136,20 @@ public class AddDocGiaController {
     }
 
     public void btnThemClicked(ActionEvent actionEvent) {
+        //VALIDATE
+        if(textTenDocGia.getText().trim().equals("") ||
+                textEmail.getText().trim().equals("") ||
+                dateNgaySinh.getValue().toString().trim().equals("") ||
+                cbbAccount.getValue().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        //
+
         DocGia dg = new DocGia();
         dg.setMaDocGia(textMaDG.getText());
         dg.setTenDocGia(textTenDocGia.getText());
@@ -136,6 +161,7 @@ public class AddDocGiaController {
         dg.setIdAccount(cbbAccount.getValue());
         dg.setDiaChi(textDiaChi.getText());
         dg.setSoDienThoai(textSoDienThoai.getText());
+
 
         int rs = DocGiaService.getInstance().addDocGia(dg);
         Util.showSuccess(rs, "Quản lý đọc giả", "Thêm đọc giả thành công!");

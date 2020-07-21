@@ -184,7 +184,20 @@ public class EditSachController implements Initializable {
     }
 
     public void btnLuu_Click(ActionEvent event) throws FileNotFoundException {
+        //VALIDATE
+        if(txtTenSach.getText().trim().equals("") ||
+                txtNamXB.getText().trim().equals("") ||
+                txtNXB.getText().toString().trim().equals("") ||
+                txtTriGia.getText().trim().equals("")
+        ) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
         //
+
         String maSach = txtMaSach.getText();
         String tenSach = txtTenSach.getText();
         String NXB = txtNXB.getText();

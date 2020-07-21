@@ -1,5 +1,6 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.dao.AccountDao;
 import com.javafx.librarian.model.Account;
 import com.javafx.librarian.service.AccountService;
 import com.jfoenix.controls.JFXButton;
@@ -7,6 +8,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,6 +16,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class AddAccountController {
     public AnchorPane paneAddAccount;
@@ -47,10 +51,21 @@ public class AddAccountController {
     }
 
     public void btnThemClicked(ActionEvent actionEvent) {
+        //
+        //
         Account acc = new Account(textTenTaiKhoan.getText(), textMatKhau.getText(), 1, "", "");
 //        acc.setUsername(textTenTaiKhoan.getText());
 //        acc.setPassword(textMatKhau.getText());
 //        acc.setIdper(1);
+
+        List<String> all = AccountDao.getInstance().getAllUserKeys();
+        if(all.contains(acc.getUsername())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Tên tài khoản đã tồn tại trong hệ thống!");
+            alert.showAndWait();
+            return;
+        }
 
         AccountService.getInstance().addUser(acc);
         listAcc.add(AccountService.getInstance().getUserById(acc.getUsername()));

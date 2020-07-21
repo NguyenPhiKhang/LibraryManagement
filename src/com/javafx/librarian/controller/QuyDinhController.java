@@ -1,9 +1,11 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.ThamSo;
 import com.javafx.librarian.model.TheLoai;
 import com.javafx.librarian.service.ThamSoService;
 import com.javafx.librarian.service.TheLoaiService;
+import com.javafx.librarian.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -50,6 +52,11 @@ public class QuyDinhController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadData();
+
+        //check permission
+        if(Account.currentUser.getIdper() == 3)
+            btnCapNhat.setVisible(false);
+        //
         txtMaxTuoi.setTextFormatter(new TextFormatter<Integer>(change -> {
             if (!change.getControlNewText().isEmpty()) {
                 if(change.getControlNewText().matches("^0\\d?+"))
@@ -167,7 +174,8 @@ public class QuyDinhController implements Initializable {
                     Integer.parseInt(txtTimeMuon.getText()),
                     Integer.parseInt(txtTienPhat.getText()),
                     Integer.parseInt(txtTienHu.getText()));
-            ThamSoService.getInstance().suaThamSo(temp);
+            int rs = ThamSoService.getInstance().suaThamSo(temp);
+            Util.showSuccess(rs, "Quản lý hệ thống", "Cập nhật quy định thành công!");
             loadData();
         }
     }

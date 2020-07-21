@@ -132,6 +132,17 @@ public class EditNhanVienController implements Initializable {
 
     public void btnCapNhat_Click(ActionEvent event) {
         //VALIDATE
+        if(txtTenNV.getText().trim().equals("") ||
+                txtEmail.getText().trim().equals("") ||
+                txtSDT.getText().trim().equals("") ||
+                txtUsername.getText().trim().equals("") ||
+                txtPassword.getText().trim().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
         int age = Period.between(dpNgaySinh.getValue(), LocalDate.now()).getYears();
         if(!(age >= 20 && age <= 60)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -140,6 +151,7 @@ public class EditNhanVienController implements Initializable {
             alert.setContentText("Tuổi của nhân viên phải từ 20 đến 60!");
             alert.show();
         };
+        //
         //
         // Update account
         Account acc = new Account(txtUsername.getText(), txtPassword.getText(), cbLoai.getSelectionModel().getSelectedItem().getID(), "", "");

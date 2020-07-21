@@ -1,5 +1,6 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.dao.AccountDao;
 import com.javafx.librarian.dao.QuyenDAO;
 import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.NhanVien;
@@ -99,6 +100,38 @@ public class AddNhanVienController implements Initializable {
     }
 
     public void btnAddThem_Click(ActionEvent event) {
+        //VALIDATE
+        if(txtTenNV.getText().trim().equals("") ||
+                txtEmail.getText().trim().equals("") ||
+                txtSDT.getText().trim().equals("") ||
+                txtUsername.getText().trim().equals("") ||
+                txtPassword.getText().trim().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Vui lòng nhập đầy đủ dữ liệu!");
+            alert.showAndWait();
+            return;
+        }
+        int age = Period.between(dpNgaySinh.getValue(), LocalDate.now()).getYears();
+        if(!(age >= 20 && age <= 60)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(cbLoai.getScene().getWindow());
+            alert.setContentText("Tuổi của nhân viên phải từ 20 đến 60!");
+            alert.show();
+            return;
+        };
+
+        List<String> all = AccountDao.getInstance().getAllUserKeys();
+        if(all.contains(txtUsername.getText().trim())) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("THÔNG BÁO");
+            alert.setHeaderText("Tên tài khoản đã tồn tại trong hệ thống!");
+            alert.showAndWait();
+            return;
+        }
+
+        //
+
         String maNV = txtMaNV.getText();
         String tenNV = txtTenNV.getText();
         String diaChi = txtDiaChi.getText();
@@ -109,16 +142,6 @@ public class AddNhanVienController implements Initializable {
         String passWord = txtPassword.getText();
         int role = cbLoai.getSelectionModel().getSelectedItem().getID();
 
-        //VALIDATE
-        int age = Period.between(dpNgaySinh.getValue(), LocalDate.now()).getYears();
-        if(!(age >= 20 && age <= 60)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.initOwner(cbLoai.getScene().getWindow());
-            alert.setHeaderText("Lỗi");
-            alert.setContentText("Tuổi của nhân viên phải từ 20 đến 60!");
-            alert.show();
-        };
-        //
         //create account according to new NhanVien
         Account acc = new Account(userName, passWord, role, "", "");
         AccountService.getInstance().addUser(acc);

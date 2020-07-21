@@ -1,5 +1,6 @@
 package com.javafx.librarian.dao;
 
+import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.Quyen;
 import com.javafx.librarian.model.Sach;
 
@@ -21,6 +22,12 @@ public class QuyenDAO {
             instance = new QuyenDAO();
         }
         return instance;
+    }
+
+    public enum QUYEN {
+        DG,
+        QL,
+        TT
     }
 
     public List<Quyen> getAllQuyen() {
@@ -61,4 +68,5 @@ public class QuyenDAO {
 
         return null;
     }
+
 }

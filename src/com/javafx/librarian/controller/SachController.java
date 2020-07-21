@@ -1,5 +1,6 @@
 package com.javafx.librarian.controller;
 
+import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TheLoai;
 import com.javafx.librarian.service.PhieuTraService;
@@ -91,6 +92,13 @@ public class SachController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCell();
         loadData();
+
+        //check permission
+        if(Account.currentUser.getIdper() == 1) {
+            btnThemSach.setVisible(false);
+            btnSuaSach.setVisible(false);
+            btnXoaSach.setVisible(false);
+        }
 
         txtMaSach.setEditable(false);
         txtTenSach.setEditable(false);

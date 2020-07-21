@@ -44,6 +44,29 @@ public class AccountDao {
         return users;
     }
 
+    public List<String> getAllUserKeys() {
+        List<String> users = new ArrayList<>();
+
+        Connection connection = JDBCConnection.getJDBCConnection();
+
+        String sql = "select idaccount from tbaccount";
+
+        try {
+            assert connection != null;
+            Statement statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                users.add(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return users;
+    }
+
     public List<Account> getUserNoOwner() {
         List<Account> users = new ArrayList<>();
 

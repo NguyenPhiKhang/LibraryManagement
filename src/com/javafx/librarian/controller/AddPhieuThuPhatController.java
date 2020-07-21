@@ -61,6 +61,7 @@ public class AddPhieuThuPhatController {
         listDG.forEach(dg->{
             cbbDocGia.getItems().add(dg.getMaDocGia()+" - "+dg.getTenDocGia());
         });
+        cbbDocGia.getSelectionModel().selectFirst();
 
 //        dateNgayThu.setValue(LocalDate.parse(dtf.format(LocalDate.now()), dtf));
         textNgayThu.setText(dtf.format(LocalDate.now()));
@@ -84,12 +85,9 @@ public class AddPhieuThuPhatController {
                    textConLai.setText(String.valueOf(Double.parseDouble(textTongNo.getText()) - Double.parseDouble(t1)));
                }
            }catch (Exception e){
-               Alert alert = new Alert(Alert.AlertType.ERROR);
-               alert.initOwner(panelAddPhieuThu.getScene().getWindow());
-               alert.setTitle("Lỗi");
-               alert.setContentText("Số tiền thu không đúng");
-               ButtonType btnYes = new ButtonType("OK", ButtonBar.ButtonData.YES);
-               alert.getButtonTypes().setAll(btnYes);
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+               alert.setTitle("THÔNG BÁO");
+               alert.setHeaderText("Số tiền thu không hợp lệ!");
                alert.showAndWait();
 
                spnSoTienThu.getValueFactory().setValue(Double.parseDouble(textTongNo.getText()));
