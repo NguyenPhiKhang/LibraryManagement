@@ -1,6 +1,7 @@
 package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.PhieuThuPhat;
+import com.javafx.librarian.service.DocGiaService;
 import com.javafx.librarian.service.PhieuThuService;
 import com.javafx.librarian.utils.Util;
 import javafx.collections.FXCollections;
@@ -34,12 +35,13 @@ public class ThuTienPhatController {
     public AnchorPane panePhieuThu;
     public TextField textNgayThu;
     public TableColumn colNgayThu;
+    public TextField textTimKiemDG;
 
     ObservableList<PhieuThuPhat> listPhieuThuPhat = FXCollections.observableArrayList();
 
     @FXML
     public void initialize(){
-        colMaDocGia.setCellValueFactory(new PropertyValueFactory<>("maDocGia"));
+        colMaDocGia.setCellValueFactory(new PropertyValueFactory<>("tenDocGia"));
         colMaPhieuThu.setCellValueFactory(new PropertyValueFactory<>("maPhieuThu"));
         colConLai.setCellValueFactory(new PropertyValueFactory<>("conLai"));
         colSoTienThu.setCellValueFactory(new PropertyValueFactory<>("soTienThu"));
@@ -51,6 +53,11 @@ public class ThuTienPhatController {
         tablePhieuThu.getSelectionModel().selectedItemProperty().addListener(((observableValue, phieuThuPhat, t1) -> {
             bindingTable();
         }));
+
+        textTimKiemDG.textProperty().addListener((observableValue, s, t1) -> {
+            listPhieuThuPhat.clear();
+            listPhieuThuPhat.addAll(PhieuThuService.getInstance().searchPhieuPhat(t1));
+        });
     }
 
     private void bindingTable() {

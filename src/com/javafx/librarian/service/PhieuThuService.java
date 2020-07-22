@@ -22,4 +22,5 @@ public class PhieuThuService {
     public int deletePhieuThuPhat(String maphieu) {return  PhieuThuDao.getInstance().deletePhieuThuPhat(maphieu);}
     public int updatePhieuPhat(PhieuThuPhat pt) {return PhieuThuDao.getInstance().updatePhieuPhat(pt);}
     public PhieuThuPhat getPhieuPhatById(String pt){return PhieuThuDao.getInstance().getPhieuPhatById(pt);}
+    public List<PhieuThuPhat> searchPhieuPhat(String find) {return PhieuThuDao.getInstance().searchDocGia(find);}
 }
