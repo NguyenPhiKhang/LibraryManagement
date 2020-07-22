@@ -63,9 +63,10 @@ public class TrangChuDAO {
     public List<String> getActionMuonTra()
     {
         List<String> rets = new ArrayList<>();
+        List<String> rets1 = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pm.ngaymuon from tbdocgia d, tbphieumuon pm, tbctphieumuon ct, tbsach s WHERE ct.maphieumuon = pm.maphieumuon and pm.madocgia = d.madocgia AND ct.masach = s.masach order by pm.ngaymuon desc limit 3");
+            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pm.ngaymuon from tbdocgia d, tbphieumuon pm, tbctphieumuon ct, tbsach s WHERE ct.maphieumuon = pm.maphieumuon and pm.madocgia = d.madocgia AND ct.masach = s.masach");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 rets.add("Đọc giả " + res.getString(1) + " vừa mượn sách " + res.getString(2) + " vào lúc " + res.getDate(3));
@@ -73,16 +74,30 @@ public class TrangChuDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Collections.reverse(rets);
+        for(int i = 3; i < rets.size(); i++)
+        {
+            rets.remove(i);
+            i--;
+        }
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pt.ngaytra from tbdocgia d, tbphieutra pt, tbctphieutra ct, tbsach s WHERE ct.maphieutra = pt.maphieutra and pt.madocgia = d.madocgia AND ct.masach = s.masach ORDER BY `pt`.`ngaytra` ASC limit 3");
+            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pt.ngaytra from tbdocgia d, tbphieutra pt, tbctphieutra ct, tbsach s WHERE ct.maphieutra = pt.maphieutra and pt.madocgia = d.madocgia AND ct.masach = s.masach");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
-                rets.add("Đọc giả " + res.getString(1) + " vừa trả sách " + res.getString(2) + " vào lúc " + res.getDate(3));
+                rets1.add("Đọc giả " + res.getString(1) + " vừa trả sách " + res.getString(2) + " vào lúc " + res.getDate(3));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Collections.reverse(rets1);
+        for(int i = 3; i < rets1.size(); i++)
+        {
+            rets1.remove(i);
+            i--;
+        }
+
+        rets.addAll(rets1);
 
         Comparator<String> compareAction = new Comparator<String>() {
             @Override

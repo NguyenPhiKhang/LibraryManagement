@@ -34,11 +34,6 @@
                      <font>
                         <Font name="Verdana" size="13.0" />
                      </font></TextField>
-                  <Label fx:id="lbForget" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="294.0" prefHeight="10.0" prefWidth="267.0" text="Quên mật khẩu?" textAlignment="CENTER" textFill="#262940">
-                     <font>
-                        <Font name="Verdana Bold" size="13.0" />
-                     </font>
-                  </Label>
                   <PasswordField fx:id="passUserLogin" layoutX="116.0" layoutY="239.0" prefHeight="32.0" prefWidth="258.0" promptText="Mật khẩu" text="12345678">
                      <font>
                         <Font name="Verdana" size="13.0" />

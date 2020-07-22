@@ -1,6 +1,7 @@
 package com.javafx.librarian.controller;
 
 import com.javafx.librarian.model.Account;
+import com.javafx.librarian.utils.Util;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -76,6 +77,7 @@ public class DoiMatKhauController {
 
     public void btnDoiClicked(ActionEvent actionEvent) {
         this.acc.setPassword(textMatKhauMoi.getText());
+        Util.showSuccess(1, "Đổi mật khẩu", "Đổi mật khẩu thành công!");
         ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
     }
 

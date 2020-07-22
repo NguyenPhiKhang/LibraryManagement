@@ -108,6 +108,8 @@ public class GiaHanPMController implements Initializable {
         tableSach.setItems(listSach);
 
         dtHanTra.valueProperty().addListener((ov, oldValue, newValue) -> {
+            if(newValue == null || oldValue == null)
+                return;
             if(newValue.isBefore(oldValue))
             {
                 Alert alert = new Alert(Alert.AlertType.WARNING);

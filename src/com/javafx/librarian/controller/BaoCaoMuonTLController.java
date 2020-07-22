@@ -58,7 +58,6 @@ public class BaoCaoMuonTLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        mabc = Util.generateID(Util.PREFIX_CODE.BCTL);
         setCell();
         loadData();
     }
@@ -109,6 +108,7 @@ public class BaoCaoMuonTLController implements Initializable {
         }
         else
         {
+            mabc = Util.generateID(Util.PREFIX_CODE.BCTL);
             int thang = cbThang.getValue();
             int nam = Integer.parseInt(txtNam.getText());
             BaoCaoTheoTheLoaiService.getInstance().deleteBaoCaoTheoTheLoai(thang, nam);
