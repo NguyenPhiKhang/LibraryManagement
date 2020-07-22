@@ -1,5 +1,6 @@
 package com.javafx.librarian.dao;
 
+import com.javafx.librarian.model.Account;
 import com.javafx.librarian.model.Sach;
 import com.javafx.librarian.model.TheLoai;
 import javafx.collections.ObservableList;
@@ -31,7 +32,12 @@ public class SachDAO {
         List<Sach> ListSach = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbsach where record_status = 1");
+            String query = null;
+            if(Account.currentUser.getIdper() == 1)
+                query = "select * from tbsach where record_status = 1 and tinhtrang = 0 order by ngaynhap desc";
+            else
+                query = "select * from tbsach where record_status = 1 order by ngaynhap desc";
+            PreparedStatement ps = conn.prepareStatement(query);
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 String maSach = res.getString(1);
@@ -88,6 +94,15 @@ public class SachDAO {
 
     public int editSach(Sach sach) {
         int res = 0;
+        int tinhTrang = 0;
+        if(sach.getTinhTrang() == "Trống")
+            tinhTrang = 0;
+        else if(sach.getTinhTrang() == "Đang mượn")
+            tinhTrang = 1;
+        else if(sach.getTinhTrang() == "Hư hỏng")
+            tinhTrang = 2;
+        else
+            tinhTrang = 3;
         try (Connection conn = JDBCConnection.getJDBCConnection();) {
             PreparedStatement ps = conn.prepareStatement("update tbsach set tensach=?, matheloai=?, matacgia=?, namxb=?, nxb=?, ngaynhap=?, trigia=?, tinhtrang=?, anhbia=? where masach=?");
             ps.setString(1, sach.getTenSach());
@@ -97,7 +112,7 @@ public class SachDAO {
             ps.setString(5, sach.getNXB());
             ps.setDate(6, Date.valueOf(Util.convertDateToLocalDate(sach.getNgayNhap())));
             ps.setInt(7, sach.getTriGia());
-            ps.setInt(8, sach.getTinhTrang() == "Trống" ? 0 : 1);
+            ps.setInt(8, tinhTrang);
             ps.setBinaryStream(9, sach.getAnhBia());
             ps.setString(10, sach.getMaSach());
             res = ps.executeUpdate();

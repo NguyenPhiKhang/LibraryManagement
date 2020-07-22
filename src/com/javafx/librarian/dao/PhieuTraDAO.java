@@ -28,7 +28,7 @@ public class PhieuTraDAO {
         List<PhieuTra> ListPT = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("select * from tbphieutra where record_status = 1");
+            PreparedStatement ps = conn.prepareStatement("select * from tbphieutra where record_status = 1 order by ngaytra desc");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 String maPT = res.getString(1);

@@ -28,7 +28,7 @@
                                 <MenuButton fx:id="lbUsername" focusTraversable="false" layoutX="151.0" layoutY="9.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="admin" textFill="#148ff5" wrapText="true">
                                     <items>
                                         <MenuItem fx:id="menuItemInfo" mnemonicParsing="false" onAction="#MenuThongTinClicked" text="Thông tin" />
-                              <MenuItem fx:id="menuItemDMK" mnemonicParsing="false" onAction="#menuItemDMKClicked" text="Doi mat khau" />
+                              <MenuItem fx:id="menuItemDMK" mnemonicParsing="false" onAction="#menuItemDMKClicked" text="Đổi mật khẩu" />
                                         <MenuItem mnemonicParsing="false" onAction="#MenuDangXuatClicked" text="Đăng xuất" />
                                     </items>
                            <font>

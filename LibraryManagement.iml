@@ -13,9 +13,10 @@
     <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
     <orderEntry type="library" name="mysql-connector-java-8.0.19" level="project" />
     <orderEntry type="library" name="TrayTester" level="project" />
-    <orderEntry type="library" name="jasperreports-6.1.0" level="project" />
     <orderEntry type="library" name="commons-io-2.4" level="project" />
     <orderEntry type="library" name="xmpcore-5.1.3" level="project" />
     <orderEntry type="library" name="charm-glisten-4.4.4" level="project" />
+    <orderEntry type="library" name="ant-1.10.6" level="project" />
+    <orderEntry type="library" name="jasperreports-6.11.0" level="project" />
   </component>
 </module>

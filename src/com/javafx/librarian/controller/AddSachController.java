@@ -118,9 +118,8 @@ public class AddSachController implements Initializable {
 
         txtTriGia.setTextFormatter(new TextFormatter<Integer>(change -> {
             if (!change.getControlNewText().isEmpty()) {
-                if(change.getControlNewText().matches("^0\\d?+"))
+                if(!change.getControlNewText().matches("\\d+"))
                     return null;
-                return change.getControlNewText().matches("\\d+") ? change : null;
             }
 
             return change;

@@ -86,7 +86,7 @@ public class BaoCaoTheoTheLoaiDAO {
                 String maTheLoai = res.getString(1);
                 String tenTheLoai = res.getString(2);
                 int soLuotMuon = res.getInt(3);
-                double tiLe = (soLuotMuon * 100 * 1.0) / tongluotmuon;
+                double tiLe = tongluotmuon == 0 ? 0 : (soLuotMuon * 100 * 1.0) / tongluotmuon;
                 list.add(new CTBaoCaoTheoTheLoai(maTheLoai, tenTheLoai, soLuotMuon, tiLe, ++count));
             }
         } catch (Exception e) {

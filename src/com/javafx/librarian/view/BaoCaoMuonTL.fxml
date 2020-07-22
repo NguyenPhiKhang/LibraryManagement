@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="panelSach" prefHeight="680.0" prefWidth="1043.0" stylesheets="@css/tableTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.javafx.librarian.controller.BaoCaoMuonTLController">
     <children>
@@ -35,18 +36,30 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" layoutX="21.0" layoutY="23.0" prefHeight="40.0" prefWidth="305.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="23.0">
                            <children>
-                              <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Tháng:" />
+                              <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Tháng:">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></Label>
                               <ComboBox fx:id="cbThang" prefWidth="150.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" layoutX="357.0" layoutY="23.0" prefHeight="40.0" prefWidth="305.0" AnchorPane.bottomAnchor="19.0" AnchorPane.leftAnchor="357.0" AnchorPane.topAnchor="23.0">
                            <children>
-                              <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Năm:" />
+                              <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Năm:">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font></Label>
                               <TextField fx:id="txtNam" />
                            </children>
                         </HBox>
-                        <JFXButton fx:id="btnThongKe" layoutX="810.0" layoutY="30.0" onAction="#btnThongKe_Click" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #65D36E;" text="THỐNG KÊ" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="30.0" />
-                        <JFXButton fx:id="btnLapBaoCao" layoutX="913.0" layoutY="30.0" onAction="#btnlapBaoCao_Click" prefHeight="27.0" prefWidth="105.0" style="-fx-background-color: #4BADF8;" text="LẬP BÁO CÁO" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="30.0" />
+                        <JFXButton fx:id="btnThongKe" layoutX="793.0" layoutY="30.0" onAction="#btnThongKe_Click" prefHeight="27.0" prefWidth="88.0" style="-fx-background-color: #65D36E;" text="THỐNG KÊ" AnchorPane.rightAnchor="162.0" AnchorPane.topAnchor="30.0">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></JFXButton>
+                        <JFXButton fx:id="btnLapBaoCao" layoutX="913.0" layoutY="30.0" onAction="#btnlapBaoCao_Click" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: #4BADF8;" text="LẬP BÁO CÁO" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="30.0">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></JFXButton>
                      </children>
                   </AnchorPane>
                </children>

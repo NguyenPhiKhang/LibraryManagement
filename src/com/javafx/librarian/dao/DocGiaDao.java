@@ -29,7 +29,7 @@ public class DocGiaDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select a.*, b.* from tbdocgia as a inner join tbloaidocgia  as b on a.maloaidocgia = b.maloaidocgia where a.record_status = 1";
+        String sql = "select a.*, b.* from tbdocgia as a inner join tbloaidocgia  as b on a.maloaidocgia = b.maloaidocgia where a.record_status = 1 order by a.ngaylapthe desc";
 
         try {
             assert connection != null;
@@ -162,7 +162,7 @@ public class DocGiaDao {
             preparedStatement.setString(5, dg.getEmail());
             preparedStatement.setDate(6, Date.valueOf(Util.convertDateToLocalDate(dg.getNgayLapThe())));
             preparedStatement.setDate(7, Date.valueOf(Util.convertDateToLocalDate(dg.getNgayHetHan())));
-            preparedStatement.setInt(8, dg.getTinhTrangThe());
+            preparedStatement.setInt(8, 1);
             preparedStatement.setDouble(9, dg.getTongNo());
             preparedStatement.setString(10, dg.getIdAccount());
             preparedStatement.setString(11, dg.getSoDienThoai());

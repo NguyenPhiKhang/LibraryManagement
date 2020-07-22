@@ -35,9 +35,18 @@
                <center>
                   <AnchorPane prefHeight="354.0" prefWidth="1023.0" style="-fx-background-color: #fff; -fx-background-radius: 5; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                      <children>
-                        <JFXButton fx:id="btnThemPM" layoutX="7.0" layoutY="37.0" onAction="#btnThemPT_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM" />
-                        <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="35.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="35.0" />
-                        <Label layoutX="721.0" layoutY="42.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="42.0" />
+                        <JFXButton fx:id="btnThemPM" layoutX="7.0" layoutY="37.0" onAction="#btnThemPT_Click" prefHeight="27.0" prefWidth="70.0" style="-fx-background-color: #65D36E;" text="THÊM">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></JFXButton>
+                        <TextField fx:id="textTimKiem" layoutX="827.0" layoutY="35.0" prefHeight="31.0" prefWidth="168.0" promptText="Tìm kiếm..." style="-fx-background-color: transparent;" styleClass="textFieldSearch" stylesheets="@css/themes.css" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="35.0">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></TextField>
+                        <Label layoutX="721.0" layoutY="42.0" text="Tìm kiếm theo tên:" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="42.0">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font></Label>
                         <AnchorPane layoutX="7.0" layoutY="74.0" prefHeight="273.0" prefWidth="1009.0" style="-fx-background-color: #cccccc;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="74.0">
                            <children>
                               <TableView fx:id="tableSachTra" layoutX="491.0" layoutY="14.0" prefHeight="248.0" prefWidth="660.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="14.0">
@@ -53,37 +62,52 @@
                                  <children>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Mã phiếu trả" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" style="-fx-label-padding: 0 0 0 10;" text="Mã phiếu trả">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtMaPT" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" text="Mã phiếu mượn" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Mã phiếu mượn">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtMaPM" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" text="Mã đọc giả" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Mã đọc giả">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <ComboBox fx:id="cbMaDG" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" text="Ngày trả" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" text="Ngày trả">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtNgayTra" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Ngày mượn" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" style="-fx-label-padding: 0 0 0 10;" text="Ngày mượn">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font></Label>
                                           <TextField fx:id="txtNgayMuon" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="305.0">
                                        <children>
-                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="106.0" style="-fx-label-padding: 0 0 0 10;" text="Tiền phạt kỳ này" />
+                                          <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="120.0" style="-fx-label-padding: 0 0 0 10;" text="Tiền phạt kỳ này" />
                                           <TextField fx:id="txtTienPhatKyNay" editable="false" prefHeight="27.0" prefWidth="190.0" />
                                        </children>
                                     </HBox>
@@ -93,7 +117,7 @@
                         </AnchorPane>
                         <HBox prefHeight="29.0" prefWidth="1023.0" style="-fx-background-color: #fff; -fx-background-radius: 5 5 0 0; -fx-border-color: #cccccc; -fx-border-width: 0 0 1 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="Thong tin chi tiet">
+                              <Label alignment="TOP_LEFT" opacity="0.77" style="-fx-label-padding: 5 0 0 10;" text="THÔNG TIN CHI TIẾT">
                                  <font>
                                     <Font name="Verdana Bold" size="16.0" />
                                  </font>
