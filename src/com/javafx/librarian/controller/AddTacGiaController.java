@@ -96,5 +96,7 @@ public class AddTacGiaController implements Initializable {
         int rs = TacGiaService.getInstance().addTacGia(maTacGia, tenTacGia);
         Util.showSuccess(rs, "Quản lý tác giả", "Thêm tác giả thành công!");
         tacGiaController.refreshTable();
+        txtAddTenTacGia.setText("");
+        txtAddMaTacGia.setText(Util.generateID(Util.PREFIX_CODE.TG));
     }
 }

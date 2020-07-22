@@ -25,7 +25,7 @@ public class LSMuonSachDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select a.ngaymuon, a.hantra, b.masach, b.record_status, c.tensach from tbphieumuon as a inner join tbctphieumuon as b inner join tbsach as c on a.maphieumuon = b.maphieumuon and b.masach = c.masach where a.record_status = 1 and a.madocgia=?;";
+        String sql = "select a.ngaymuon, a.hantra, b.masach, b.record_status, c.tensach from tbphieumuon as a inner join tbctphieumuon as b inner join tbsach as c on a.maphieumuon = b.maphieumuon and b.masach = c.masach where a.record_status = 1 and a.madocgia=? order by a.ngaymuon desc";
 
         try {
             assert connection != null;

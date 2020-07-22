@@ -74,22 +74,8 @@ public class TrangChuController implements Initializable {
             row.setText(e);
             boxAction.getChildren().add(row);
             Pane p = new Pane();
-            p.setPrefHeight(15);
+            p.setPrefHeight(8);
             boxAction.getChildren().add(p);
         });
-//
-//        Rectangle clip = new Rectangle(
-//                imgFooterSach.getFitWidth(), imgFooterSach.getFitHeight()
-//        );
-//        clip.setArcHeight(8);
-//        clip.setArcHeight(8);
-//        imgFooterSach.setClip(clip);
-//
-//        // snapshot the rounded image.
-//        SnapshotParameters parameters = new SnapshotParameters();
-//        parameters.setFill(Color.TRANSPARENT);
-//        WritableImage image = imgFooterSach.snapshot(parameters, null);
-//        // store the rounded image in the imageView.
-//        imgFooterSach.setImage(image);
     }
 }

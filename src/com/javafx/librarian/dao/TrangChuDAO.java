@@ -65,7 +65,7 @@ public class TrangChuDAO {
         List<String> rets = new ArrayList<>();
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pm.ngaymuon from tbdocgia d, tbphieumuon pm, tbctphieumuon ct, tbsach s WHERE ct.maphieumuon = pm.maphieumuon and pm.madocgia = d.madocgia AND ct.masach = s.masach order by pm.ngaymuon desc limit 10");
+            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pm.ngaymuon from tbdocgia d, tbphieumuon pm, tbctphieumuon ct, tbsach s WHERE ct.maphieumuon = pm.maphieumuon and pm.madocgia = d.madocgia AND ct.masach = s.masach order by pm.ngaymuon desc limit 3");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 rets.add("Đọc giả " + res.getString(1) + " vừa mượn sách " + res.getString(2) + " vào lúc " + res.getDate(3));
@@ -75,7 +75,7 @@ public class TrangChuDAO {
         }
 
         try (Connection conn = JDBCConnection.getJDBCConnection()) {
-            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pt.ngaytra from tbdocgia d, tbphieutra pt, tbctphieutra ct, tbsach s WHERE ct.maphieutra = pt.maphieutra and pt.madocgia = d.madocgia AND ct.masach = s.masach ORDER BY `pt`.`ngaytra` ASC limit 10");
+            PreparedStatement ps = conn.prepareStatement("SELECT d.tendocgia, s.tensach, pt.ngaytra from tbdocgia d, tbphieutra pt, tbctphieutra ct, tbsach s WHERE ct.maphieutra = pt.maphieutra and pt.madocgia = d.madocgia AND ct.masach = s.masach ORDER BY `pt`.`ngaytra` ASC limit 3");
             ResultSet res = ps.executeQuery();
             while (res.next()) {
                 rets.add("Đọc giả " + res.getString(1) + " vừa trả sách " + res.getString(2) + " vào lúc " + res.getDate(3));

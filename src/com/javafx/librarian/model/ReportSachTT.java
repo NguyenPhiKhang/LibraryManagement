@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class ReportSachTT {
     private int stt;
-    private String maBCSTT;
+    //private String maBCSTT;
     private String maSach;
     private String tenSach;
     private Date ngayMuon;
@@ -33,13 +33,13 @@ public class ReportSachTT {
         this.stt = stt;
     }
 
-    public String getMaBCSTT() {
+    /*public String getMaBCSTT() {
         return maBCSTT;
     }
 
     public void setMaBCSTT(String maBCSTT) {
         this.maBCSTT = maBCSTT;
-    }
+    }*/
 
     public String getMaSach() {
         return maSach;

@@ -34,7 +34,7 @@
         </TabPane>
       <AnchorPane fx:id="paneHeaderQLDG" layoutX="10.0" layoutY="14.0" prefHeight="49.0" prefWidth="730.0" style="-fx-background-color: #f2f2f2;">
          <children>
-            <Label layoutX="64.0" layoutY="5.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="Bao Cao Thong Ke" textFill="#3d4056">
+            <Label layoutX="64.0" layoutY="5.0" opacity="0.87" prefHeight="37.0" prefWidth="274.0" text="BÁO CÁO THỐNG KÊ" textFill="#3d4056">
                <font>
                   <Font name="Verdana" size="22.0" />
                </font>

@@ -112,13 +112,12 @@
                                  <children>
                                     <AnchorPane prefHeight="249.0" prefWidth="445.0" style="-fx-background-color: #fff; -fx-background-radius: 10; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                        <children>
-                                          <Label layoutY="14.0" prefHeight="27.0" prefWidth="294.0" text="Hoat Dong Muon Tra Gan Day" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="17.0">
+                                          <Label layoutY="14.0" prefHeight="27.0" prefWidth="294.0" text="Hoạt Động Mượn Trả Gần Đây" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="17.0">
                                              <font>
                                                 <Font name="Verdana" size="17.0" />
                                              </font>
                                           </Label>
-                                          <VBox fx:id="boxAction" layoutX="13.0" layoutY="49.0" prefHeight="262.0" prefWidth="440.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="49.0" />
-                                          <VBox fx:id="boxAction1" layoutX="23.0" layoutY="59.0" prefHeight="262.0" prefWidth="440.0" />
+                                          <VBox fx:id="boxAction" layoutX="13.0" layoutY="66.0" prefHeight="334.0" prefWidth="455.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="65.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -127,16 +126,16 @@
                                  <children>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff; -fx-background-radius: 10; -fx-effect:  dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
                                        <children>
-                                          <Label prefHeight="17.0" prefWidth="174.0" text="Sach Moi Cap Nhat" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="17.0">
+                                          <Label prefHeight="17.0" prefWidth="174.0" text="Sách Mới Cập Nhật" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="17.0">
                                              <font>
                                                 <Font name="Verdana" size="17.0" />
                                              </font></Label>
                                           <TableView fx:id="tbSachMoi" layoutX="41.0" layoutY="71.0" prefHeight="261.0" prefWidth="448.0" stylesheets="@css/tableDashboardTheme.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="65.0">
                                             <columns>
-                                              <TableColumn fx:id="colMS" prefWidth="75.0" text="Ma Sach" />
-                                              <TableColumn fx:id="colTS" prefWidth="75.0" text="Ten Sach" />
-                                                <TableColumn fx:id="colTL" prefWidth="75.0" text="Ten The Loai" />
-                                                <TableColumn fx:id="colTG" prefWidth="75.0" text="Ten Tac Gia" />
+                                              <TableColumn fx:id="colMS" prefWidth="75.0" text="Mã Sách" />
+                                              <TableColumn fx:id="colTS" prefWidth="75.0" text="Tên Sách" />
+                                                <TableColumn fx:id="colTL" prefWidth="75.0" text="Thể Loại" />
+                                                <TableColumn fx:id="colTG" prefWidth="75.0" text="Tác Giả" />
                                             </columns>
                                              <columnResizePolicy>
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

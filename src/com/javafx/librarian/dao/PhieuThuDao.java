@@ -26,7 +26,7 @@ public class PhieuThuDao {
 
         Connection connection = JDBCConnection.getJDBCConnection();
 
-        String sql = "select a.maphieuphat, a.madocgia, a.sotienthu, a.conlai, a.ngaythu, b.tendocgia from tbphieuphat as a inner join tbdocgia as b on a.madocgia = b.madocgia where a.record_status = 1";
+        String sql = "select a.maphieuphat, a.madocgia, a.sotienthu, a.conlai, a.ngaythu, b.tendocgia from tbphieuphat as a inner join tbdocgia as b on a.madocgia = b.madocgia where a.record_status = 1 order by a.ngaythu desc";
 
         try {
             assert connection != null;
