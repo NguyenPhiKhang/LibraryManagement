@@ -135,7 +135,7 @@
             <TableView fx:id="tablePhieuThu" prefHeight="557.0" prefWidth="1023.0" style="-fx-background-radius: 5; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" stylesheets="@../css/tableTheme.css" BorderPane.alignment="CENTER">
                <columns>
                   <TableColumn fx:id="colMaPhieuThu" prefWidth="100.0" text="Mã phiếu thu" />
-                  <TableColumn fx:id="colMaDocGia" prefWidth="37.0" text="Mã đọc giả" />
+                  <TableColumn fx:id="colMaDocGia" prefWidth="37.0" text="Tên đọc giả" />
                   <TableColumn fx:id="colSoTienThu" prefWidth="36.0" text="Số tiền thu" />
                   <TableColumn fx:id="colConLai" prefWidth="75.0" text="Còn lại" />
                   <TableColumn fx:id="colNgayThu" prefWidth="75.0" text="Ngày thu" />
