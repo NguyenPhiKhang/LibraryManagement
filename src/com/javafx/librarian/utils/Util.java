@@ -17,7 +17,7 @@ import java.util.Random;
 public class Util {
     public static final String URL_JDBC = "jdbc:mysql://localhost:3306/qltv?useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC";
     public static final String USERNAME_JDBC = "root";
-    public static final String PASSWORD_JDBC = "";
+    public static final String PASSWORD_JDBC = "root";
     public static final int MAX_CODE = 999999;
     public static final int MIN_CODE = 1;
 
