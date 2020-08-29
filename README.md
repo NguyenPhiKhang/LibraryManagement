@@ -24,7 +24,7 @@ Library Management System
 - Manage borrowing, returning documents, setting up fine receipts easily, accurately calculating and managing total readers' debt, convenient for librarians.
 - Search for document information, readers quickly and easily.
 - Allows for efficient statistics, report printing, regulatory change and management.
-- Target audience: managers, librarians, librarians.
+- Target audience: managers, librarians.
 
 ## Technologies
 - JavaFX
